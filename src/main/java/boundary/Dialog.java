@@ -8,6 +8,6 @@ package boundary;
  *
  * @author Ninon
  */
-public class Dialog {
+public class Dialog implements IPirates {
     
 }

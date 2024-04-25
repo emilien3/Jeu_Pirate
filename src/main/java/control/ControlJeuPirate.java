@@ -4,10 +4,17 @@
  */
 package control;
 
+import boundary.IBoundary;
+
 /**
  *
  * @author Ninon
  */
 public class ControlJeuPirate {
+    private IBoundary boundary;
+    private ControlActiverCase controlActiverCase;
+    private ControlDeplacer controlDeplacer;
+    private ControlLancerDe controlLancerDe;
+    private ControlVerifierFin controlVeriferFin;
     
 }

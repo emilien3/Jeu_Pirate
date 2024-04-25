@@ -8,6 +8,6 @@ package control;
  *
  * @author Ninon
  */
-public class ControlVerifierFin {
+public class ControlVerifierFin implements IVerifierFin {
     
 }

@@ -8,6 +8,6 @@ package control;
  *
  * @author Ninon
  */
-public class ControlActiverCase {
-    
+public class ControlActiverCase implements IActiverCase {
+    private ControlJeuPirate controlJeuPirate;
 }

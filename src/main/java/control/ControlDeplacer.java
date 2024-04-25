@@ -8,6 +8,6 @@ package control;
  *
  * @author Ninon
  */
-public class ControlDeplacer {
-    
+public class ControlDeplacer implements IDeplacerPirate{
+    private ControlJeuPirate controlJeuPirate;
 }

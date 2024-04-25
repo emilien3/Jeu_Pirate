@@ -4,10 +4,16 @@
  */
 package boundary;
 
+import control.IActiverCase;
+import control.IDeplacerPirate;
+import control.ILancerDe;
+
 /**
  *
  * @author Ninon
  */
-public class AdaptateurNoyau {
-    
+public class AdaptateurNoyau implements IBoundary {
+    private IActiverCase controlActiverCase;
+    private IDeplacerPirate controlDeplacerPirate;
+    private ILancerDe controlLancerDe;
 }

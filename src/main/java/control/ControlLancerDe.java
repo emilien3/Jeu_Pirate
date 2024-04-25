@@ -8,6 +8,6 @@ package control;
  *
  * @author Ninon
  */
-public class ControlLancerDe {
-    
+public class ControlLancerDe implements ILancerDe {
+    private ControlJeuPirate controlJeuPirate;
 }
