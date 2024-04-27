@@ -15,7 +15,7 @@ public class De {
 
     public int roll() {
         Random rdm = new Random();
-        return rdm.nextInt(6)+1;
+        return rdm.nextInt(6) + 1;
     }
 
     public int getValue() {
