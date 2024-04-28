@@ -4,7 +4,9 @@
  */
 package control;
 
+import boundary.BoundaryConsole;
 import boundary.IBoundary;
+import model.*;
 
 /**
  *
@@ -16,5 +18,26 @@ public class ControlJeuPirate {
     private ControlDeplacer controlDeplacer;
     private ControlLancerDe controlLancerDe;
     private ControlVerifierFin controlVeriferFin;
+    
+    private JeuPirate jeuPirate;
+
+    public ControlJeuPirate() {
+        this.boundary = new BoundaryConsole();
+        this.controlActiverCase = new ControlActiverCase();
+        this.controlDeplacer = new ControlDeplacer();
+        this.controlLancerDe = new ControlLancerDe();
+        this.jeuPirate = new JeuPirate();
+        this.controlVeriferFin = new ControlVerifierFin(jeuPirate);
+    }
+    
+    public void jouer(){
+        boolean termine = false;
+        int tour = 0;
+        while(!termine) {            
+            jeuPirate.getPirates()[tour%2].tour();
+            termine = controlVeriferFin.estFinis();
+            tour ++;
+        }
+    }
     
 }
