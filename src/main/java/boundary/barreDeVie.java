@@ -31,9 +31,9 @@ public class barreDeVie extends javax.swing.JPanel {
         // Init des images
         try {
             coeurPlein = ImageIO.read(
-                    getClass().getResource("/resources/coeurPlein.png"));
+                    getClass().getResource("/coeurPlein32.png"));
             coeurVide = ImageIO.read(
-                    getClass().getResource("/resources/coeurVide.png"));
+                    getClass().getResource("/coeurVide32.png"));
             
             this.imWidth = coeurPlein.getWidth();
             
