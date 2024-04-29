@@ -12,18 +12,17 @@ import model.De;
  */
 public class ControlLancerDe implements ILancerDe {
     private ControlJeuPirate controlJeuPirate;
-    private De dice1, dice2;
+    private De dice;
 	
     public ControlLancerDe() {
-        dice1 = new De();
-        dice2 = new De();
+        dice = new De();
     }
     
     @Override
-    public int[] rollDices() {
-        int[] rolls = new int[2];
-        rolls[0] = dice1.roll();
-        rolls[1] = dice2.roll();
+    public int[] rollDices(int nDices) {
+        int[] rolls = new int[nDices];
+        for (int i = 0; i < nDices; i++)
+            rolls[i] = dice.roll();
         return rolls;
     }
 }
