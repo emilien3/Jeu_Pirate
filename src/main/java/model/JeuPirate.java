@@ -9,6 +9,7 @@ package model;
  * @author Ninon
  */
 public class JeuPirate {
+
     private Plateau plateau;
     private Pirate pirates[];
     private De des;
@@ -32,7 +33,4 @@ public class JeuPirate {
     public De getDes() {
         return des;
     }
-    
-    
-    
 }
