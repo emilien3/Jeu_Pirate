@@ -34,10 +34,37 @@ public class ControlJeuPirate {
         boolean termine = false;
         int tour = 0;
         while(!termine) {            
-            jeuPirate.getPirates()[tour%2].tour();
+            jouerTour(jeuPirate.getPirates()[tour%2]);
             termine = controlVeriferFin.estFinis();
             tour ++;
         }
     }
     
+    public void jouerTour(Pirate pirate){
+        
+    }
+    
+    public void avancerJoueur(){
+        
+    }
+    
+    public void reculerJoueur(){
+        
+    }
+    
+    public void perdrePointDeVie(){
+        
+    }
+    
+    public void gagnerPointDeVie(){
+        
+    }
+    
+    public void setChangement(){
+        
+    }
+    
+    public void setEtat(){
+        
+    }
 }

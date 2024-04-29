@@ -23,7 +23,7 @@ public class ControlVerifierFin implements IVerifierFin {
     public boolean estFinis(){
         Pirate pirates[] = jeuPirate.getPirates();
         boolean pirateMort = pirates[0].getHp() <= 0 || pirates[1].getHp <= 0;
-        boolean pirateArrive = pirates[0].getPosition == 30 || pirates[1].getPosition == 30;
+        boolean pirateArrive = pirates[0].getPosition == taillePlateau || pirates[1].getPosition == taillePlateau;
         return pirateMort || pirateArrive;
     }
     
