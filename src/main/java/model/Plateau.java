@@ -9,5 +9,19 @@ package model;
  * @author Ninon
  */
 public class Plateau {
+    private Case cases[];
+
+    public Plateau() {
+        this.cases = new Case[30];
+        initialiserCases();
+    }
+    
+    private void initialiserCases(){
+        //mettre les cases au bon endroit
+    }
+    
+    public Case donnerCase(int n){
+        return cases[n];
+    }
     
 }

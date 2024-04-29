@@ -9,5 +9,5 @@ package control;
  * @author Ninon
  */
 public interface IVerifierFin {
-    
+    public boolean estFinis();
 }

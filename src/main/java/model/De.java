@@ -6,11 +6,13 @@ package model;
 
 import java.util.Random;
 
+
 /**
  *
  * @author Ninon
  */
 public class De {
+
     private int value;
 
     public int roll() {
