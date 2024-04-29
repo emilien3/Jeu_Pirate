@@ -16,7 +16,7 @@ import javax.imageio.ImageIO;
  */
 public class barreDeVie extends javax.swing.JPanel {
     
-    private int nombrePV;
+    private int nombrePV = 3;
     private int imWidth;
     private int maxPV = 5;
     private BufferedImage coeurPlein;
@@ -25,11 +25,8 @@ public class barreDeVie extends javax.swing.JPanel {
     /**
      * Creates new form pointDeVie
      */
-    public barreDeVie(int nombrePV) {
+    public barreDeVie() {
         initComponents();
-        
-        // Init des PVs
-        this.nombrePV = nombrePV;
         
         // Init des images
         try {
@@ -59,7 +56,7 @@ public class barreDeVie extends javax.swing.JPanel {
     
     @Override
     public void paintComponent(Graphics g) {
-        super.paint(g);
+        super.paintComponent(g);
         
         // Afficher les points de vie
         for(int i = 0; i < nombrePV; i++) {
