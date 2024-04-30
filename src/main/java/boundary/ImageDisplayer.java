@@ -49,7 +49,7 @@ public abstract class ImageDisplayer extends javax.swing.JPanel {
         updateImagesFiles();
         
         // On actualise l'affichage
-        repaint(); 
+        repaint();
     }
     
     /**
