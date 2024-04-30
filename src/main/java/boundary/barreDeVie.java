@@ -6,7 +6,6 @@ package boundary;
 
 import java.awt.Graphics;
 import java.awt.image.BufferedImage;
-import java.io.File;
 import java.io.IOException;
 import javax.imageio.ImageIO;
 
@@ -14,11 +13,16 @@ import javax.imageio.ImageIO;
  *
  * @author ogled
  */
-public class barreDeVie extends javax.swing.JPanel {
+public class barreDeVie extends ImageDisplayer {
     
-    private int nombrePV = 3;
+    // Pour la partie interne au système
+    private int nombrePV = 0;
     private int imWidth;
     private int maxPV = 5;
+    
+    // Pour la partie affichage
+    private String imagePlein = "coeurPlein";
+    private String imageVide = "coeurVide";
     private BufferedImage coeurPlein;
     private BufferedImage coeurVide;
 
@@ -28,12 +32,25 @@ public class barreDeVie extends javax.swing.JPanel {
     public barreDeVie() {
         initComponents();
         
+        // Initialisation de la résolution de base
+        baseResolution = 32;
+        
         // Init des images
+        updateImagesFiles();
+        
+    }
+    
+    /**
+     * Met a jour les fichiers utilisés lors l'affichage de la barre de vie.
+     * ATTENTION : Penser à actualiser le composant avec repaint() ensuite
+     */
+    @Override
+    protected void updateImagesFiles() {
         try {
             coeurPlein = ImageIO.read(
-                    getClass().getResource("/coeurPlein32.png"));
+                    getClass().getResource("/" + imagePlein + getImageExtension()));
             coeurVide = ImageIO.read(
-                    getClass().getResource("/coeurVide32.png"));
+                    getClass().getResource("/" + imageVide + getImageExtension()));
             
             this.imWidth = coeurPlein.getWidth();
             
@@ -42,18 +59,39 @@ public class barreDeVie extends javax.swing.JPanel {
         }
     }
     
+    /**
+     * Setter pour l'attribut nombrePV.
+     * ATTENTION : Cette fonction appelle repaint() pour mettre à jour
+     * l'affichage
+     * @param value nouvelle valeur pour les points de vie
+     */
     public void setNombrePV(int value) {
+        // Pour l'édition dans le GUI
+        firePropertyChange("Nombre PV", null, nombrePV);
+        
         // Pour éviter les dépassements
         if(value > maxPV) {nombrePV = maxPV;}
         else if(value < 0) {nombrePV = 0;}
         else {nombrePV = value;}
         
         // On actualise l'affichage
-        repaint();
-        
-        
+        repaint();  
     }
     
+    /**
+     * Getter pour l'attribut nombrePV.
+     * @return la valeut de nombrePV
+     */
+    public int getNombrePV() {
+        return nombrePV;
+    }
+    
+    /**
+     * cf. super.paintComponent(Graphics g)
+     * Dessine les points de vie basés sur les images chargées les uns à la
+     * suite des autres.
+     * @param g variable d'environnement graphique
+     */
     @Override
     public void paintComponent(Graphics g) {
         super.paintComponent(g);
@@ -75,6 +113,10 @@ public class barreDeVie extends javax.swing.JPanel {
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
+
+        setMaximumSize(new java.awt.Dimension(160, 32));
+        setMinimumSize(new java.awt.Dimension(160, 32));
+        setPreferredSize(new java.awt.Dimension(160, 32));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
