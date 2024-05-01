@@ -12,7 +12,6 @@ public abstract class ImageDisplayer extends javax.swing.JPanel {
     
     protected boolean x2Res = false;
     protected boolean alternative = false;
-    protected int baseResolution; // A initialiser dans la classe implémentant
     
     /**
      * Getter pour l'attribut x2Res.
@@ -83,9 +82,7 @@ public abstract class ImageDisplayer extends javax.swing.JPanel {
         String temp = "";
         
         if(x2Res)
-            temp += String.valueOf(baseResolution * 2);
-        else
-            temp += String.valueOf(baseResolution);
+            temp += "_2x";
         
         if(alternative)
             temp += "_alt";

@@ -15,7 +15,8 @@ import java.awt.Graphics2D;
  */
 public class InfosJoueur extends javax.swing.JPanel {
     
-    private boolean actif = false;
+    public enum Joueur {Bill, Jack};
+    private Joueur joueur = Joueur.Bill;
 
     /**
      * Creates new form InfosJoueur
@@ -24,36 +25,22 @@ public class InfosJoueur extends javax.swing.JPanel {
         initComponents();
     }
 
-    public boolean isActif() {
-        return actif;
-    }
-
-    public void setActif(boolean actif) {
-        this.actif = actif;
+    public void setJoueur(Joueur joueur) {
+        this.joueur = joueur;
         
         // Pour l'édition dans le GUI
-        firePropertyChange("actif", null, actif);
+        firePropertyChange("joueur", null, joueur);
         
-        // On actualise l'affichage
-        repaint(); 
+        // On mets à jour les images
+        this.background.setAlternative(joueur == Joueur.Jack);
+        this.pointsVie.setAlternative(joueur == Joueur.Jack);
     }
     
-    /**
-     * cf. super.paintComponent(Graphics g)
-     * Dessine les points de vie basés sur les images chargées les uns à la
-     * suite des autres.
-     * @param g variable d'environnement graphique
-     */
-    @Override
-    public void paintComponent(Graphics g) {
-        super.paintComponent(g);
+    public void setPV(int PV) {
+        this.pointsVie.setNombrePV(PV);
         
-        if(actif) {
-            Graphics2D g2d = (Graphics2D) g;
-            g2d.setColor(Color.RED);
-            g2d.setStroke(new BasicStroke(6f));
-            g2d.drawRect(3, 3, 300, 300);
-        }
+        // Pour l'édition dans le GUI
+        firePropertyChange("PV", null, PV);
     }
 
     /**
@@ -65,73 +52,58 @@ public class InfosJoueur extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        barreDeVie = new boundary.barreDeVie();
-        icon = new boundary.IconJoueur();
-        jLabel1 = new javax.swing.JLabel();
+        background = new boundary.IconJoueur();
+        pointsVie = new boundary.barreDeVie();
 
         setPreferredSize(new java.awt.Dimension(306, 306));
 
-        barreDeVie.setAlternative(true);
-        barreDeVie.setNombrePV(4);
+        background.setX2Res(true);
 
-        javax.swing.GroupLayout barreDeVieLayout = new javax.swing.GroupLayout(barreDeVie);
-        barreDeVie.setLayout(barreDeVieLayout);
-        barreDeVieLayout.setHorizontalGroup(
-            barreDeVieLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 0, Short.MAX_VALUE)
-        );
-        barreDeVieLayout.setVerticalGroup(
-            barreDeVieLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 64, Short.MAX_VALUE)
-        );
+        pointsVie.setOpaque(false);
 
-        icon.setX2Res(true);
-
-        javax.swing.GroupLayout iconLayout = new javax.swing.GroupLayout(icon);
-        icon.setLayout(iconLayout);
-        iconLayout.setHorizontalGroup(
-            iconLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 128, Short.MAX_VALUE)
+        javax.swing.GroupLayout pointsVieLayout = new javax.swing.GroupLayout(pointsVie);
+        pointsVie.setLayout(pointsVieLayout);
+        pointsVieLayout.setHorizontalGroup(
+            pointsVieLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 160, Short.MAX_VALUE)
         );
-        iconLayout.setVerticalGroup(
-            iconLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 128, Short.MAX_VALUE)
+        pointsVieLayout.setVerticalGroup(
+            pointsVieLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 32, Short.MAX_VALUE)
         );
 
-        jLabel1.setFont(new java.awt.Font("Segoe UI", 0, 48)); // NOI18N
-        jLabel1.setText("Pirate 1");
+        javax.swing.GroupLayout backgroundLayout = new javax.swing.GroupLayout(background);
+        background.setLayout(backgroundLayout);
+        backgroundLayout.setHorizontalGroup(
+            backgroundLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(backgroundLayout.createSequentialGroup()
+                .addGap(110, 110, 110)
+                .addComponent(pointsVie, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(180, Short.MAX_VALUE))
+        );
+        backgroundLayout.setVerticalGroup(
+            backgroundLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(backgroundLayout.createSequentialGroup()
+                .addGap(115, 115, 115)
+                .addComponent(pointsVie, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(128, Short.MAX_VALUE))
+        );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(icon, javax.swing.GroupLayout.PREFERRED_SIZE, 128, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(barreDeVie, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addComponent(background, javax.swing.GroupLayout.DEFAULT_SIZE, 450, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(barreDeVie, javax.swing.GroupLayout.PREFERRED_SIZE, 64, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(icon, javax.swing.GroupLayout.PREFERRED_SIZE, 128, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(160, Short.MAX_VALUE))
+            .addComponent(background, javax.swing.GroupLayout.DEFAULT_SIZE, 275, Short.MAX_VALUE)
         );
     }// </editor-fold>//GEN-END:initComponents
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private boundary.barreDeVie barreDeVie;
-    private boundary.IconJoueur icon;
-    private javax.swing.JLabel jLabel1;
+    private boundary.IconJoueur background;
+    private boundary.barreDeVie pointsVie;
     // End of variables declaration//GEN-END:variables
 }

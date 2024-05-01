@@ -31,10 +31,7 @@ public class barreDeVie extends ImageDisplayer {
      */
     public barreDeVie() {
         initComponents();
-        
-        // Initialisation de la résolution de base
-        baseResolution = 32;
-        
+
         // Init des images
         updateImagesFiles();
         

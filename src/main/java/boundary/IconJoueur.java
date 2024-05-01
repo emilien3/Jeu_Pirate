@@ -24,9 +24,6 @@ public class IconJoueur extends ImageDisplayer {
     public IconJoueur() {
         initComponents();
         
-        // Initialisation de la résolution de base
-        baseResolution = 64;
-        
         // Initialisation de l'image
         updateImagesFiles();
     }
