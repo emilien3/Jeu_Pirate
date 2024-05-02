@@ -9,18 +9,25 @@ package model;
  * @author Ninon
  */
 public class Plateau {
-    private Case cases[];
+    private final int TAILLETABLEAU = 30;
+    private Cases cases[];
 
     public Plateau() {
-        this.cases = new Case[30];
+        this.cases = new Cases[TAILLETABLEAU];
         initialiserCases();
     }
     
     private void initialiserCases(){
-        //mettre les cases au bon endroit
+        for (int i = 0; i < TAILLETABLEAU; i++) {
+            cases[i] = new Cases(i);
+        }
     }
     
-    public Case donnerCase(int n){
+    public int getTAILLETABLEAU(){
+        return TAILLETABLEAU;
+    }
+    
+    public Cases donnerCase(int n){
         return cases[n];
     }
     

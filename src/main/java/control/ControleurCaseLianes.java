@@ -2,7 +2,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
-package codesJava;
+package control;
 
 /**
  *
@@ -10,6 +10,7 @@ package codesJava;
  */
 public class ControleurCaseLianes {
     public void action(ControlJeuPirate controljeuPirate) {
+        /*
         // Action pour une case lianes : le joueur lance le dé jusqu'à trois fois pour obtenir un 10
         System.out.println("Le joueur se trouve sur des lianes !");
         int nbEssais = 3;
@@ -29,5 +30,6 @@ public class ControleurCaseLianes {
         } else {
             System.out.println("Le joueur n'a pas réussi à obtenir un 10. Il ne jouera pas au prochain tour.");
         }
+        */
     }
 }

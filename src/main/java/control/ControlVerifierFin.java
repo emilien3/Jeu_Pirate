@@ -3,8 +3,8 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
 package control;
-import model.JeuPirate;
 import model.Pirate;
+import model.Plateau;
 
 /**
  *
@@ -12,17 +12,18 @@ import model.Pirate;
  */
 public class ControlVerifierFin implements IVerifierFin {
 
-    private final int taillePlateau = 30;
-    private JeuPirate jeuPirate;
+    private Pirate[] pirates;
+    private Plateau plateau;
 
-    public ControlVerifierFin(JeuPirate jeuPirate) {
-        this.jeuPirate = jeuPirate;
+    public ControlVerifierFin(Pirate[] pirates,Plateau plateau) {
+        this.pirates = pirates;
+        this.plateau = plateau;
     }
     
+    @Override
     public boolean estFinis(){
-        Pirate pirates[] = jeuPirate.getPirates();
-        boolean pirateMort = pirates[0].getHp() <= 0 || pirates[1].getHp <= 0;
-        boolean pirateArrive = pirates[0].getPosition == taillePlateau || pirates[1].getPosition == taillePlateau;
+        boolean pirateMort = pirates[0].getLife()<= 0 || pirates[1].getLife() <= 0;
+        boolean pirateArrive = pirates[0].getPosition() == plateau.getTAILLETABLEAU()-1 || pirates[1].getPosition() == plateau.getTAILLETABLEAU()-1;
         return pirateMort || pirateArrive;
     }    
 }

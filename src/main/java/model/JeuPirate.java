@@ -12,14 +12,13 @@ public class JeuPirate {
 
     private Plateau plateau;
     private Pirate pirates[];
-    private De des;
+    private int[] des;
 
     public JeuPirate() {
         this.plateau = new Plateau();
         this.pirates = new Pirate[2];
-        this.pirates[0] = new Pirate();
-        this.pirates[1] = new Pirate();
-        this.des = new De();
+        this.pirates[0] = new Pirate(this);
+        this.pirates[1] = new Pirate(this);
     }
 
     public Plateau getPlateau() {
@@ -30,7 +29,11 @@ public class JeuPirate {
         return pirates;
     }
 
-    public De getDes() {
+    public int[] getDes() {
         return des;
+    }
+    
+    public void setDes(int[] des){
+        this.des = des;
     }
 }

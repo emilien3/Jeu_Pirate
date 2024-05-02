@@ -12,14 +12,20 @@ public class Pirate {
     private int life, position, changement;
     private JeuPirate jeuPirate;
     private final int MAX_LIFE = 5;
+    private Etat etat;
 	
     public Pirate(JeuPirate jeuPirate) {
         this.life = MAX_LIFE;
         this.jeuPirate = jeuPirate;
         this.position = 0;
         this.changement = 0;
+        this.etat = Etat.ESTVIVANT;
     }
-
+    
+    public JeuPirate getJeuPirate(){
+        return jeuPirate;
+    }
+    
     public int getChangement() {
         return changement;
     }
@@ -43,5 +49,15 @@ public class Pirate {
     public void setPosition(int position) {
         this.position = position;
     }
+
+    public Etat getEtat() {
+        return etat;
+    }
+
+    public void setEtat(Etat etat) {
+        this.etat = etat;
+    }
+    
+    
   
 }
