@@ -68,7 +68,7 @@ public class Frame extends javax.swing.JFrame {
             }
         });
 
-        panelCase1.setImage("/normale.png");
+        panelCase1.setImage("/ile.png");
 
         javax.swing.GroupLayout panelCase1Layout = new javax.swing.GroupLayout(panelCase1);
         panelCase1.setLayout(panelCase1Layout);
@@ -81,7 +81,7 @@ public class Frame extends javax.swing.JFrame {
             .addGap(0, 73, Short.MAX_VALUE)
         );
 
-        panelCase2.setImage("/normale.png");
+        panelCase2.setImage("/monstre.png");
 
         javax.swing.GroupLayout panelCase2Layout = new javax.swing.GroupLayout(panelCase2);
         panelCase2.setLayout(panelCase2Layout);
@@ -94,7 +94,7 @@ public class Frame extends javax.swing.JFrame {
             .addGap(0, 0, Short.MAX_VALUE)
         );
 
-        panelCase3.setImage("/normale.png");
+        panelCase3.setImage("/nourriture.png");
 
         javax.swing.GroupLayout panelCase3Layout = new javax.swing.GroupLayout(panelCase3);
         panelCase3.setLayout(panelCase3Layout);
@@ -107,7 +107,7 @@ public class Frame extends javax.swing.JFrame {
             .addGap(0, 0, Short.MAX_VALUE)
         );
 
-        panelCase4.setImage("/normale.png");
+        panelCase4.setImage("/avalanche.png");
 
         javax.swing.GroupLayout panelCase4Layout = new javax.swing.GroupLayout(panelCase4);
         panelCase4.setLayout(panelCase4Layout);
@@ -120,7 +120,7 @@ public class Frame extends javax.swing.JFrame {
             .addGap(0, 0, Short.MAX_VALUE)
         );
 
-        panelCase5.setImage("/normale.png");
+        panelCase5.setImage("/falaise.png");
 
         javax.swing.GroupLayout panelCase5Layout = new javax.swing.GroupLayout(panelCase5);
         panelCase5.setLayout(panelCase5Layout);
@@ -133,7 +133,7 @@ public class Frame extends javax.swing.JFrame {
             .addGap(0, 73, Short.MAX_VALUE)
         );
 
-        panelCase6.setImage("/normale.png");
+        panelCase6.setImage("/bateau.png");
 
         javax.swing.GroupLayout panelCase6Layout = new javax.swing.GroupLayout(panelCase6);
         panelCase6.setLayout(panelCase6Layout);

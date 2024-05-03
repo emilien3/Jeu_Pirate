@@ -25,6 +25,9 @@
     </Container>
   </NonVisualComponents>
   <Properties>
+    <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+      <Color blue="7d" green="d7" red="f0" type="rgb"/>
+    </Property>
     <Property name="requestFocusEnabled" type="boolean" value="false"/>
     <Property name="verifyInputWhenFocusTarget" type="boolean" value="false"/>
   </Properties>

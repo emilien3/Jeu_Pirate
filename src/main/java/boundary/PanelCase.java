@@ -30,15 +30,16 @@ public class PanelCase extends javax.swing.JPanel {
      * Creates new form PanelCase
      */
     public PanelCase() {
-        timer = new Timer(3000,  (e) -> {timerEventHandler(e);});
+        timer = new Timer(1000,  (e) -> {timerEventHandler(e);});
         initComponents();
+        setBackground(NORMAL);
     }
     
     @Override
     protected void paintComponent(Graphics g) {
         super.paintComponent(g); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/OverriddenMethodBody
         if (image != null){
-            g.drawImage(image, 0, 0,getWidth(), getHeight(), this);
+            g.drawImage(image, 18, 6, 64, 64, this);
         }
         drawNumeroCase(g);
         drawBorder(g);
@@ -85,20 +86,20 @@ public class PanelCase extends javax.swing.JPanel {
     }
     
     public void caseSombre(){
-        this.couleur = black;
+        this.couleur = NOIR;
         this.sombre = true;
         repaint();
     }
     
     public void caseValide(){
-        this.couleur = green;
+        this.couleur = VERT;
         this.active = true;
         timer.start();
         repaint();
     }
     
     public void caseInvalide(){
-        this.couleur = red;
+        this.couleur = ROUGE;
         this.active = true;
         timer.start();
         repaint();
@@ -108,7 +109,7 @@ public class PanelCase extends javax.swing.JPanel {
         timer.stop();
         this.active = false;
         if (sombre){
-            this.couleur = black;
+            this.couleur = NOIR;
         }
         repaint();
     }
@@ -138,6 +139,7 @@ public class PanelCase extends javax.swing.JPanel {
             .addGap(0, 75, Short.MAX_VALUE)
         );
 
+        setBackground(new java.awt.Color(240, 215, 125));
         setRequestFocusEnabled(false);
         setVerifyInputWhenFocusTarget(false);
 
@@ -157,9 +159,10 @@ public class PanelCase extends javax.swing.JPanel {
     private int numero;
     private Timer timer;
     private Color couleur;
-    private final Color red = new java.awt.Color(255, 0, 0, 80);
-    private final Color green = new java.awt.Color(0, 181, 45, 80);
-    private final Color black = new java.awt.Color(0, 0, 0, 80);
+    private final Color NORMAL = new java.awt.Color(240, 215, 125);
+    private final Color VERT = new java.awt.Color(0, 181, 45, 80);
+    private final Color ROUGE = new java.awt.Color(255, 0, 0, 80);
+    private final Color NOIR = new java.awt.Color(0, 0, 0, 80);
     private boolean sombre = false;
     private boolean active = false;
     private String description;

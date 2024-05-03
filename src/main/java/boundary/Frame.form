@@ -117,7 +117,7 @@
       <SubComponents>
         <Container class="boundary.PanelCase" name="panelCase1">
           <Properties>
-            <Property name="image" type="java.lang.String" value="/normale.png"/>
+            <Property name="image" type="java.lang.String" value="/ile.png"/>
           </Properties>
 
           <Layout>
@@ -135,7 +135,7 @@
         </Container>
         <Container class="boundary.PanelCase" name="panelCase2">
           <Properties>
-            <Property name="image" type="java.lang.String" value="/normale.png"/>
+            <Property name="image" type="java.lang.String" value="/monstre.png"/>
           </Properties>
 
           <Layout>
@@ -153,7 +153,7 @@
         </Container>
         <Container class="boundary.PanelCase" name="panelCase3">
           <Properties>
-            <Property name="image" type="java.lang.String" value="/normale.png"/>
+            <Property name="image" type="java.lang.String" value="/nourriture.png"/>
           </Properties>
 
           <Layout>
@@ -171,7 +171,7 @@
         </Container>
         <Container class="boundary.PanelCase" name="panelCase4">
           <Properties>
-            <Property name="image" type="java.lang.String" value="/normale.png"/>
+            <Property name="image" type="java.lang.String" value="/avalanche.png"/>
           </Properties>
 
           <Layout>
@@ -189,7 +189,7 @@
         </Container>
         <Container class="boundary.PanelCase" name="panelCase5">
           <Properties>
-            <Property name="image" type="java.lang.String" value="/normale.png"/>
+            <Property name="image" type="java.lang.String" value="/falaise.png"/>
           </Properties>
 
           <Layout>
@@ -207,7 +207,7 @@
         </Container>
         <Container class="boundary.PanelCase" name="panelCase6">
           <Properties>
-            <Property name="image" type="java.lang.String" value="/normale.png"/>
+            <Property name="image" type="java.lang.String" value="/bateau.png"/>
           </Properties>
 
           <Layout>
