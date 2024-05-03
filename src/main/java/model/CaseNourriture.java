@@ -12,4 +12,9 @@ public class CaseNourriture extends Cases {
     public CaseNourriture(int position) {
         super(position);
     }
+
+    @Override
+    public String toString() {
+        return "Case nourriture";
+    }
 }

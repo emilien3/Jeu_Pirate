@@ -12,25 +12,25 @@ public enum Etat {
     ESTVIVANT{
         @Override
         public String toString(){
-            return "le pirate va bien";
+            return "va bien";
         }
     },
     PASSETOUR{
         @Override
         public String toString(){
-            return "le pirate doit passer sont tour";
+            return "passer son prochain tour";
         }
     },
     ESTPRISON{
         @Override
         public String toString(){
-            return "le pirate est en prison";
+            return "est en prison";
         }
     },
     ESTPOURSUIVI{
         @Override
         public String toString(){
-            return "le pirate est poursuivi";
+            return "est poursuivi";
         }
     };
 }

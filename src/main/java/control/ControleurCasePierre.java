@@ -4,17 +4,17 @@
  */
 package control;
 
+import model.Etat;
+import model.Pirate;
+
 /**
  *
  * @author laura
  */
 public class ControleurCasePierre {
-    /*
-    public void action(CasePierre casePierre,ControlJeuPirate controlJeuPirate) {
+    public void action(Pirate pirate,ControlJeuPirate controlJeuPirate) {
         System.out.println("Le joueur rencontre une pierre !");
         System.out.println("Le joueur passe son prochain tour.");
-        controlJeuPirate.passeProchainTour(true);
-        controlJeuPirate.finTourJoueurActuel();
+        controlJeuPirate.setEtat(Etat.PASSETOUR, pirate);
     }
-    */
 }

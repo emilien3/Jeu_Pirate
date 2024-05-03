@@ -4,16 +4,18 @@
  */
 package control;
 
+import model.Pirate;
+
 /**
  *
  * @author laura
  */
 public class ControleurCaseFalaise {
-     public void action( ControlJeuPirate controljeuPirate, int positionJoueur) {
-         /*
-        controljeuPirate.deplacerVersPositionPrecedente(positionJoueur);
-        controljeuPirate.perdrePointsDeVie(2); // Le joueur perd 2 points de vie
-        controljeuPirate.finTourJoueurActuel();
-        */
+    private final int PERTEPOINTDEVIE = 2;
+    
+     public void action(Pirate pirate,ControlJeuPirate controljeuPirate) {
+         System.out.println("Le joueur vient d arriver sur une case falaise il revient donc de la case d ou il vient et pert de la vie.");
+        controljeuPirate.deplacerVersPositionPrecedente(pirate);
+        controljeuPirate.perdrePointsDeVie(PERTEPOINTDEVIE,pirate);
     }
 }

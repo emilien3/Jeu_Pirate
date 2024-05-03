@@ -19,4 +19,11 @@ public class Cases {
     public int getPosition() {
         return position;
     }
+
+    @Override
+    public String toString() {
+        return "Case normale";
+    }
+    
+    
 }

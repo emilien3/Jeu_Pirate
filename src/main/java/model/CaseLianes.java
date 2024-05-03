@@ -15,4 +15,9 @@ public class CaseLianes extends Cases {
         super(position);
         
     }
+
+    @Override
+    public String toString() {
+        return "Case lianne";
+    }
 }

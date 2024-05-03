@@ -4,28 +4,31 @@
  */
 package control;
 
-import model.CaseKomodo;
+import model.Etat;
+import model.Pirate;
 
 /**
  *
  * @author laura
  */
 public class ControleurCaseKomodo {
-    public void action(CaseKomodo caseKomodo, ControlJeuPirate controljeuPirate) {
-        /*
-        int resultat = controljeuPirate.lancerDe(); 
-        
-        
-        
-        if (resultat <= 8) {
-            
-            controljeuPirate.perdrePointsDeVie(3); 
-            controljeuPirate.finTourJoueurActuel();
+    private final int CHANGEMENT = -3;
+    private final int PERTEPOINTDEVIE = 3;
+    private final int GAGNER = 8;
+    
+    public void action(Pirate pirate, ControlJeuPirate controljeuPirate) {
+        System.out.println("Le joueur vient d arriver sur une case komodo et dois relancer les des pour savoir si il court assez vite.");
+        controljeuPirate.setEtat(Etat.ESTPOURSUIVI, pirate);
+        int[] des = controljeuPirate.lancerDe();
+        int sommeDes = des[0] + des[1];
+        if (sommeDes <= GAGNER) {
+            System.out.println("Le joueur n a pas courru assez vite.");
+            controljeuPirate.perdrePointsDeVie(PERTEPOINTDEVIE,pirate);
+            controljeuPirate.setChangement(CHANGEMENT, pirate);
         } else {
-        	controljeuPirate.avancerJoueur(8);
-        	controljeuPirate.finTourJoueurActuel();
+            System.out.println("Le joueur a courru assez vite.");
+            controljeuPirate.avancerJoueur(des,pirate);
         }
-        
-        */
+        controljeuPirate.setEtat(Etat.ESTVIVANT, pirate);
     }
 }

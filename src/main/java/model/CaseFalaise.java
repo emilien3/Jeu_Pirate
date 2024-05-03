@@ -12,4 +12,9 @@ public class CaseFalaise extends Cases {
     public CaseFalaise(int position) {
         super(position);
     }
+
+    @Override
+    public String toString() {
+        return "Case falaise";
+    }
 }

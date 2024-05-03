@@ -16,4 +16,9 @@ public class CasePierre extends Cases {
         
         
     }
+
+    @Override
+    public String toString() {
+        return "Case tomber de pierre";
+    }
 }

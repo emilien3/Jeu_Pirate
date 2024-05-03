@@ -12,4 +12,9 @@ public class CaseKomodo extends Cases {
     public CaseKomodo(int position) {
         super(position);
     }
+
+    @Override
+    public String toString() {
+        return "Case komodo";
+    }
 }

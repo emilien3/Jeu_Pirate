@@ -12,4 +12,9 @@ public class CaseSecret extends Cases {
     public CaseSecret(int position) {
         super(position);
     }
+
+    @Override
+    public String toString() {
+        return "Case passage secret";
+    }
 }

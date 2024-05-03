@@ -12,4 +12,9 @@ public class CaseBoue extends Cases {
     public CaseBoue(int position) {
         super(position);
     }
+
+    @Override
+    public String toString() {
+        return "Case boue";
+    }
 }

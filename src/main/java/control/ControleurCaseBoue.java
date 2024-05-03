@@ -4,14 +4,17 @@
  */
 package control;
 
-import model.CaseBoue;
+import model.Pirate;
 
 /**
  *
  * @author laura
  */
 public class ControleurCaseBoue {
-    public void action(CaseBoue caseBoue, ControlJeuPirate controljeuPirate) {
-    	//controljeuPirate.finTourJoueurActuel();
+    private final int CHANGEMENTBOUE = -3;
+    
+    public void action(Pirate pirate, ControlJeuPirate controljeuPirate) {
+        System.out.println("Le joueur viens d arriver sur une case boue et seras donc penalise pour le prochain tour.");
+    	controljeuPirate.setChangement(CHANGEMENTBOUE,pirate);
     }
 }

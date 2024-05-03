@@ -23,4 +23,18 @@ public class ControlDeplacer implements IDeplacerPirate{
         pirate.setPosition(newPosition);
         pirate.setChangement(0);
     }
+    
+    public void reculerJoueur(int n,Pirate pirate){
+        int reculer = n + pirate.getChangement();
+        int newPosition = pirate.getPosition() - reculer;
+        if (newPosition < 0 ) {
+            newPosition = 0;
+        }
+        pirate.setPosition(newPosition);
+        pirate.setChangement(0);
+    }
+
+    void retourDepart(Pirate pirate) {
+        pirate.setPosition(0);
+    }
 }
