@@ -9,5 +9,6 @@ package model;
  * @author Ninon
  */
 public class Case {
-    
+    //TODO
+    /*Classe inutile ?*/
 }

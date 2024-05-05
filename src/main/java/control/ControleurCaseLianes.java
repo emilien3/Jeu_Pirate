@@ -21,6 +21,7 @@ public class ControleurCaseLianes {
         for (int i = 0; i < nbEssais; i++) {
             int[] des = controljeuPirate.lancerDe();
             int sommeDes = des[0] + des[1];
+            /*Fonctionnel possible : int sommeDes = IntStream.of(des).sum();*/
             if (sommeDes == 10) {
             //if (des[0] == des[1]) {  pour si le moyen de sortir est egalite.
                 reussi = true;
