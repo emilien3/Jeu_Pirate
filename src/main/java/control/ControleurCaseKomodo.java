@@ -4,7 +4,6 @@
  */
 package control;
 
-import java.util.stream.IntStream;
 import model.Etat;
 import model.Pirate;
 
@@ -21,8 +20,7 @@ public class ControleurCaseKomodo {
         System.out.println("Le joueur vient d arriver sur une case komodo et dois relancer les des pour savoir si il court assez vite.");
         controljeuPirate.setEtat(Etat.ESTPOURSUIVI, pirate);
         int[] des = controljeuPirate.lancerDe();
-        //int sommeDes = des[0] + des[1];
-        int sommeDes = IntStream.of(des).sum();
+        int sommeDes = des[0] + des[1];
         /*Fonctionnel possible : int sommeDes = IntStream.of(des).sum();*/
         if (sommeDes <= GAGNER) {
             System.out.println("Le joueur n a pas courru assez vite.");
