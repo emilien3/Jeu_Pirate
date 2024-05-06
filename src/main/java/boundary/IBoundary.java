@@ -4,10 +4,14 @@
  */
 package boundary;
 
+
 /**
  *
  * @author Ninon
  */
 public interface IBoundary {
+    public void lancerDes();
+    public void deplacerPirate();
+    public void activerCase();
     
 }

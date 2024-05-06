@@ -16,4 +16,19 @@ public class AdaptateurNoyau implements IBoundary {
     private IActiverCase controlActiverCase;
     private IDeplacerPirate controlDeplacerPirate;
     private ILancerDe controlLancerDe;
+
+    @Override
+    public void lancerDes() {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    }
+
+    @Override
+    public void deplacerPirate() {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    }
+
+    @Override
+    public void activerCase() {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    }
 }
