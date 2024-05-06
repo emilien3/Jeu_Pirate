@@ -16,4 +16,6 @@ public class BoundaryConsole implements IBoundary {
     private IActiverCase controlActiverCase;
     private IDeplacerPirate controlDeplacerPirate;
     private ILancerDe controlLancerDe;
+    
+    
 }

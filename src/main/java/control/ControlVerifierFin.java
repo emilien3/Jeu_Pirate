@@ -6,6 +6,7 @@ package control;
 
 import model.JeuPirate;
 import model.Pirate;
+import model.Plateau;
 
 /**
  *
@@ -16,14 +17,19 @@ public class ControlVerifierFin implements IVerifierFin {
     private final int taillePlateau = 30;
     private JeuPirate jeuPirate;
 
-    public ControlVerifierFin(JeuPirate jeuPirate) {
-        this.jeuPirate = jeuPirate;
+    private Pirate[] pirates;
+    private Plateau plateau;
+
+    public ControlVerifierFin(Pirate[] pirates,Plateau plateau) {
+        this.pirates = pirates;
+        this.plateau = plateau;
     }
     
+    @Override
     public boolean estFinis(){
         Pirate pirates[] = jeuPirate.getPirates();
-        boolean pirateMort = pirates[0].getHp() <= 0 || pirates[1].getHp <= 0;
-        boolean pirateArrive = pirates[0].getPosition == 30 || pirates[1].getPosition == 30;
+        boolean pirateMort = pirates[0].getLife()<= 0 || pirates[1].getLife() <= 0;
+        boolean pirateArrive = pirates[0].getPosition() == plateau.getTAILLETABLEAU()-1 || pirates[1].getPosition() == plateau.getTAILLETABLEAU()-1;
         return pirateMort || pirateArrive;
     }
     
