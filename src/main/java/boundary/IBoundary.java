@@ -4,13 +4,20 @@
  */
 package boundary;
 
+import control.IChangement;
+import control.IChangerEtat;
+import control.IDeplacerPirate;
+import control.ILancerDe;
+import control.IModifierVie;
+
 /**
  *
  * @author Ninon
  */
 public interface IBoundary {
-    public void lancerDe();
-    public void deplacer();
-    public void activerCase();
-    public void finDePartie();
+    public void lancerDe(ILancerDe control);
+    public void deplacer(IDeplacerPirate control);
+    public void changementProchainTour(IChangement control);
+    public void changerEtat(IChangerEtat control);
+    public void modifierVie(IModifierVie control);
 }

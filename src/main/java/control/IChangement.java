@@ -11,6 +11,6 @@ import model.Pirate;
  * @author Ninon
  */
 public interface IChangement {
-    public void changerProchainTour(int changement, Pirate pirate);
+    public void changerProchainTour(Pirate pirate);
     public void finChangement();
 }

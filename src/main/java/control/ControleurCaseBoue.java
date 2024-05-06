@@ -4,17 +4,36 @@
  */
 package control;
 
+import boundary.IBoundary;
 import model.Pirate;
 
 /**
  *
  * @author laura
  */
-public class ControleurCaseBoue {
+public class ControleurCaseBoue extends ControlActiverCaseSpeciale implements IChangement{
     private final int CHANGEMENTBOUE = -3;
+    private ControlJeuPirate controlJeuPirate;
+    private IBoundary boundary;
     
-    public void action(Pirate pirate, ControlJeuPirate controljeuPirate) {
-        System.out.println("Le joueur viens d arriver sur une case boue et seras donc penalise pour le prochain tour.");
-    	controljeuPirate.setChangement(CHANGEMENTBOUE,pirate);
+    public ControleurCaseBoue(ControlJeuPirate controlJeuPirate, IBoundary boundary){
+        this.controlJeuPirate = controlJeuPirate;
+        this.boundary = boundary;
+    }
+    
+    @Override
+    public void action(Pirate pirate) {
+        changerProchainTour(pirate);
+    }
+
+    @Override
+    public void changerProchainTour(Pirate pirate) {
+        pirate.setChangement(CHANGEMENTBOUE);
+        boundary.changementProchainTour(this);
+    }
+
+    @Override
+    public void finChangement() {
+        controlJeuPirate.finActionCase();
     }
 }

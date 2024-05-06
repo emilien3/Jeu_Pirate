@@ -50,7 +50,7 @@ public class ControlJeuPirate {
         while(!termine) {
             System.out.println("Au tour du pirate numero "+(tour%2+1));
             jouerTour(jeuPirate.getPirates()[tour%2]);
-            termine = controlVeriferFin.estFinis();
+            termine = verifierFin(pirates, plateau);
             tour ++;
             afficherEtat();
             System.out.println("\n\n");
@@ -135,6 +135,21 @@ public class ControlJeuPirate {
         pirate.setEtat(Etat.ESTVIVANT);
         pirate.setLife(5);
         controlDeplacer.retourDepart(pirate);
+    }
+    
+    private boolean verifierFin(Pirate[] pirates, Plateau plateau){
+        boolean pirateMort = pirates[0].getLife()<= 0 || pirates[1].getLife() <= 0;
+        boolean pirateArrive = pirates[0].getPosition() == plateau.getTAILLETABLEAU()-1 || pirates[1].getPosition() == plateau.getTAILLETABLEAU()-1;
+        return pirateMort || pirateArrive;
+    }
+    
+    public void finActionCase(){
+        //TODO
+    }
+    
+    public int getLastPosition(){
+        //TODO
+        return 0;
     }
     
 }
