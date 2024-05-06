@@ -4,7 +4,6 @@
  */
 package control;
 
-
 import model.Cases;
 
 /**
@@ -13,6 +12,6 @@ import model.Cases;
  */
 public class ControleurCase {
     public void action(ControlJeuPirate controlJeuPirate) {
-        
+        System.out.println("Le joueur atterrit sur une case normale.");    
     }
 }

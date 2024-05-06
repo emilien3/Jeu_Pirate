@@ -9,8 +9,6 @@ package model;
  * @author laura
  */
 public class CaseSecret extends Cases {
-    
-    public static int AVANCER = 2;
     public CaseSecret(int position) {
         super(position);
     }

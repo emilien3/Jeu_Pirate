@@ -9,9 +9,6 @@ package model;
  * @author laura
  */
 public class CaseNourriture extends Cases {
-    
-    public static int CHANGEMENT = 2;
-    public static int GAINPOINTDEVIE = 1;
     public CaseNourriture(int position) {
         super(position);
     }

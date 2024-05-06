@@ -9,6 +9,7 @@ package model;
  * @author Ninon
  */
 public class JeuPirate {
+
     private Plateau plateau;
     private Pirate pirates[];
     private int[] des;
@@ -31,7 +32,7 @@ public class JeuPirate {
     public int[] getDes() {
         return des;
     }
-
+    
     public void setDes(int[] des){
         this.des = des;
     }

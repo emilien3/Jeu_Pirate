@@ -9,9 +9,6 @@ package model;
  * @author laura
  */
 public class CaseKomodo extends Cases {
-    public static int CHANGEMENT = -3;
-    public static int PERTEPOINTDEVIE = 3;
-    public static int GAGNER = 8;
     public CaseKomodo(int position) {
         super(position);
     }

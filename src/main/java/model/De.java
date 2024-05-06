@@ -4,10 +4,23 @@
  */
 package model;
 
+import java.util.Random;
+
+
 /**
  *
  * @author Ninon
  */
 public class De {
-    
+
+    private int value;
+
+    public int roll() {
+        Random rdm = new Random();
+        return rdm.nextInt(6) + 1;
+    }
+
+    public int getValue() {
+        return value;
+    }
 }

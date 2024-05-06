@@ -7,6 +7,7 @@ package control;
 import boundary.BoundaryConsole;
 import boundary.IBoundary;
 import java.util.Scanner;
+import java.util.Scanner;
 import model.*;
 
 /**
@@ -24,9 +25,24 @@ public class ControlJeuPirate {
     public ControlJeuPirate() {
         this.boundary = new BoundaryConsole();
         this.controlActiverCase = new ControlActiverCase(this);
+        this.controlActiverCase = new ControlActiverCase(this);
         this.controlDeplacer = new ControlDeplacer();
         this.controlLancerDe = new ControlLancerDe();
         this.jeuPirate = new JeuPirate();
+        this.controlVeriferFin = new ControlVerifierFin(jeuPirate.getPirates(),jeuPirate.getPlateau());
+    }
+    
+    private void valider() {
+        Scanner scanner = new Scanner(System.in);
+        System.out.println("Appuyez sur une touche pour lancer les des...");
+        scanner.nextLine(); // Attendre que l'utilisateur appuie sur Entrée
+    }
+    
+    public int[] lancerDe(){
+        valider();
+        int[] des = controlLancerDe.rollDices(2);
+        System.out.println("Les des sont :"+des[0]+","+des[1]);
+        return des;
         this.controlVeriferFin = new ControlVerifierFin(jeuPirate.getPirates(),jeuPirate.getPlateau());
     }
     
@@ -43,22 +59,29 @@ public class ControlJeuPirate {
     
     public void jouer(){
         int tour = 0;
+        int tour = 0;
         
         boolean termine = false;
+        while(!termine) {
+            System.out.println("Au tour du pirate numero "+(tour%2+1));
+            jouerTour(jeuPirate.getPirates()[tour%2]);
         while(!termine) {
             jouerTour(jeuPirate.getPirates()[tour%2]);
             termine = controlVeriferFin.estFinis();
             tour ++;
             afficherEtat();
+            System.out.println("\n\n");
         }
         gagnant();
     }
     
     private void afficherEtat(){
         Pirate[] pirates = jeuPirate.getPirates();
-       
-    }
+        System.out.println("Le pirate numero 1 "+pirates[0].getEtat().toString()+" a "+pirates[0].getLife()+" point de vie se trouve sur la case numero "+pirates[0].getPosition()+" et son prochain lancer auras un changement de "+pirates[0].getChangement()+".");
+        System.out.println("Le pirate numero 2 "+pirates[1].getEtat().toString()+" a "+pirates[1].getLife()+" point de vie se trouve sur la case numero "+pirates[1].getPosition()+" et son prochain lancer auras un changement de "+pirates[1].getChangement()+".");
 
+    }
+    
     public void jouerTour(Pirate pirate){
         
         switch (pirate.getEtat()) {
@@ -129,5 +152,9 @@ public class ControlJeuPirate {
         pirate.setEtat(Etat.ESTVIVANT);
         pirate.setLife(5);
         controlDeplacer.retourDepart(pirate);
+            afficherEtat();
+        }
+        gagnant();
     }
+    
 }

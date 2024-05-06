@@ -9,7 +9,6 @@ package model;
  * @author Ninon
  */
 public class Pirate {
-    
     private int life, position, changement;
     private JeuPirate jeuPirate;
     private final int MAX_LIFE = 5;
@@ -58,6 +57,7 @@ public class Pirate {
     public void setEtat(Etat etat) {
         this.etat = etat;
     }
-  
+    
+    
   
 }

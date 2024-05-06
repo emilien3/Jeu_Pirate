@@ -4,7 +4,6 @@
  */
 package control;
 
-import model.CaseNourriture;
 import model.Pirate;
 
 /**
@@ -12,12 +11,13 @@ import model.Pirate;
  * @author laura
  */
 public class ControleurCaseNourriture {
-    
+    private final int CHANGEMENT = 2;
+    private final int GAINPOINTDEVIE = 1;
     
     public void action(Pirate pirate,ControlJeuPirate controlJeuPirate) {
         System.out.println("Le joueur vient d arriver sur une case nourriture il recupere de la vie et est plus for pour le prochain tour.");
-        controlJeuPirate.setChangement(CaseNourriture.CHANGEMENT, pirate);
+        controlJeuPirate.setChangement(CHANGEMENT, pirate);
     	//controlJeuPirate.avancerJoueur(2); Variante ou le bonus est direct
-        controlJeuPirate.gagnerPointsDeVie(CaseNourriture.GAINPOINTDEVIE,pirate); 
+        controlJeuPirate.gagnerPointsDeVie(GAINPOINTDEVIE,pirate); 
     }
 }
