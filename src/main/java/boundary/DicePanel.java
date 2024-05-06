@@ -13,7 +13,6 @@ public class DicePanel extends javax.swing.JPanel {
     private int number;
     
     
-    
     /**
      * Creates new form mon_panel
      */
