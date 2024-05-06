@@ -4,10 +4,27 @@
  */
 package model;
 
+import java.util.Random;
+
 /**
  *
  * @author Ninon
  */
 public class De {
+    private int value;
+    private Random seed;
     
+    public De(){
+        this.seed = new Random();
+    }
+    
+    
+    public int roll(){
+        value = seed.nextInt(6)+1;
+        return value ;
+    }
+    
+    public int getValue(){
+        return value;
+    }
 }
