@@ -4,23 +4,18 @@
  */
 package model;
 
-import java.util.Random;
-
-
 /**
  *
- * @author Ninon
+ * @author Robin
  */
-public class De {
-
-    private int value;
-
-    public int roll() {
-        Random rdm = new Random();
-        return rdm.nextInt(6) + 1;
+public class CaseRetourDebut extends Cases {
+    
+    public CaseRetourDebut(int position) {
+        super(position);
     }
 
-    public int getValue() {
-        return value;
+    @Override
+    public String toString() {
+        return "Case retour debut";
     }
 }
