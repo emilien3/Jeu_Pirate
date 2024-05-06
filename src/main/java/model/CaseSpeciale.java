@@ -9,5 +9,6 @@ package model;
  * @author Ninon
  */
 public abstract class CaseSpeciale extends Case {
-    
+    //TODO
+    /*Classe inutile ?*/
 }

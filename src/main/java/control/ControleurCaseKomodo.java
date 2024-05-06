@@ -21,6 +21,7 @@ public class ControleurCaseKomodo {
         controljeuPirate.setEtat(Etat.ESTPOURSUIVI, pirate);
         int[] des = controljeuPirate.lancerDe();
         int sommeDes = des[0] + des[1];
+        /*Fonctionnel possible : int sommeDes = IntStream.of(des).sum();*/
         if (sommeDes <= GAGNER) {
             System.out.println("Le joueur n a pas courru assez vite.");
             controljeuPirate.perdrePointsDeVie(PERTEPOINTDEVIE,pirate);

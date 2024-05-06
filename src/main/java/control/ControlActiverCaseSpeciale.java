@@ -9,5 +9,5 @@ package control;
  * @author Ninon
  */
 public class ControlActiverCaseSpeciale {
-    
+    //TODO
 }

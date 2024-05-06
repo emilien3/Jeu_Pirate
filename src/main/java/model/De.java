@@ -14,10 +14,15 @@ import java.util.Random;
 public class De {
 
     private int value;
+    private Random rdm;
+    
+    public De() {
+        rdm = new Random();
+    }
 
     public int roll() {
-        Random rdm = new Random();
-        return rdm.nextInt(6) + 1;
+        value = rdm.nextInt(6) + 1;
+        return value;
     }
 
     public int getValue() {
