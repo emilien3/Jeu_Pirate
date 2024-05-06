@@ -11,30 +11,34 @@ import model.Pirate;
  * @author Ninon
  */
 public class ControlDeplacer implements IDeplacerPirate{
-
-    public void avancerJoueur(int[] des,Pirate pirate) {
-        int avancement = des[0] + des[1] + pirate.getChangement();
-        int newPosition = pirate.getPosition() + avancement ;
-        int tailleMax = pirate.getJeuPirate().getPlateau().getTAILLETABLEAU() - 1;
-        if (newPosition > tailleMax ) {
-            int depasser = newPosition - tailleMax;
-            newPosition = tailleMax - depasser;
-        }
-        pirate.setPosition(newPosition);
-        pirate.setChangement(0);
+    private ControlJeuPirate jeuPirate;
+    private int TAILLE_MAX;
+    
+    public ControlDeplacer(int taille, ControlJeuPirate jeuPirate){
+        this.TAILLE_MAX = taille;
+        this.jeuPirate = jeuPirate;
     }
     
-    public void reculerJoueur(int n,Pirate pirate){
-        int reculer = n + pirate.getChangement();
-        int newPosition = pirate.getPosition() - reculer;
-        if (newPosition < 0 ) {
+    @Override
+    public void deplacer(Pirate pirate, int deplacement) {
+        int avancement = deplacement + pirate.getChangement();
+        int newPosition = pirate.getPosition() + avancement ;
+        if (newPosition > TAILLE_MAX ) {
+            int depasser = newPosition - TAILLE_MAX;
+            newPosition = TAILLE_MAX - depasser;
+        }else if (newPosition < 0 ) {
             newPosition = 0;
         }
         pirate.setPosition(newPosition);
         pirate.setChangement(0);
     }
 
-    void retourDepart(Pirate pirate) {
+    public void retourDepart(Pirate pirate) {
         pirate.setPosition(0);
+    }
+
+    @Override
+    public void finDeplacement() {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
 }

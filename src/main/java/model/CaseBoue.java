@@ -9,6 +9,8 @@ package model;
  * @author laura
  */
 public class CaseBoue extends Cases {
+    private final int CHANGEMENTBOUE = -3;
+    
     public CaseBoue(int position) {
         super(position);
     }

@@ -9,5 +9,8 @@ package boundary;
  * @author Ninon
  */
 public interface IBoundary {
-    
+    public void lancerDe();
+    public void deplacer();
+    public void activerCase();
+    public void finDePartie();
 }

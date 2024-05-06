@@ -4,10 +4,13 @@
  */
 package control;
 
+import model.Pirate;
+
 /**
  *
  * @author Ninon
  */
-public interface IVerifierFin {
-    public boolean estFinis();
+public interface IModifierVie {
+    public void modifierVie(int points, Pirate pirate);
+    public void finModifVie();
 }

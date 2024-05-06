@@ -4,11 +4,13 @@
  */
 package control;
 
+import model.Pirate;
+
 /**
  *
  * @author Ninon
  */
-public interface ILancerDe {
-    public int[] lancerDes(int nDices);
-    public void finLancer();
+public interface IChangement {
+    public void changerProchainTour(int changement, Pirate pirate);
+    public void finChangement();
 }

@@ -26,7 +26,8 @@ public class ControlJeuPirate {
         this.controlActiverCase = new ControlActiverCase(this);
         this.controlDeplacer = new ControlDeplacer();
         this.controlLancerDe = new ControlLancerDe();
-        this.jeuPirate = new JeuPirate();
+        this.jeuPirate = 
+                new JeuPirate();
         this.controlVeriferFin = new ControlVerifierFin(jeuPirate.getPirates(),jeuPirate.getPlateau());
     }
     

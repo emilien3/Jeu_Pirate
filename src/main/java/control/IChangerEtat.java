@@ -4,10 +4,14 @@
  */
 package control;
 
+import model.Etat;
+import model.Pirate;
+
 /**
  *
  * @author Ninon
  */
-public interface IActiverCase {
-    
+public interface IChangerEtat {
+    public void changerEtat(Etat etat, Pirate pirate);
+    public void finChangerEtat();
 }

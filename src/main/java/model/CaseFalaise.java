@@ -9,6 +9,7 @@ package model;
  * @author laura
  */
 public class CaseFalaise extends Cases {
+        private final int PERTEPOINTDEVIE = 2;
     public CaseFalaise(int position) {
         super(position);
     }

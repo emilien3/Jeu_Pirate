@@ -4,10 +4,13 @@
  */
 package control;
 
+import model.Pirate;
+
 /**
  *
  * @author Ninon
  */
 public interface IDeplacerPirate {
-    
+    public void deplacer(Pirate pirate, int deplacement);
+    public void finDeplacement();
 }

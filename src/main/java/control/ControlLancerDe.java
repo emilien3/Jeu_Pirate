@@ -26,4 +26,9 @@ public class ControlLancerDe implements ILancerDe {
             rolls[i] = dice.roll();
         return rolls;
     }
+
+    @Override
+    public void finLancer() {
+        controlJeuPirate.finLancerDe();
+    }
 }
