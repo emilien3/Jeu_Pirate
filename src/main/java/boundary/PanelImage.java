@@ -6,10 +6,7 @@ package boundary;
 
 import java.awt.Graphics;
 import java.awt.Image;
-<<<<<<< HEAD
-=======
 import java.awt.image.BufferedImage;
->>>>>>> origin/console
 import java.io.File;
 import java.io.IOException;
 import java.net.URISyntaxException;
@@ -33,35 +30,21 @@ public class PanelImage extends javax.swing.JPanel {
     public void setImage(String fichier){
         try {
             this.image = ImageIO.read(new File(getClass().getResource(fichier).toURI()));
-<<<<<<< HEAD
-        } catch (IOException | URISyntaxException ex) {
-            Logger.getLogger(PanelImage.class.getName()).log(Level.SEVERE, null, ex);
-        }
-=======
+
         } catch (IOException | URISyntaxException e) {
             Logger.getLogger(PanelImage.class.getName()).log(Level.SEVERE, null, e);
         }
         repaint();
->>>>>>> origin/console
     }
 
     @Override
     protected void paintComponent(Graphics g) {
         super.paintComponent(g); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/OverriddenMethodBody
         if (image != null){
-<<<<<<< HEAD
-            g.drawImage(image, 0, 0, getWidth(), getHeight(), this);
-        }
-        
-    }
-    
-    
-=======
             g.drawImage(image, 0, 0,getWidth(), getHeight(), this);
         }
     }
     
->>>>>>> origin/console
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -72,26 +55,13 @@ public class PanelImage extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-<<<<<<< HEAD
-=======
         setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(122, 85, 10), 5));
 
->>>>>>> origin/console
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-<<<<<<< HEAD
-            .addGap(0, 130, Short.MAX_VALUE)
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 130, Short.MAX_VALUE)
-        );
-    }// </editor-fold>//GEN-END:initComponents
-
-    private Image image;
-=======
             .addGap(0, 120, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
@@ -101,7 +71,6 @@ public class PanelImage extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
 
     private BufferedImage image;
->>>>>>> origin/console
     // Variables declaration - do not modify//GEN-BEGIN:variables
     // End of variables declaration//GEN-END:variables
 }
