@@ -12,7 +12,9 @@ import model.Pirate;
  */
 public class ControleurRetourCaseDebut {
     public void action(Pirate pirate,ControlJeuPirate controlJeuPirate) {
+        /*
         System.out.println("Le joueur vient d arriver sur une case retour debut.");
 	controlJeuPirate.retourDepart(pirate);
+        */
     }
 }

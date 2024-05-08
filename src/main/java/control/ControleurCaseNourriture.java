@@ -15,9 +15,11 @@ public class ControleurCaseNourriture {
     private final int GAINPOINTDEVIE = 1;
     
     public void action(Pirate pirate,ControlJeuPirate controlJeuPirate) {
+        /*
         System.out.println("Le joueur vient d arriver sur une case nourriture il recupere de la vie et est plus for pour le prochain tour.");
         controlJeuPirate.setChangement(CHANGEMENT, pirate);
     	//controlJeuPirate.avancerJoueur(2); Variante ou le bonus est direct
-        controlJeuPirate.gagnerPointsDeVie(GAINPOINTDEVIE,pirate); 
+        controlJeuPirate.gagnerPointsDeVie(GAINPOINTDEVIE,pirate);
+        */
     }
 }

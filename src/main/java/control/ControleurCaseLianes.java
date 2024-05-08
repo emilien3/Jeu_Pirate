@@ -13,6 +13,7 @@ import model.Pirate;
  */
 public class ControleurCaseLianes {
     public void action(Pirate pirate,ControlJeuPirate controljeuPirate) {
+        /*
         // Action pour une case lianes : le joueur lance le dé jusqu'à trois fois pour obtenir un 10
         System.out.println("Le joueur se trouve sur des lianes !");
         controljeuPirate.setEtat(Etat.ESTPRISON, pirate);
@@ -33,5 +34,6 @@ public class ControleurCaseLianes {
         } else {
             System.out.println("Le joueur n'a pas réussi à obtenir un 10. Il ne jouera pas au prochain tour.");
         }
+        */
     }
 }

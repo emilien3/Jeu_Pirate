@@ -13,11 +13,10 @@ import model.Pirate;
  */
 public class ControleurCaseBoue extends ControlActiverCaseSpeciale implements IChangement{
     private final int CHANGEMENTBOUE = -3;
-    private ControlJeuPirate controlJeuPirate;
     private IBoundary boundary;
     
     public ControleurCaseBoue(ControlJeuPirate controlJeuPirate, IBoundary boundary){
-        this.controlJeuPirate = controlJeuPirate;
+        super.controlJeuPirate = controlJeuPirate;
         this.boundary = boundary;
     }
     
@@ -27,6 +26,10 @@ public class ControleurCaseBoue extends ControlActiverCaseSpeciale implements IC
     }
 
     @Override
+    public int getChangement(){
+        return CHANGEMENTBOUE;
+    }
+    
     public void changerProchainTour(Pirate pirate) {
         pirate.setChangement(CHANGEMENTBOUE);
         boundary.changementProchainTour(this);

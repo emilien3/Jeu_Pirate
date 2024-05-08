@@ -4,14 +4,11 @@
  */
 package control;
 
-import model.Etat;
-import model.Pirate;
-
 /**
  *
  * @author Ninon
  */
-public interface IChangerEtat {
-    public String getEtat();
-    public void finChangerEtat();
+public interface IInfoPartie {
+    public int getJoueurCourant();
+    public int getResultats();
 }

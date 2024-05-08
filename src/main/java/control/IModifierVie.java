@@ -11,6 +11,6 @@ import model.Pirate;
  * @author Ninon
  */
 public interface IModifierVie {
-    public void modifierVie(int points, Pirate pirate);
+    public int getVie();
     public void finModifVie();
 }

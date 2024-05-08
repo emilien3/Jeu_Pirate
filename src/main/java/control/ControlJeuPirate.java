@@ -4,45 +4,137 @@
  */
 package control;
 
-import boundary.BoundaryConsole;
 import boundary.IBoundary;
-import java.util.Scanner;
 import model.*;
+import static model.CaseEnum.BOUE;
 
 /**
  *
  * @author Ninon
  */
-public class ControlJeuPirate {
+public class ControlJeuPirate implements IInfoPartie{
     private IBoundary boundary;
-    private ControlActiverCase controlActiverCase;
+    private ControlActiverCaseSpeciale controlActiverCaseSpeciale;
     private ControlDeplacer controlDeplacer;
-    private ControlLancerDe controlLancerDe;
-    private ControlVerifierFin controlVeriferFin;
     private JeuPirate jeuPirate;
+    private int numeroPirate;
 
-    public ControlJeuPirate() {
-        this.boundary = new BoundaryConsole();
-        this.controlActiverCase = new ControlActiverCase(this);
-        this.controlDeplacer = new ControlDeplacer();
-        this.controlLancerDe = new ControlLancerDe();
-        this.jeuPirate = 
-                new JeuPirate();
-        this.controlVeriferFin = new ControlVerifierFin(jeuPirate.getPirates(),jeuPirate.getPlateau());
+    public ControlJeuPirate(IBoundary boundary, int nbDes) {
+        this.boundary = boundary;
+        this.jeuPirate = new JeuPirate();
+        De[] des = new De[nbDes];
+        for (int i = 0; i<nbDes; i++) {
+            des[i] = new De();
+        }
+        this.controlDeplacer = new ControlDeplacer(this, boundary, jeuPirate.getPlateau().getTAILLETABLEAU(), des, jeuPirate.getPirates());
+        this.numeroPirate = 0;
     }
     
-    private void valider() {
-        Scanner scanner = new Scanner(System.in);
-        System.out.println("Appuyez sur une touche pour lancer les des...");
-        scanner.nextLine(); // Attendre que l'utilisateur appuie sur Entrée
+    public void debutTour(){
+        boundary.debutTour(this);
+        controlDeplacer.deplacer(numeroPirate);
     }
     
+    public void finDeplacer(){
+        Pirate pirateCourant = jeuPirate.getPirates()[numeroPirate];
+        CaseEnum caseCourante = jeuPirate.getPlateau().donnerCase(pirateCourant.getPosition());
+        switch (caseCourante) {
+            case BOUE:
+                controlActiverCaseSpeciale = new ControleurCaseBoue(this, boundary);
+                controlActiverCaseSpeciale.action(pirateCourant);
+                break;
+            case DEBUT:
+                //controlActiverCaseSpeciale = new ControleurRetourCaseDebut(this, boundary);
+                System.out.println("Pas implémentée");
+                finActionCase();
+                break;
+            case FALAISE:
+                controlActiverCaseSpeciale = new ControleurCaseFalaise(this, boundary);
+                controlActiverCaseSpeciale.action(pirateCourant);
+                break;
+            case KOMODO:
+                //controlActiverCaseSpeciale = new ControleurCaseKomodo(this, boundary);
+                System.out.println("Pas implémentée");
+                finActionCase();
+                break;
+            case LIANES:
+                //controlActiverCaseSpeciale = new ControleurCaseLianes(this, boundary);
+                System.out.println("Pas implémentée");
+                finActionCase();
+                break;
+            case NOURRITURE:
+                //controlActiverCaseSpeciale = new ControleurCaseNourriture(this, boundary);
+                System.out.println("Pas implémentée");
+                finActionCase();
+                break;
+            case PIERRE:
+                //controlActiverCaseSpeciale = new ControleurCasePierre(this, boundary);
+                System.out.println("Pas implémentée");
+                finActionCase();
+                break;
+            case SECRET:
+                //controlActiverCaseSpeciale = new ControleurCaseSecret(this, boundary);
+                System.out.println("Pas implémentée");
+                finActionCase();
+                break;
+            default:
+                System.out.println("Case normale");
+                finActionCase();
+                return;
+        }
+        //controlActiverCaseSpeciale.action(pirateCourant);
+    }
+    
+    public void finActionCase() {
+        if (!jeuPirate.verifierFin()){
+            numeroPirate = (numeroPirate + 1)%2;
+            debutTour();
+        }else{
+            boundary.fin(this);
+        }
+    }
+    
+    public int getLastPosition(){
+        return jeuPirate.getPirates()[numeroPirate].getLastPosition();
+    }
+    
+    private int gagnant() {
+        if(jeuPirate.getPirates()[1].getLife()==0 || jeuPirate.getPirates()[0].getPosition()==jeuPirate.getPlateau().getTAILLETABLEAU()-1){
+            //Pirate 1 mort ou Pirate 0 arrivé à la fin
+            return 0;
+        }
+        else if (jeuPirate.getPirates()[0].getLife()==0 || jeuPirate.getPirates()[1].getPosition()==jeuPirate.getPlateau().getTAILLETABLEAU()-1){
+            //Pirate 0 mort ou Pirate 1 arrivé à la fin
+            return 1;
+        }
+        else{
+            //Les deux pirates sont morts
+            return -1;
+        }
+    }
+    
+    @Override
+    public int getJoueurCourant() {
+        return numeroPirate;
+    }
+
+    @Override
+    public int getResultats() {
+        return gagnant();
+    }
+    
+    public String getEffetcase(int num) {
+        return jeuPirate.getPlateau().donnerCase(num).toString();
+    }
+    
+    /*
     public int[] lancerDe(){
         valider();
         int[] des = controlLancerDe.rollDices(2);
         System.out.println("Les des sont :"+des[0]+","+des[1]);
         return des;
     }
+    
     
     public void jouer(){
         int tour = 0;
@@ -116,15 +208,6 @@ public class ControlJeuPirate {
         pirate.setEtat(etat);
     }
 
-    private void gagnant() {
-        if(jeuPirate.getPirates()[0].getLife()==0 || jeuPirate.getPirates()[1].getPosition()==jeuPirate.getPlateau().getTAILLETABLEAU()-1){
-            System.out.println("Le gagnant est le pirate 2");
-        }
-        else{
-            System.out.println("Le gagnant est le pirate 1");
-        }
-    }
-
     public void deplacerVersPositionPrecedente(Pirate pirate) {
         int avacement = jeuPirate.getDes()[0] + jeuPirate.getDes()[1];
         controlDeplacer.reculerJoueur(avacement, pirate);
@@ -136,20 +219,8 @@ public class ControlJeuPirate {
         pirate.setLife(5);
         controlDeplacer.retourDepart(pirate);
     }
+    */
+
     
-    private boolean verifierFin(Pirate[] pirates, Plateau plateau){
-        boolean pirateMort = pirates[0].getLife()<= 0 || pirates[1].getLife() <= 0;
-        boolean pirateArrive = pirates[0].getPosition() == plateau.getTAILLETABLEAU()-1 || pirates[1].getPosition() == plateau.getTAILLETABLEAU()-1;
-        return pirateMort || pirateArrive;
-    }
-    
-    public void finActionCase(){
-        //TODO
-    }
-    
-    public int getLastPosition(){
-        //TODO
-        return 0;
-    }
     
 }

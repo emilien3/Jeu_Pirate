@@ -23,6 +23,7 @@ public class CaseKomodo extends Cases {
     }
     
     public void activerCase(Pirate pirate){
+        /*
         pirate.setEtat(Etat.ESTPOURSUIVI);
         System.out.println("Le joueur vient d arriver sur une case komodo et dois relancer les des pour savoir si il court assez vite.");
         int[] des = controljeuPirate.lancerDe();
@@ -36,5 +37,6 @@ public class CaseKomodo extends Cases {
             pirate.setPosition(pirate.getPosition()+sommeDes);
         }
         pirate.setEtat(Etat.ESTVIVANT, pirate);
+        */
     }
 }

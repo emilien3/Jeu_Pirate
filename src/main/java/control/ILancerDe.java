@@ -9,6 +9,6 @@ package control;
  * @author Ninon
  */
 public interface ILancerDe {
-    public int[] lancerDes(int nDices);
+    public int[] getDes();
     public void finLancer();
 }

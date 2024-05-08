@@ -13,8 +13,10 @@ import model.Pirate;
  */
 public class ControleurCasePierre {
     public void action(Pirate pirate,ControlJeuPirate controlJeuPirate) {
+        /*
         System.out.println("Le joueur rencontre une pierre !");
         System.out.println("Le joueur passe son prochain tour.");
         controlJeuPirate.setEtat(Etat.PASSETOUR, pirate);
+        */
     }
 }

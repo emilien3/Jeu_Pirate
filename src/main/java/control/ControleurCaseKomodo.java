@@ -19,6 +19,7 @@ public class ControleurCaseKomodo {
         this.caseK = caseK;
     }
     public void action(Pirate pirate, ControlJeuPirate controljeuPirate) {
+        /*
         System.out.println("Le joueur vient d arriver sur une case komodo et dois relancer les des pour savoir si il court assez vite.");
         controljeuPirate.setEtat(Etat.ESTPOURSUIVI, pirate);
         int[] des = controljeuPirate.lancerDe();
@@ -32,5 +33,6 @@ public class ControleurCaseKomodo {
             controljeuPirate.avancerJoueur(des,pirate);
         }
         controljeuPirate.setEtat(Etat.ESTVIVANT, pirate);
+        */
     }
 }
