@@ -10,5 +10,7 @@ package control;
  */
 public interface IInfoPartie {
     public int getJoueurCourant();
+    public String getNomJoueur(int num);
+    public String getEffetcase(int num);
     public int getResultats();
 }

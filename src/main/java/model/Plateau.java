@@ -48,7 +48,7 @@ public class Plateau {
             }
         }
         for (int i = 0; i < TAILLETABLEAU; i++) {
-            System.out.println("La " + cases[i].toString() + " numero " + i + " est initialisée.");
+            System.out.println("La " + cases[i].toString() + " numero " + i + " est initialisee.");
         }
     }
     

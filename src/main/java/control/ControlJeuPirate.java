@@ -45,7 +45,7 @@ public class ControlJeuPirate implements IInfoPartie{
                 break;
             case DEBUT:
                 //controlActiverCaseSpeciale = new ControleurRetourCaseDebut(this, boundary);
-                System.out.println("Pas implémentée");
+                System.out.println("Pas implementee");
                 finActionCase();
                 break;
             case FALAISE:
@@ -54,27 +54,27 @@ public class ControlJeuPirate implements IInfoPartie{
                 break;
             case KOMODO:
                 //controlActiverCaseSpeciale = new ControleurCaseKomodo(this, boundary);
-                System.out.println("Pas implémentée");
+                System.out.println("Pas implementee");
                 finActionCase();
                 break;
             case LIANES:
                 //controlActiverCaseSpeciale = new ControleurCaseLianes(this, boundary);
-                System.out.println("Pas implémentée");
+                System.out.println("Pas implementee");
                 finActionCase();
                 break;
             case NOURRITURE:
                 //controlActiverCaseSpeciale = new ControleurCaseNourriture(this, boundary);
-                System.out.println("Pas implémentée");
+                System.out.println("Pas implementee");
                 finActionCase();
                 break;
             case PIERRE:
                 //controlActiverCaseSpeciale = new ControleurCasePierre(this, boundary);
-                System.out.println("Pas implémentée");
+                System.out.println("Pas implementee");
                 finActionCase();
                 break;
             case SECRET:
                 //controlActiverCaseSpeciale = new ControleurCaseSecret(this, boundary);
-                System.out.println("Pas implémentée");
+                System.out.println("Pas implementee");
                 finActionCase();
                 break;
             default:
@@ -90,7 +90,7 @@ public class ControlJeuPirate implements IInfoPartie{
             numeroPirate = (numeroPirate + 1)%2;
             debutTour();
         }else{
-            boundary.fin(this);
+            boundary.finPartie(this);
         }
     }
     
@@ -123,8 +123,14 @@ public class ControlJeuPirate implements IInfoPartie{
         return gagnant();
     }
     
+    @Override
     public String getEffetcase(int num) {
         return jeuPirate.getPlateau().donnerCase(num).toString();
+    }
+    
+    @Override
+    public String getNomJoueur(int num) {
+        return jeuPirate.getPirates()[num].getNom();
     }
     
     /*

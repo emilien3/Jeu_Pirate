@@ -17,8 +17,8 @@ public class JeuPirate {
     public JeuPirate() {
         this.plateau = new Plateau();
         this.pirates = new Pirate[2];
-        this.pirates[0] = new Pirate();
-        this.pirates[1] = new Pirate();
+        this.pirates[0] = new Pirate("Jack Le Borgne");
+        this.pirates[1] = new Pirate("Bill Jambe De Bois");
     }
 
     public Plateau getPlateau() {

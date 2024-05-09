@@ -5,13 +5,12 @@
 package control;
 
 import model.Etat;
-import model.Pirate;
 
 /**
  *
  * @author Ninon
  */
 public interface IChangerEtat {
-    public String getEtat();
+    public Etat getEtat();
     public void finChangerEtat();
 }

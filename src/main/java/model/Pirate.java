@@ -12,12 +12,18 @@ public class Pirate {
     private int life, position, changement, lastPosition;
     private final int MAX_LIFE = 5;
     private Etat etat;
+    private String nom;
 	
-    public Pirate() {
+    public Pirate(String nom) {
+        this.nom = nom;
         this.life = MAX_LIFE;
         this.position = 0;
         this.changement = 0;
         this.etat = Etat.ESTVIVANT;
+    }
+    
+    public String getNom(){
+        return nom;
     }
     
     public int getChangement() {

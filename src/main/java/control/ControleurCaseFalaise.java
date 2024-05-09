@@ -14,6 +14,7 @@ import model.Pirate;
 public class ControleurCaseFalaise extends ControlActiverCaseSpeciale implements IDeplacerPirate, IModifierVie {
     private final int PERTEPOINTDEVIE = -2;
     private IBoundary boundary;
+    private int depart, arrivee;
     
     public ControleurCaseFalaise(ControlJeuPirate controlJeuPirate, IBoundary boundary){
         super.controlJeuPirate = controlJeuPirate;
@@ -23,18 +24,20 @@ public class ControleurCaseFalaise extends ControlActiverCaseSpeciale implements
     @Override
     public void action(Pirate pirate) {
         int lastPosition = controlJeuPirate.getLastPosition();
-        deplacer(pirate, pirate.getPosition() - lastPosition);
+        this.depart = pirate.getPosition();
+        this.arrivee = lastPosition;
         modifierVie(PERTEPOINTDEVIE, pirate);
+        deplacer(pirate, depart - arrivee);
     }
 
     public void deplacer(Pirate pirate, int deplacement) {
         pirate.setPosition(pirate.getPosition() - deplacement);
-        boundary.deplacer(this);
+        boundary.deplacerAuto(this);
     }
 
     @Override
     public void finDeplacement() {
-        boundary.modifierVie(this);
+        finAction();
     }
 
     @Override
@@ -44,16 +47,22 @@ public class ControleurCaseFalaise extends ControlActiverCaseSpeciale implements
     
     public void modifierVie(int points, Pirate pirate) {
         pirate.setLife(pirate.getLife() + points);
+        boundary.modifierVie(this);
     }
 
     @Override
     public void finModifVie() {
-        finAction();
+        boundary.deplacerAuto(this);
     }
 
     @Override
-    public int getNouvellePosition() {
-        return controlJeuPirate.getLastPosition();
+    public int getArrivee() {
+        return arrivee;
+    }
+    
+    @Override
+    public int getDepart() {
+        return depart;
     }
 
     @Override

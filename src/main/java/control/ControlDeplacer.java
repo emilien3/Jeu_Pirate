@@ -21,19 +21,19 @@ public class ControlDeplacer implements IDeplacerPirate, ILancerDe{
     private int TAILLE_MAX;
     private De[] de;
     private Pirate[] pirates;
-    private int deplacement;
-    int courant;
+    private int depart, deplacement, joueurCourant;
     
     public ControlDeplacer(ControlJeuPirate controlJeuPirate, IBoundary boundary, int taille, De[] de, Pirate[] pirates){
         this.controlJeuPirate = controlJeuPirate;
         this.boundary = boundary;
-        this.TAILLE_MAX = taille;
+        this.TAILLE_MAX = taille - 1;
         this.pirates = pirates;
         this.de = de;
     }
     
     public void deplacer(int i) {
-        this.courant = i;
+        this.joueurCourant = i;
+        this.depart = pirates[joueurCourant].getPosition();
         lancerDes();
     }
     
@@ -63,17 +63,17 @@ public class ControlDeplacer implements IDeplacerPirate, ILancerDe{
     }
     
     private void effectuerDeplacement(){
-        int avancement = deplacement + pirates[courant].getChangement();
-        int newPosition = pirates[courant].getPosition() + avancement ;
+        int avancement = deplacement + pirates[joueurCourant].getChangement();
+        int newPosition = depart + avancement ;
         if (newPosition > TAILLE_MAX ) {
             int depasser = newPosition - TAILLE_MAX;
             newPosition = TAILLE_MAX - depasser;
         }else if (newPosition < 0 ) {
             newPosition = 0;
         }
-        pirates[courant].setLastPosition(pirates[courant].getPosition());
-        pirates[courant].setPosition(newPosition);
-        pirates[courant].setChangement(0);
+        pirates[joueurCourant].setLastPosition(depart);
+        pirates[joueurCourant].setPosition(newPosition);
+        pirates[joueurCourant].setChangement(0);
         boundary.deplacer(this);
     }
     
@@ -83,8 +83,13 @@ public class ControlDeplacer implements IDeplacerPirate, ILancerDe{
     }
 
     @Override
-    public int getNouvellePosition() {
-        return pirates[courant].getPosition();
+    public int getArrivee() {
+        return pirates[joueurCourant].getPosition();
+    }
+    
+    @Override
+    public int getDepart(){
+        return depart;
     }
 
     @Override
