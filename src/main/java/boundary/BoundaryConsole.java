@@ -69,7 +69,13 @@ public class BoundaryConsole implements IBoundary {
 
     @Override
     public void modifierVie(IModifierVie control) {
-        System.out.println("Le pirate " + noms[courant] + " a " + control.getVie() + " points de vie.");
+        int changementVie = control.getVie();
+        String changement = "gagne";
+        if (changementVie<0){
+            changement = "perd";
+            changementVie = Math.abs(changementVie);
+        }
+        System.out.println("Le pirate " + noms[courant] + " "+ changement + " " + changementVie + " points de vie.");
         control.finModifVie();
     }
 

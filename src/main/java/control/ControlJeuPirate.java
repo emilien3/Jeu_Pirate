@@ -31,6 +31,8 @@ public class ControlJeuPirate implements IInfoPartie{
     }
     
     public void debutTour(){
+        System.out.println("Vie de " + jeuPirate.getPirates()[0].getNom() + " : " +  jeuPirate.getPirates()[0].getLife());
+        System.out.println("Vie de " + jeuPirate.getPirates()[1].getNom() +" : " +  jeuPirate.getPirates()[1].getLife());
         boundary.debutTour(this);
         controlDeplacer.deplacer(numeroPirate);
     }
@@ -41,7 +43,7 @@ public class ControlJeuPirate implements IInfoPartie{
         switch (caseCourante) {
             case BOUE:
                 controlActiverCaseSpeciale = new ControleurCaseBoue(this, boundary);
-                controlActiverCaseSpeciale.action(pirateCourant);
+                controlActiverCaseSpeciale.action(jeuPirate.getPirates()[numeroPirate]);
                 break;
             case DEBUT:
                 //controlActiverCaseSpeciale = new ControleurRetourCaseDebut(this, boundary);
@@ -49,6 +51,7 @@ public class ControlJeuPirate implements IInfoPartie{
                 finActionCase();
                 break;
             case FALAISE:
+                System.out.println("falaise");
                 controlActiverCaseSpeciale = new ControleurCaseFalaise(this, boundary);
                 controlActiverCaseSpeciale.action(pirateCourant);
                 break;

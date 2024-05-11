@@ -26,13 +26,9 @@ public class ControleurCaseFalaise extends ControlActiverCaseSpeciale implements
         int lastPosition = controlJeuPirate.getLastPosition();
         this.depart = pirate.getPosition();
         this.arrivee = lastPosition;
-        modifierVie(PERTEPOINTDEVIE, pirate);
-        deplacer(pirate, depart - arrivee);
-    }
-
-    public void deplacer(Pirate pirate, int deplacement) {
-        pirate.setPosition(pirate.getPosition() - deplacement);
-        boundary.deplacerAuto(this);
+        pirate.setPosition(arrivee);
+        pirate.setLife(pirate.getLife() + PERTEPOINTDEVIE);
+        boundary.modifierVie(this);
     }
 
     @Override
@@ -43,11 +39,6 @@ public class ControleurCaseFalaise extends ControlActiverCaseSpeciale implements
     @Override
     public int getVie(){
         return PERTEPOINTDEVIE;
-    }
-    
-    public void modifierVie(int points, Pirate pirate) {
-        pirate.setLife(pirate.getLife() + points);
-        boundary.modifierVie(this);
     }
 
     @Override
