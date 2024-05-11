@@ -11,7 +11,9 @@ import control.ControlJeuPirate;
  */
 public class TestLancement {
     public static void main(String[] args) {
-        ControlJeuPirate cjp = new ControlJeuPirate();
-        cjp.jouer();
+        BoundaryConsole sortie = new BoundaryConsole();
+        ControlJeuPirate control = new ControlJeuPirate(sortie, 2);
+        control.debutTour();
+        
     }
 }
