@@ -13,22 +13,10 @@ import java.util.Random;
  */
 public class De {
     private int value;
-<<<<<<< HEAD
-    private Random rdm;
-    
-    public De() {
-        rdm = new Random();
-    }
-
-    public int roll() {
-        value = rdm.nextInt(6) + 1;
-        return value;
-=======
     private Random seed;
     
     public De(){
         this.seed = new Random();
->>>>>>> 1efe7c9813f35289dc482797a51ab19aa370d1a1
     }
     
     
