@@ -13,6 +13,7 @@ import java.util.Random;
  */
 public class De {
     private int value;
+
     private Random seed;
     
     public De(){
