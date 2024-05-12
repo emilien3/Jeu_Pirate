@@ -44,7 +44,7 @@ public class JPlateau extends javax.swing.JPanel {
         for (int i = 1; i < cases.size() + 1; i++) {
             PanelCase caseAct = cases.get(i - 1);
             caseAct.setNumero(i);
-            //caseAct.setImage("LeNomDeLImage"); pour les images personaliser
+            caseAct.setImage("ile.png"); // pour les images personaliser
         }
     }
     
@@ -92,8 +92,11 @@ public class JPlateau extends javax.swing.JPanel {
         case29 = new boundary.PanelCase();
         case30 = new boundary.PanelCase();
 
+        layeredPaneJeton.setPreferredSize(new java.awt.Dimension(654, 760));
+
         jeton1.setBackground(new java.awt.Color(255, 255, 255));
-        jeton1.setPathProperty("12.png");
+        jeton1.setPathProperty("pion_jack.png");
+        jeton1.setPreferredSize(new java.awt.Dimension(48, 48));
         jeton1.addMouseMotionListener(new java.awt.event.MouseMotionAdapter() {
             public void mouseDragged(java.awt.event.MouseEvent evt) {
                 jeton1MouseDragged(evt);
@@ -109,14 +112,15 @@ public class JPlateau extends javax.swing.JPanel {
         jeton1.setLayout(jeton1Layout);
         jeton1Layout.setHorizontalGroup(
             jeton1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 32, Short.MAX_VALUE)
+            .addGap(0, 48, Short.MAX_VALUE)
         );
         jeton1Layout.setVerticalGroup(
             jeton1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 32, Short.MAX_VALUE)
+            .addGap(0, 48, Short.MAX_VALUE)
         );
 
-        jeton2.setPathProperty("13.png");
+        jeton2.setPathProperty("pion_bill.png");
+        jeton2.setPreferredSize(new java.awt.Dimension(48, 48));
         jeton2.addMouseMotionListener(new java.awt.event.MouseMotionAdapter() {
             public void mouseDragged(java.awt.event.MouseEvent evt) {
                 jeton2MouseDragged(evt);
@@ -132,11 +136,11 @@ public class JPlateau extends javax.swing.JPanel {
         jeton2.setLayout(jeton2Layout);
         jeton2Layout.setHorizontalGroup(
             jeton2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 32, Short.MAX_VALUE)
+            .addGap(0, 48, Short.MAX_VALUE)
         );
         jeton2Layout.setVerticalGroup(
             jeton2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 32, Short.MAX_VALUE)
+            .addGap(0, 48, Short.MAX_VALUE)
         );
 
         layeredPaneJeton.setLayer(jeton1, javax.swing.JLayeredPane.DEFAULT_LAYER);
@@ -147,22 +151,26 @@ public class JPlateau extends javax.swing.JPanel {
         layeredPaneJetonLayout.setHorizontalGroup(
             layeredPaneJetonLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layeredPaneJetonLayout.createSequentialGroup()
-                .addGap(27, 27, 27)
-                .addGroup(layeredPaneJetonLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jeton2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jeton1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(595, Short.MAX_VALUE))
+                .addGroup(layeredPaneJetonLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layeredPaneJetonLayout.createSequentialGroup()
+                        .addGap(70, 70, 70)
+                        .addComponent(jeton2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layeredPaneJetonLayout.createSequentialGroup()
+                        .addGap(21, 21, 21)
+                        .addComponent(jeton1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(536, Short.MAX_VALUE))
         );
         layeredPaneJetonLayout.setVerticalGroup(
             layeredPaneJetonLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layeredPaneJetonLayout.createSequentialGroup()
-                .addContainerGap()
+                .addGap(18, 18, 18)
                 .addComponent(jeton1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jeton2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(896, Short.MAX_VALUE))
+                .addContainerGap(640, Short.MAX_VALUE))
         );
 
+        layeredPaneCase.setPreferredSize(new java.awt.Dimension(654, 760));
         layeredPaneCase.setLayout(new java.awt.GridLayout(6, 5));
 
         javax.swing.GroupLayout case1Layout = new javax.swing.GroupLayout(case1);
@@ -173,7 +181,7 @@ public class JPlateau extends javax.swing.JPanel {
         );
         case1Layout.setVerticalGroup(
             case1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 162, Short.MAX_VALUE)
+            .addGap(0, 126, Short.MAX_VALUE)
         );
 
         layeredPaneCase.add(case1);
@@ -186,7 +194,7 @@ public class JPlateau extends javax.swing.JPanel {
         );
         case2Layout.setVerticalGroup(
             case2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 162, Short.MAX_VALUE)
+            .addGap(0, 126, Short.MAX_VALUE)
         );
 
         layeredPaneCase.add(case2);
@@ -199,7 +207,7 @@ public class JPlateau extends javax.swing.JPanel {
         );
         case3Layout.setVerticalGroup(
             case3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 162, Short.MAX_VALUE)
+            .addGap(0, 126, Short.MAX_VALUE)
         );
 
         layeredPaneCase.add(case3);
@@ -212,7 +220,7 @@ public class JPlateau extends javax.swing.JPanel {
         );
         case4Layout.setVerticalGroup(
             case4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 162, Short.MAX_VALUE)
+            .addGap(0, 126, Short.MAX_VALUE)
         );
 
         layeredPaneCase.add(case4);
@@ -225,7 +233,7 @@ public class JPlateau extends javax.swing.JPanel {
         );
         case5Layout.setVerticalGroup(
             case5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 162, Short.MAX_VALUE)
+            .addGap(0, 126, Short.MAX_VALUE)
         );
 
         layeredPaneCase.add(case5);
@@ -238,7 +246,7 @@ public class JPlateau extends javax.swing.JPanel {
         );
         case6Layout.setVerticalGroup(
             case6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 162, Short.MAX_VALUE)
+            .addGap(0, 126, Short.MAX_VALUE)
         );
 
         layeredPaneCase.add(case6);
@@ -251,7 +259,7 @@ public class JPlateau extends javax.swing.JPanel {
         );
         case7Layout.setVerticalGroup(
             case7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 162, Short.MAX_VALUE)
+            .addGap(0, 126, Short.MAX_VALUE)
         );
 
         layeredPaneCase.add(case7);
@@ -264,7 +272,7 @@ public class JPlateau extends javax.swing.JPanel {
         );
         case8Layout.setVerticalGroup(
             case8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 162, Short.MAX_VALUE)
+            .addGap(0, 126, Short.MAX_VALUE)
         );
 
         layeredPaneCase.add(case8);
@@ -277,7 +285,7 @@ public class JPlateau extends javax.swing.JPanel {
         );
         case9Layout.setVerticalGroup(
             case9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 162, Short.MAX_VALUE)
+            .addGap(0, 126, Short.MAX_VALUE)
         );
 
         layeredPaneCase.add(case9);
@@ -290,7 +298,7 @@ public class JPlateau extends javax.swing.JPanel {
         );
         case10Layout.setVerticalGroup(
             case10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 162, Short.MAX_VALUE)
+            .addGap(0, 126, Short.MAX_VALUE)
         );
 
         layeredPaneCase.add(case10);
@@ -303,7 +311,7 @@ public class JPlateau extends javax.swing.JPanel {
         );
         case11Layout.setVerticalGroup(
             case11Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 162, Short.MAX_VALUE)
+            .addGap(0, 126, Short.MAX_VALUE)
         );
 
         layeredPaneCase.add(case11);
@@ -316,7 +324,7 @@ public class JPlateau extends javax.swing.JPanel {
         );
         case12Layout.setVerticalGroup(
             case12Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 162, Short.MAX_VALUE)
+            .addGap(0, 126, Short.MAX_VALUE)
         );
 
         layeredPaneCase.add(case12);
@@ -329,7 +337,7 @@ public class JPlateau extends javax.swing.JPanel {
         );
         case13Layout.setVerticalGroup(
             case13Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 162, Short.MAX_VALUE)
+            .addGap(0, 126, Short.MAX_VALUE)
         );
 
         layeredPaneCase.add(case13);
@@ -342,7 +350,7 @@ public class JPlateau extends javax.swing.JPanel {
         );
         case14Layout.setVerticalGroup(
             case14Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 162, Short.MAX_VALUE)
+            .addGap(0, 126, Short.MAX_VALUE)
         );
 
         layeredPaneCase.add(case14);
@@ -355,7 +363,7 @@ public class JPlateau extends javax.swing.JPanel {
         );
         case15Layout.setVerticalGroup(
             case15Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 162, Short.MAX_VALUE)
+            .addGap(0, 126, Short.MAX_VALUE)
         );
 
         layeredPaneCase.add(case15);
@@ -368,7 +376,7 @@ public class JPlateau extends javax.swing.JPanel {
         );
         case16Layout.setVerticalGroup(
             case16Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 162, Short.MAX_VALUE)
+            .addGap(0, 126, Short.MAX_VALUE)
         );
 
         layeredPaneCase.add(case16);
@@ -381,7 +389,7 @@ public class JPlateau extends javax.swing.JPanel {
         );
         case17Layout.setVerticalGroup(
             case17Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 162, Short.MAX_VALUE)
+            .addGap(0, 126, Short.MAX_VALUE)
         );
 
         layeredPaneCase.add(case17);
@@ -394,7 +402,7 @@ public class JPlateau extends javax.swing.JPanel {
         );
         case18Layout.setVerticalGroup(
             case18Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 162, Short.MAX_VALUE)
+            .addGap(0, 126, Short.MAX_VALUE)
         );
 
         layeredPaneCase.add(case18);
@@ -407,7 +415,7 @@ public class JPlateau extends javax.swing.JPanel {
         );
         case19Layout.setVerticalGroup(
             case19Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 162, Short.MAX_VALUE)
+            .addGap(0, 126, Short.MAX_VALUE)
         );
 
         layeredPaneCase.add(case19);
@@ -420,7 +428,7 @@ public class JPlateau extends javax.swing.JPanel {
         );
         case20Layout.setVerticalGroup(
             case20Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 162, Short.MAX_VALUE)
+            .addGap(0, 126, Short.MAX_VALUE)
         );
 
         layeredPaneCase.add(case20);
@@ -433,7 +441,7 @@ public class JPlateau extends javax.swing.JPanel {
         );
         case21Layout.setVerticalGroup(
             case21Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 162, Short.MAX_VALUE)
+            .addGap(0, 126, Short.MAX_VALUE)
         );
 
         layeredPaneCase.add(case21);
@@ -446,7 +454,7 @@ public class JPlateau extends javax.swing.JPanel {
         );
         case22Layout.setVerticalGroup(
             case22Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 162, Short.MAX_VALUE)
+            .addGap(0, 126, Short.MAX_VALUE)
         );
 
         layeredPaneCase.add(case22);
@@ -459,7 +467,7 @@ public class JPlateau extends javax.swing.JPanel {
         );
         case23Layout.setVerticalGroup(
             case23Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 162, Short.MAX_VALUE)
+            .addGap(0, 126, Short.MAX_VALUE)
         );
 
         layeredPaneCase.add(case23);
@@ -472,7 +480,7 @@ public class JPlateau extends javax.swing.JPanel {
         );
         case24Layout.setVerticalGroup(
             case24Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 162, Short.MAX_VALUE)
+            .addGap(0, 126, Short.MAX_VALUE)
         );
 
         layeredPaneCase.add(case24);
@@ -485,7 +493,7 @@ public class JPlateau extends javax.swing.JPanel {
         );
         case25Layout.setVerticalGroup(
             case25Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 162, Short.MAX_VALUE)
+            .addGap(0, 126, Short.MAX_VALUE)
         );
 
         layeredPaneCase.add(case25);
@@ -498,7 +506,7 @@ public class JPlateau extends javax.swing.JPanel {
         );
         case26Layout.setVerticalGroup(
             case26Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 162, Short.MAX_VALUE)
+            .addGap(0, 126, Short.MAX_VALUE)
         );
 
         layeredPaneCase.add(case26);
@@ -511,7 +519,7 @@ public class JPlateau extends javax.swing.JPanel {
         );
         case27Layout.setVerticalGroup(
             case27Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 162, Short.MAX_VALUE)
+            .addGap(0, 126, Short.MAX_VALUE)
         );
 
         layeredPaneCase.add(case27);
@@ -524,7 +532,7 @@ public class JPlateau extends javax.swing.JPanel {
         );
         case28Layout.setVerticalGroup(
             case28Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 162, Short.MAX_VALUE)
+            .addGap(0, 126, Short.MAX_VALUE)
         );
 
         layeredPaneCase.add(case28);
@@ -537,7 +545,7 @@ public class JPlateau extends javax.swing.JPanel {
         );
         case29Layout.setVerticalGroup(
             case29Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 162, Short.MAX_VALUE)
+            .addGap(0, 126, Short.MAX_VALUE)
         );
 
         layeredPaneCase.add(case29);
@@ -550,7 +558,7 @@ public class JPlateau extends javax.swing.JPanel {
         );
         case30Layout.setVerticalGroup(
             case30Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 162, Short.MAX_VALUE)
+            .addGap(0, 126, Short.MAX_VALUE)
         );
 
         layeredPaneCase.add(case30);
@@ -559,15 +567,17 @@ public class JPlateau extends javax.swing.JPanel {
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(layeredPaneJeton)
+            .addComponent(layeredPaneJeton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addComponent(layeredPaneCase, javax.swing.GroupLayout.DEFAULT_SIZE, 654, Short.MAX_VALUE))
+                .addComponent(layeredPaneCase, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(layeredPaneJeton)
+            .addComponent(layeredPaneJeton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addComponent(layeredPaneCase))
+                .addGroup(layout.createSequentialGroup()
+                    .addComponent(layeredPaneCase, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGap(0, 0, Short.MAX_VALUE)))
         );
     }// </editor-fold>//GEN-END:initComponents
     

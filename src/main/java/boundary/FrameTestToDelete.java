@@ -27,17 +27,18 @@ public class FrameTestToDelete extends javax.swing.JFrame {
     private void initComponents() {
 
         jPanelBoard = new javax.swing.JPanel();
+        jPlateau1 = new boundary.JPlateau();
         jPanelPlayers = new javax.swing.JPanel();
         diceCoursePanel = new boundary.DiceCoursePanel();
         infosJoueurBill = new boundary.InfosJoueur();
         infosJoueurJack = new boundary.InfosJoueur();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setPreferredSize(new java.awt.Dimension(1200, 800));
         setResizable(false);
 
         jPanelBoard.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
-        jPanelBoard.setLayout(new java.awt.GridLayout());
+        jPanelBoard.setLayout(new java.awt.GridLayout(1, 0));
+        jPanelBoard.add(jPlateau1);
 
         jPanelPlayers.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
 
@@ -64,11 +65,11 @@ public class FrameTestToDelete extends javax.swing.JFrame {
             .addGroup(jPanelPlayersLayout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(infosJoueurBill, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(diceCoursePanel, javax.swing.GroupLayout.PREFERRED_SIZE, 119, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 23, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(infosJoueurJack, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap())
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -77,7 +78,7 @@ public class FrameTestToDelete extends javax.swing.JFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jPanelBoard, javax.swing.GroupLayout.DEFAULT_SIZE, 694, Short.MAX_VALUE)
+                .addComponent(jPanelBoard, javax.swing.GroupLayout.DEFAULT_SIZE, 875, Short.MAX_VALUE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jPanelPlayers, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
@@ -136,5 +137,6 @@ public class FrameTestToDelete extends javax.swing.JFrame {
     private boundary.InfosJoueur infosJoueurJack;
     private javax.swing.JPanel jPanelBoard;
     private javax.swing.JPanel jPanelPlayers;
+    private boundary.JPlateau jPlateau1;
     // End of variables declaration//GEN-END:variables
 }

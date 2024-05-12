@@ -6,19 +6,16 @@ package boundary;
 
 import java.awt.BasicStroke;
 import java.awt.Color;
+import java.awt.Dimension;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.awt.event.ActionEvent;
 import java.awt.image.BufferedImage;
-import java.io.File;
 import java.io.IOException;
-import java.net.URISyntaxException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.imageio.ImageIO;
-import javax.swing.BorderFactory;
 import javax.swing.Timer;
-import javax.swing.border.Border;
 
 /**
  *
@@ -39,7 +36,10 @@ public class PanelCase extends javax.swing.JPanel {
     protected void paintComponent(Graphics g) {
         super.paintComponent(g); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/OverriddenMethodBody
         if (image != null){
-            g.drawImage(image, 18, 6, 64, 64, this);
+            Dimension panelDim = this.getSize();
+            int xStart = (panelDim.width - imSize) / 2;
+            int yStart = (panelDim.height - imSize) / 2;
+            g.drawImage(image, xStart, yStart, imSize, imSize, this);
         }
         drawNumeroCase(g);
         drawBorder(g);
@@ -67,8 +67,8 @@ public class PanelCase extends javax.swing.JPanel {
     
     public void setImage(String image){
         try {
-            this.image = ImageIO.read(new File(getClass().getResource(image).toURI()));
-        } catch (IOException | URISyntaxException e) {
+            this.image = ImageIO.read(getClass().getResource("/" + image));
+        } catch (IOException e) {
             Logger.getLogger(PanelImage.class.getName()).log(Level.SEVERE, null, e);
         }
         firePropertyChange("image", null, image);
@@ -140,6 +140,7 @@ public class PanelCase extends javax.swing.JPanel {
         );
 
         setBackground(new java.awt.Color(240, 215, 125));
+        setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(153, 102, 0)));
         setRequestFocusEnabled(false);
         setVerifyInputWhenFocusTarget(false);
 
@@ -147,11 +148,11 @@ public class PanelCase extends javax.swing.JPanel {
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 37, Short.MAX_VALUE)
+            .addGap(0, 35, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 28, Short.MAX_VALUE)
+            .addGap(0, 26, Short.MAX_VALUE)
         );
     }// </editor-fold>//GEN-END:initComponents
 
@@ -166,6 +167,7 @@ public class PanelCase extends javax.swing.JPanel {
     private boolean sombre = false;
     private boolean active = false;
     private String description;
+    private int imSize = 96;
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel jPanel1;
     // End of variables declaration//GEN-END:variables
