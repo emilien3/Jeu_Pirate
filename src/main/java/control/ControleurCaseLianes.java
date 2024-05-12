@@ -58,18 +58,16 @@ public class ControleurCaseLianes extends ControlActiverCaseSpeciale implements 
 	@Override
 	public void action(Pirate pirate) {
 		// TODO Auto-generated method stub
-		pirate.getEtat();
+		pirate.setEtat(Etat.ESTPRISON);
 		for(int i=0;i<3;i++) {
 			int[] des = getDes();
-		
+			
 			int sommeDes = des[0] + des[1];
+			System.out.println("Lancer " + (i+1) +" : " +sommeDes);
 			if(sommeDes>=10) {
 				pirate.setEtat(Etat.ESTVIVANT);
     		
 				controlJeuPirate.finActionCase();
-    		
-			}else {
-    		
     		
 			}
     	

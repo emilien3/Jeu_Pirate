@@ -41,6 +41,15 @@ public class ControlJeuPirate implements IInfoPartie{
     public void finDeplacer(){
         Pirate pirateCourant = jeuPirate.getPirates()[numeroPirate];
         CaseEnum caseCourante = jeuPirate.getPlateau().donnerCase(pirateCourant.getPosition());
+        if(pirateCourant.getEtat()==Etat.PASSETOUR) {
+        	 pirateCourant.setEtat(Etat.ESTVIVANT);
+        	 System.out.println("a jouer");
+        	finActionCase();
+        	
+        }
+        if (pirateCourant.getEtat()==Etat.ESTPRISON) {
+        	boundary.debutTour(this);
+        }
         switch (caseCourante) {
             case BOUE:
                 controlActiverCaseSpeciale = new ControleurCaseBoue(this, boundary);
@@ -59,6 +68,7 @@ public class ControlJeuPirate implements IInfoPartie{
                 controlActiverCaseSpeciale.action(pirateCourant);
                 break;
             case LIANES:
+            	
                 controlActiverCaseSpeciale = new ControleurCaseLianes(this, boundary);
                 controlActiverCaseSpeciale.action(pirateCourant);
                 break;
@@ -70,7 +80,7 @@ public class ControlJeuPirate implements IInfoPartie{
             case PIERRE:
                 controlActiverCaseSpeciale = new ControleurCasePierre(this, boundary);
                 controlActiverCaseSpeciale.action(pirateCourant);
-               finActionCase();
+               
                 break;
             case SECRET:
                 controlActiverCaseSpeciale = new ControleurCaseSecret(this, boundary);
@@ -85,15 +95,40 @@ public class ControlJeuPirate implements IInfoPartie{
     }
     
     public void finActionCase() {
-    	
+    	//Pirate pirateCourant = jeuPirate.getPirates()[numeroPirate];
+    	/*if(pirateCourant.getEtat() == Etat.ESTPRISON) {
+    		finDeplacer();
+    		return;
+    	}
+    	 if(pirateCourant.getEtat() == Etat.PASSETOUR) {
+    		 pirateCourant.setEtat(Etat.ESTVIVANT);
+    	        // Passe au joueur suivant
+    		 if (!jeuPirate.verifierFin()) {
+    			 numeroPirate = (numeroPirate + 1)%2;
+    	          debutTour();
+    	        } else {
+    	            boundary.finPartie(this);
+    	        }
+    	        return;
+    	    }*/
         
         if (!jeuPirate.verifierFin()){
-        	Pirate pirateCourant = jeuPirate.getPirates()[numeroPirate];
-        	if(pirateCourant.getEtat() == Etat.ESTPRISON) {
-        		finDeplacer();
-        	}
+        	
             numeroPirate = (numeroPirate + 1)%2;
-            debutTour();
+            Pirate pirateCourant = jeuPirate.getPirates()[numeroPirate];
+            
+            if(pirateCourant.getEtat() == Etat.PASSETOUR) {
+            	
+            	//pirateCourant.setEtat(Etat.ESTVIVANT);
+            	finDeplacer();
+            }
+            else if(pirateCourant.getEtat() == Etat.ESTPRISON) {
+            	finDeplacer();
+            }
+            else {
+            	debutTour();
+            }
+            
         }else{
             boundary.finPartie(this);
         }
