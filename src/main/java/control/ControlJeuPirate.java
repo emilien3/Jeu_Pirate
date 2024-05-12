@@ -31,14 +31,16 @@ public class ControlJeuPirate implements IInfoPartie{
     }
     
     public void debutTour(){
-        System.out.println("Vie de " + jeuPirate.getPirates()[0].getNom() + " : " +  jeuPirate.getPirates()[0].getLife());
-        System.out.println("Vie de " + jeuPirate.getPirates()[1].getNom() +" : " +  jeuPirate.getPirates()[1].getLife());
+        //On affiche le début d'un nouveau tour
         boundary.debutTour(this);
+        //On commence le déplacement
         controlDeplacer.deplacer(numeroPirate);
     }
     
     public void finDeplacer(){
+        //Deplacement terminé (fonction appelée par controlDeplacer)
         Pirate pirateCourant = jeuPirate.getPirates()[numeroPirate];
+        //On initialise le controleur de la case spéciale avec le controleur correcpondant au type de case sur laquelle est arrivé le pirate
         CaseEnum caseCourante = jeuPirate.getPlateau().donnerCase(pirateCourant.getPosition());
         switch (caseCourante) {
             case BOUE:
@@ -81,27 +83,34 @@ public class ControlJeuPirate implements IInfoPartie{
                 finActionCase();
                 break;
             default:
+                //Pas d'action à effectuer ici
                 System.out.println("Case normale");
                 finActionCase();
                 return;
         }
+        //On appelle le controleur pour qu'il effectue d'action
         //controlActiverCaseSpeciale.action(pirateCourant);
     }
     
     public void finActionCase() {
+        //Le controleur à effectuer l'action de la case spéciale (ou n'a rien fait dans le cas d'une case normale)
         if (!jeuPirate.verifierFin()){
+            //La partie n'est pas finie, on change de joeur et on débute un nouveau tour
             numeroPirate = (numeroPirate + 1)%2;
             debutTour();
         }else{
+            //La partie est terminée
             boundary.finPartie(this);
         }
     }
     
     public int getLastPosition(){
+        //Pour récuperer la dernière position du pirate courant (utilisée par ControleurCaseFalaise notamment)
         return jeuPirate.getPirates()[numeroPirate].getLastPosition();
     }
     
     private int gagnant() {
+        //On renvoie l'indice du pirate gagnant ou -1 s'il y a égalité
         if(jeuPirate.getPirates()[1].getLife()==0 || jeuPirate.getPirates()[0].getPosition()==jeuPirate.getPlateau().getTAILLETABLEAU()-1){
             //Pirate 1 mort ou Pirate 0 arrivé à la fin
             return 0;
@@ -118,22 +127,32 @@ public class ControlJeuPirate implements IInfoPartie{
     
     @Override
     public int getJoueurCourant() {
+        //Est appelée quand l'affichage a besoin du joueur courant
         return numeroPirate;
     }
 
     @Override
     public int getResultats() {
+        //Est appelée quand l'affichage a besoin du gagnant
         return gagnant();
     }
     
     @Override
     public String getEffetcase(int num) {
+        //Est appelée quand l'affichage a besoin de l'effet de la case num
         return jeuPirate.getPlateau().donnerCase(num).toString();
     }
     
     @Override
     public String getNomJoueur(int num) {
+        //Est appelée quand l'affichage a besoin du nom du pirate num
         return jeuPirate.getPirates()[num].getNom();
+    }
+    
+    @Override
+    public int getVieJoueur(int num) {
+        //Est appelée quand l'affichage a besoin de la vie du pirate num
+        return jeuPirate.getPirates()[num].getLife();
     }
     
     /*
