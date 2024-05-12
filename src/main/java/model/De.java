@@ -12,20 +12,21 @@ import java.util.Random;
  * @author Ninon
  */
 public class De {
-
     private int value;
-    private Random rdm;
+
+    private Random seed;
     
-    public De() {
-        rdm = new Random();
+    public De(){
+        this.seed = new Random();
     }
-
-    public int roll() {
-        value = rdm.nextInt(6) + 1;
-        return value;
+    
+    
+    public int roll(){
+        value = seed.nextInt(6)+1;
+        return value ;
     }
-
-    public int getValue() {
+    
+    public int getValue(){
         return value;
     }
 }

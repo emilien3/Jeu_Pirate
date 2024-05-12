@@ -38,7 +38,7 @@ public class ControlJeuPirate {
     
     public int[] lancerDe(){
         valider();
-        int[] des = controlLancerDe.rollDices(2);
+        int[] des = controlLancerDe.rollDice(2);
         System.out.println("Les des sont :"+des[0]+","+des[1]);
         return des;
     }
