@@ -5,7 +5,6 @@
 package control;
 
 import boundary.IBoundary;
-import model.CaseKomodo;
 import model.De;
 import model.Etat;
 import model.Pirate;

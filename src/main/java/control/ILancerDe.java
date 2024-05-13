@@ -11,3 +11,4 @@ package control;
 public interface ILancerDe {
     public int[] getDes();
     public void finLancer();
+}

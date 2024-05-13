@@ -12,11 +12,10 @@ import model.Pirate;
  */
 public class ControleurCaseBoue extends ControlActiverCaseSpeciale implements IChangement{
     private final int CHANGEMENTBOUE = -3;
-    private IBoundary boundary;
     
     public ControleurCaseBoue(ControlJeuPirate controlJeuPirate, IBoundary boundary){
         super.controlJeuPirate = controlJeuPirate;
-        this.boundary = boundary;
+        super.boundary = boundary;
     }
     
     @Override
