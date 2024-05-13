@@ -11,6 +11,7 @@ import model.Etat;
  * @author Ninon
  */
 public interface IAdaptateurFonctionnel {
+    //Fonctions qui seront appelées depuis le Dialog
     public String getNomPirate(int num);
     public String getDescriptionCase(int num);
     public int[] getResultatsDes();
