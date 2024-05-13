@@ -25,9 +25,9 @@ public class AdaptateurNoyau implements IBoundary, IAdaptateurFonctionnel {
     private IChangerEtat controlEtat;
     private IModifierVie controlModifVie;
     
-    public AdaptateurNoyau(){
+    public AdaptateurNoyau(FrameTestToDelete frame){
         this.dialog = new Dialog(this);
-        dialog.initDialog();
+        dialog.initDialog(frame);
     }
 
     @Override

@@ -18,8 +18,8 @@ public class Dialog implements IPirates {
     }
 
     @Override
-    public void initDialog() {
-        //this.frame = new Frame2();
+    public void initDialog(FrameTestToDelete frame) {
+        this.frame = frame;
         //frame.setDialog(this);
         //initialiser les cases, les pirates, et les des
     }
