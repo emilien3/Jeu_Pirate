@@ -66,7 +66,7 @@ public class ControleurCaseLianes extends ControlActiverCaseSpeciale implements 
 
 	@Override
 	public void finLancer() {
-            if (compteur<4 && result != 10){
+            if (compteur<3 && result != 10){
                 lancerDes();
                 boundary.lancerDe(this);
             }else if (result == 10){
