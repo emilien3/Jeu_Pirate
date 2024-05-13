@@ -57,10 +57,6 @@ public class ControlJeuPirate implements IInfoPartie{
         return jeuPirate.getPirates()[num].getLife();
     }
     
-    public void debutTour(){
-        boundary.debutTour(this);
-        controlDeplacer.deplacer(numeroPirate);
-    }
     
     public void finDeplacer(){
         Pirate pirateCourant = jeuPirate.getPirates()[numeroPirate];
