@@ -33,11 +33,16 @@ public class ControlJeuPirate implements IInfoPartie, IChangerEtat{
     }
     
     public void debutTour(){
-        numeroPirate = (numeroPirate + 1)%2;
+        this.numeroPirate = (numeroPirate + 1)%2;;
         //On affiche le début d'un nouveau tour
         boundary.debutTour(this);
         //On commence le déplacement
+        System.out.println(jeuPirate.getPirates()[numeroPirate].getNom() + " " + jeuPirate.getPirates()[numeroPirate].getEtat());
         controlDeplacer.deplacer(numeroPirate);
+    }
+    
+    public Pirate[] getPirates(){
+        return jeuPirate.getPirates();
     }
    
     
@@ -102,15 +107,7 @@ public class ControlJeuPirate implements IInfoPartie, IChangerEtat{
     
     public void finActionCase() {
         if (!jeuPirate.verifierFin()){
-            Pirate pirateCourant = jeuPirate.getPirates()[numeroPirate];
-            
-            switch (pirateCourant.getEtat()) {
-                case PASSETOUR ->
-                    finDeplacer();
-                case ESTPRISON -> finDeplacer();
-                default -> debutTour();
-            }
-            
+            debutTour();     
         }else{
             boundary.finPartie(this);
         }

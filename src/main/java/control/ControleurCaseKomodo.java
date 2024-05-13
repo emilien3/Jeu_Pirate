@@ -14,7 +14,7 @@ import model.Pirate;
 public class ControleurCaseKomodo extends ControlActiverCaseSpeciale implements IModifierVie,IDeplacerPirate, ILancerDe,IChangement {
     private IBoundary boundary;
     private final int CHANGEMENT = -3;
-    private final int PERTEPOINTDEVIE = 3;
+    private final int PERTEPOINTDEVIE = -3;
     private final int GAGNE = 8;
     private int arrivee,depart;
     private De[] des;
