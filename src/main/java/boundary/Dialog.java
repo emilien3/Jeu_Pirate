@@ -11,7 +11,7 @@ import model.Etat;
  */
 public class Dialog implements IPirates {
     private IAdaptateurFonctionnel adaptateur;
-    private Frame frame;
+    private FrameTestToDelete frame;
     
     public Dialog(IAdaptateurFonctionnel adaptateur){
         this.adaptateur = adaptateur;
@@ -19,7 +19,7 @@ public class Dialog implements IPirates {
 
     @Override
     public void initDialog() {
-        //this.frame = new Frame();
+        //this.frame = new Frame2();
         //frame.setDialog(this);
         //initialiser les cases, les pirates, et les des
     }
