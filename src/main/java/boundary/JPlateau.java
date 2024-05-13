@@ -21,8 +21,8 @@ public class JPlateau extends javax.swing.JPanel {
      */
     
     private List<PanelCase> cases ;
-    
-    
+
+
     public JPlateau() {
         initComponents();
         initCase();
@@ -58,8 +58,8 @@ public class JPlateau extends javax.swing.JPanel {
     private void initComponents() {
 
         layeredPaneJeton = new javax.swing.JLayeredPane();
-        jeton1 = new boundary.JPion();
-        jeton2 = new boundary.JPion();
+        jetonJack = new boundary.JPion();
+        jetonBill = new boundary.JPion();
         layeredPaneCase = new javax.swing.JLayeredPane();
         case1 = new boundary.PanelCase();
         case2 = new boundary.PanelCase();
@@ -94,58 +94,58 @@ public class JPlateau extends javax.swing.JPanel {
 
         layeredPaneJeton.setPreferredSize(new java.awt.Dimension(654, 760));
 
-        jeton1.setBackground(new java.awt.Color(255, 255, 255));
-        jeton1.setMovable(true);
-        jeton1.setPathProperty("pion_jack.png");
-        jeton1.setPreferredSize(new java.awt.Dimension(48, 48));
-        jeton1.addMouseMotionListener(new java.awt.event.MouseMotionAdapter() {
+        jetonJack.setBackground(new java.awt.Color(255, 255, 255));
+        jetonJack.setPathProperty("pion_jack.png");
+        jetonJack.setPreferredSize(new java.awt.Dimension(48, 48));
+        jetonJack.addMouseMotionListener(new java.awt.event.MouseMotionAdapter() {
             public void mouseDragged(java.awt.event.MouseEvent evt) {
-                jeton1MouseDragged(evt);
+                jetonJackMouseDragged(evt);
             }
         });
-        jeton1.addMouseListener(new java.awt.event.MouseAdapter() {
+        jetonJack.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseReleased(java.awt.event.MouseEvent evt) {
-                jeton1MouseReleased(evt);
+                jetonJackMouseReleased(evt);
             }
         });
 
-        javax.swing.GroupLayout jeton1Layout = new javax.swing.GroupLayout(jeton1);
-        jeton1.setLayout(jeton1Layout);
-        jeton1Layout.setHorizontalGroup(
-            jeton1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+        javax.swing.GroupLayout jetonJackLayout = new javax.swing.GroupLayout(jetonJack);
+        jetonJack.setLayout(jetonJackLayout);
+        jetonJackLayout.setHorizontalGroup(
+            jetonJackLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGap(0, 48, Short.MAX_VALUE)
         );
-        jeton1Layout.setVerticalGroup(
-            jeton1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+        jetonJackLayout.setVerticalGroup(
+            jetonJackLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGap(0, 48, Short.MAX_VALUE)
         );
 
-        jeton2.setPathProperty("pion_bill.png");
-        jeton2.setPreferredSize(new java.awt.Dimension(48, 48));
-        jeton2.addMouseMotionListener(new java.awt.event.MouseMotionAdapter() {
+        jetonBill.setMovable(true);
+        jetonBill.setPathProperty("pion_bill.png");
+        jetonBill.setPreferredSize(new java.awt.Dimension(48, 48));
+        jetonBill.addMouseMotionListener(new java.awt.event.MouseMotionAdapter() {
             public void mouseDragged(java.awt.event.MouseEvent evt) {
-                jeton2MouseDragged(evt);
+                jetonBillMouseDragged(evt);
             }
         });
-        jeton2.addMouseListener(new java.awt.event.MouseAdapter() {
+        jetonBill.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseReleased(java.awt.event.MouseEvent evt) {
-                jeton2MouseReleased(evt);
+                jetonBillMouseReleased(evt);
             }
         });
 
-        javax.swing.GroupLayout jeton2Layout = new javax.swing.GroupLayout(jeton2);
-        jeton2.setLayout(jeton2Layout);
-        jeton2Layout.setHorizontalGroup(
-            jeton2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+        javax.swing.GroupLayout jetonBillLayout = new javax.swing.GroupLayout(jetonBill);
+        jetonBill.setLayout(jetonBillLayout);
+        jetonBillLayout.setHorizontalGroup(
+            jetonBillLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGap(0, 48, Short.MAX_VALUE)
         );
-        jeton2Layout.setVerticalGroup(
-            jeton2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+        jetonBillLayout.setVerticalGroup(
+            jetonBillLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGap(0, 48, Short.MAX_VALUE)
         );
 
-        layeredPaneJeton.setLayer(jeton1, javax.swing.JLayeredPane.DEFAULT_LAYER);
-        layeredPaneJeton.setLayer(jeton2, javax.swing.JLayeredPane.DEFAULT_LAYER);
+        layeredPaneJeton.setLayer(jetonJack, javax.swing.JLayeredPane.DEFAULT_LAYER);
+        layeredPaneJeton.setLayer(jetonBill, javax.swing.JLayeredPane.DEFAULT_LAYER);
 
         javax.swing.GroupLayout layeredPaneJetonLayout = new javax.swing.GroupLayout(layeredPaneJeton);
         layeredPaneJeton.setLayout(layeredPaneJetonLayout);
@@ -155,19 +155,19 @@ public class JPlateau extends javax.swing.JPanel {
                 .addGroup(layeredPaneJetonLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layeredPaneJetonLayout.createSequentialGroup()
                         .addGap(70, 70, 70)
-                        .addComponent(jeton2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(jetonBill, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(layeredPaneJetonLayout.createSequentialGroup()
                         .addGap(21, 21, 21)
-                        .addComponent(jeton1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(jetonJack, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(536, Short.MAX_VALUE))
         );
         layeredPaneJetonLayout.setVerticalGroup(
             layeredPaneJetonLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layeredPaneJetonLayout.createSequentialGroup()
                 .addGap(18, 18, 18)
-                .addComponent(jeton1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jetonJack, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jeton2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jetonBill, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(640, Short.MAX_VALUE))
         );
 
@@ -588,7 +588,7 @@ public class JPlateau extends javax.swing.JPanel {
         jeton.setLocation(newX, newY);
     }
     
-    private int getCaseOnJeton(JPion jeton){
+    public int getCaseOnJeton(JPion jeton){
         int res = 0;
         for (int i = 0; i < cases.size(); i++) {
             Rectangle bounds = cases.get(i).getBounds();
@@ -599,30 +599,47 @@ public class JPlateau extends javax.swing.JPanel {
         }
         return res;
     }
-    
-    private void jeton1MouseDragged(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jeton1MouseDragged
-        if(jeton1.isMovable()) {
-            jetonDeplacement(jeton1);
-        }
-    }//GEN-LAST:event_jeton1MouseDragged
 
-    private void jeton1MouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jeton1MouseReleased
-        int positionCase = getCaseOnJeton(jeton1);
+    public JPion getJetonBill() {
+        return jetonBill;
+    }
+    
+    public JPion getJetonJack() {
+        return jetonJack;
+    }
+    
+    public PanelCase getCase(int i) {
+        return cases.get(i);
+    }
+    
+        public List<PanelCase> getCases() {
+        return cases;
+    }
+        
+    private void jetonJackMouseDragged(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jetonJackMouseDragged
+        if(jetonJack.isMovable()) {
+            jetonDeplacement(jetonJack);
+        }
+    }//GEN-LAST:event_jetonJackMouseDragged
+
+    private void jetonJackMouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jetonJackMouseReleased
+        int positionCase = getCaseOnJeton(jetonJack);
         System.out.println(positionCase);
         // TODO : informer le JDialog que le pion est a cette case
 
-    }//GEN-LAST:event_jeton1MouseReleased
+    }//GEN-LAST:event_jetonJackMouseReleased
 
-    private void jeton2MouseDragged(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jeton2MouseDragged
-        if(jeton2.isMovable()) {
-            jetonDeplacement(jeton2);
+    private void jetonBillMouseDragged(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jetonBillMouseDragged
+        if(jetonBill.isMovable()) {
+            jetonDeplacement(jetonBill);
         }
-    }//GEN-LAST:event_jeton2MouseDragged
+    }//GEN-LAST:event_jetonBillMouseDragged
 
-    private void jeton2MouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jeton2MouseReleased
-        int positionCase = getCaseOnJeton(jeton2);
+    private void jetonBillMouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jetonBillMouseReleased
+        int positionCase = getCaseOnJeton(jetonBill);
+        System.out.println(positionCase);
         // TODO : informer le JDialog que le pion est a cette case
-    }//GEN-LAST:event_jeton2MouseReleased
+    }//GEN-LAST:event_jetonBillMouseReleased
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -656,8 +673,8 @@ public class JPlateau extends javax.swing.JPanel {
     private boundary.PanelCase case7;
     private boundary.PanelCase case8;
     private boundary.PanelCase case9;
-    private boundary.JPion jeton1;
-    private boundary.JPion jeton2;
+    private boundary.JPion jetonBill;
+    private boundary.JPion jetonJack;
     private javax.swing.JLayeredPane layeredPaneCase;
     private javax.swing.JLayeredPane layeredPaneJeton;
     // End of variables declaration//GEN-END:variables

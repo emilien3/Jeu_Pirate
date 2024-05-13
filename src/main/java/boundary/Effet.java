@@ -96,7 +96,7 @@ public class Effet extends javax.swing.JPanel {
             return;
         }
         labelNomEffet.setText(formatName(effet.name()));
-        labelDureeEffet.setText(dureeEffet + " Tours");
+        labelDureeEffet.setText(dureeEffet + " Tour" + (dureeEffet > 1 ? "s":""));
     }
     
     @Override
@@ -120,7 +120,7 @@ public class Effet extends javax.swing.JPanel {
         labelDureeEffet = new javax.swing.JLabel();
 
         setOpaque(false);
-        setPreferredSize(new java.awt.Dimension(160, 64));
+        setPreferredSize(new java.awt.Dimension(160, 90));
 
         labelNomEffet.setFont(new java.awt.Font("Segoe UI", 1, 16)); // NOI18N
         labelNomEffet.setForeground(java.awt.Color.black);

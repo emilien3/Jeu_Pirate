@@ -7,6 +7,7 @@ import java.util.List;
 import java.util.Random;
 import javax.swing.Timer;
 import javax.imageio.ImageIO;
+import javax.swing.JButton;
 import javax.swing.JPanel;
 
 
@@ -71,14 +72,14 @@ public class DiceCoursePanel extends JPanel{
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jButton1 = new javax.swing.JButton();
+        jButtonThrow = new javax.swing.JButton();
         dicePanel1 = new boundary.DicePanel();
         dicePanel2 = new boundary.DicePanel();
 
-        jButton1.setText("throw");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        jButtonThrow.setText("Throw");
+        jButtonThrow.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                jButtonThrowActionPerformed(evt);
             }
         });
 
@@ -114,7 +115,7 @@ public class DiceCoursePanel extends JPanel{
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 81, Short.MAX_VALUE)
                 .addComponent(dicePanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(64, 64, 64)
-                .addComponent(jButton1)
+                .addComponent(jButtonThrow)
                 .addGap(55, 55, 55))
         );
         layout.setVerticalGroup(
@@ -123,7 +124,7 @@ public class DiceCoursePanel extends JPanel{
                 .addContainerGap(60, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addComponent(jButton1)
+                        .addComponent(jButtonThrow)
                         .addGap(90, 90, 90))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
@@ -133,7 +134,7 @@ public class DiceCoursePanel extends JPanel{
         );
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+    private void jButtonThrowActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonThrowActionPerformed
         
         
         // TO-DO -> FONCTION DU DIALOG 
@@ -142,13 +143,13 @@ public class DiceCoursePanel extends JPanel{
         //
         
         diceAnimation();
-    }//GEN-LAST:event_jButton1ActionPerformed
+    }//GEN-LAST:event_jButtonThrowActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private boundary.DicePanel dicePanel1;
     private boundary.DicePanel dicePanel2;
-    private javax.swing.JButton jButton1;
+    private javax.swing.JButton jButtonThrow;
     // End of variables declaration//GEN-END:variables
 
     /**
@@ -172,6 +173,9 @@ public class DiceCoursePanel extends JPanel{
         timerArray[1].start();
         timerArray[2].start();
     } 
- 
+
+    public JButton getjButtonThrow() {
+        return jButtonThrow;
+    }
     
 }
