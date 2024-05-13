@@ -10,12 +10,12 @@ import control.IDeplacerPirate;
 import control.IInfoPartie;
 import control.ILancerDe;
 import control.IModifierVie;
-
 /**
  *
  * @author Ninon
  */
 public interface IBoundary {
+
     //Fonction qui seront appelées depuis les controleurs
     public void debutTour(IInfoPartie control);
     public void lancerDe(ILancerDe control);
@@ -26,3 +26,4 @@ public interface IBoundary {
     public void modifierVie(IModifierVie control);
     public void finPartie(IInfoPartie controlInfoPartie);
 }
+

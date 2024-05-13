@@ -31,6 +31,7 @@ public class ControlDeplacer implements IDeplacerPirate, ILancerDe{
         this.de = de;
     }
     
+
     public void deplacer(int i) {
         //On déplace le pirate i (fonction appelée depuis controlJeuPirate)
         this.joueurCourant = i;
@@ -38,6 +39,7 @@ public class ControlDeplacer implements IDeplacerPirate, ILancerDe{
         lancerDes();
     }
     
+
     private void lancerDes(){
         //On lance tous les dés
         for (De d : de){
@@ -45,6 +47,7 @@ public class ControlDeplacer implements IDeplacerPirate, ILancerDe{
         }
         this.deplacement = valeurDeplacement(de);
         boundary.lancerDe(this);
+
     }
     
     private int valeurDeplacement(De[] des){
@@ -64,8 +67,8 @@ public class ControlDeplacer implements IDeplacerPirate, ILancerDe{
     @Override
     public void finLancer() {
         //Est appelée quand l'affichage a fini d'afficher le lancer de dés -> On début le déplacement
-        effectuerDeplacement();
     }
+    
     
     private void effectuerDeplacement(){
         //On modifie les données pour effectuer le déplacement
@@ -104,7 +107,9 @@ public class ControlDeplacer implements IDeplacerPirate, ILancerDe{
 
     @Override
     public void finDeplacement() {
+
         //Est appelée quand l'affichage a fini d'afficher le déplacement
+
         controlJeuPirate.finDeplacer();
     }
     

@@ -47,6 +47,7 @@ public class Pirate {
     }
     
     public void setPosition(int position) {
+    	
         this.position = position;
     }
     
@@ -55,6 +56,7 @@ public class Pirate {
     }
     
     public void setLastPosition(int position) {
+
         this.lastPosition = position;
     }
 

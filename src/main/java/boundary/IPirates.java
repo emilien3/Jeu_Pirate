@@ -4,6 +4,7 @@
  */
 package boundary;
 
+
 import model.Etat;
 
 /**
@@ -11,6 +12,7 @@ import model.Etat;
  * @author Ninon
  */
 public interface IPirates {
+
     //Fonction qui seront appelées depuis l'adaptateur noyau
     public void initDialog();
     public void changerJoueur();

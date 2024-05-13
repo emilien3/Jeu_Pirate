@@ -4,21 +4,65 @@
  */
 package control;
 
+import boundary.IBoundary;
 import model.Pirate;
 
-/**
- *
- * @author laura
- */
-public class ControleurCaseSecret {
-    
-    private final int AVANCER = 2;
-            
-    public void action(Pirate pirate,ControlJeuPirate controleurJeuPirate) {
-        /*
-        System.out.println("Le joueur vient d arriver sur une case passage secret le prends donc.");
-        int[] avancer = {0,AVANCER};
-        controleurJeuPirate.avancerJoueur(avancer,pirate); 
-        */
+
+public class ControleurCaseSecret extends ControlActiverCaseSpeciale  implements IDeplacerPirate{
+	private final int AVANCER = 2;
+	private IBoundary boundary;
+	private int depart, arrivee;
+	
+	public ControleurCaseSecret(ControlJeuPirate controlJeuPirate, IBoundary boundary ) {
+		super.controlJeuPirate=controlJeuPirate;
+		this.boundary=boundary;
+        
+		// TODO Auto-generated constructor stub
+	}
+
+	@Override
+	public void action(Pirate pirate) {
+		int lastPosition =controlJeuPirate.getLastPosition();
+		this.depart=pirate.getPosition();
+		this.arrivee=depart+AVANCER;
+		deplacer(pirate, AVANCER);
+		
+	}
+	
+	public void deplacer(Pirate pirate, int deplacement) {
+        pirate.setPosition(pirate.getPosition() + deplacement);
+        boundary.deplacerAuto(this);
+
     }
+
+	@Override
+	public int getDepart() {
+		// TODO Auto-generated method stub
+		return depart;
+	}
+
+
+	
+
+
+	@Override
+	public int getArrivee() {
+		// TODO Auto-generated method stub
+		return arrivee;
+	}
+
+
+	@Override
+	public String getEffetCase(int num) {
+		// TODO Auto-generated method stub
+		return controlJeuPirate.getEffetcase(num);
+	}
+
+
+	@Override
+	public void finDeplacement() {
+		// TODO Auto-generated method stub
+		finAction();
+	}
+
 }

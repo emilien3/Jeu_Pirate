@@ -152,5 +152,4 @@ public class AdaptateurNoyau implements IBoundary, IAdaptateurFonctionnel {
     public void finChangerVie() {
         controlModifVie.finModifVie();
     }
-
 }

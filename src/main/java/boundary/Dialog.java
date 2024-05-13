@@ -5,7 +5,6 @@
 package boundary;
 
 import model.Etat;
-
 /**
  *
  * @author Ninon

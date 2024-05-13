@@ -6,7 +6,6 @@ package control;
 
 import boundary.IBoundary;
 import model.Pirate;
-
 /**
  *
  * @author laura
