@@ -13,17 +13,18 @@ import static model.CaseEnum.BOUE;
  *
  * @author Ninon
  */
-public class ControlJeuPirate implements IInfoPartie{
+public class ControlJeuPirate implements IInfoPartie, IChangerEtat{
     private IBoundary boundary;
     private ControlActiverCaseSpeciale controlActiverCaseSpeciale;
     private ControlDeplacer controlDeplacer;
     private JeuPirate jeuPirate;
     private int numeroPirate;
+    private De[] des;
 
     public ControlJeuPirate(IBoundary boundary, int nbDes) {
         this.boundary = boundary;
         this.jeuPirate = new JeuPirate();
-        De[] des = new De[nbDes];
+        this.des = new De[nbDes];
         for (int i = 0; i<nbDes; i++) {
             des[i] = new De();
         }
@@ -62,8 +63,7 @@ public class ControlJeuPirate implements IInfoPartie{
         Pirate pirateCourant = jeuPirate.getPirates()[numeroPirate];
         CaseEnum caseCourante = jeuPirate.getPlateau().donnerCase(pirateCourant.getPosition());
         if(pirateCourant.getEtat()==Etat.PASSETOUR) {
-        	 pirateCourant.setEtat(Etat.ESTVIVANT);
-        	 System.out.println("a jouer");
+        	pirateCourant.setEtat(Etat.ESTVIVANT);
         	finActionCase();
         }
         if (pirateCourant.getEtat()==Etat.ESTPRISON) {
@@ -72,45 +72,33 @@ public class ControlJeuPirate implements IInfoPartie{
         switch (caseCourante) {
             case BOUE:
                 controlActiverCaseSpeciale = new ControleurCaseBoue(this, boundary);
-                controlActiverCaseSpeciale.action(pirateCourant);
                 break;
             case DEBUT:
                 controlActiverCaseSpeciale = new ControleurRetourCaseDebut(this, boundary);
-                controlActiverCaseSpeciale.action(pirateCourant);
                 break;
             case FALAISE:
                 controlActiverCaseSpeciale = new ControleurCaseFalaise(this, boundary);
-                controlActiverCaseSpeciale.action(pirateCourant);
                 break;
             case KOMODO:
-                controlActiverCaseSpeciale = new ControleurCaseKomodo(this, boundary);
-                controlActiverCaseSpeciale.action(pirateCourant);
+                controlActiverCaseSpeciale = new ControleurCaseKomodo(this, boundary, des);
                 break;
             case LIANES:
-     
                 controlActiverCaseSpeciale = new ControleurCaseLianes(this, boundary);
-                controlActiverCaseSpeciale.action(pirateCourant);
                 break;
             case NOURRITURE:
                 controlActiverCaseSpeciale = new ControleurCaseNourriture(this, boundary);
-                
-                controlActiverCaseSpeciale.action(pirateCourant);
                 break;
             case PIERRE:
                 controlActiverCaseSpeciale = new ControleurCasePierre(this, boundary);
-                controlActiverCaseSpeciale.action(pirateCourant);
-               
                 break;
             case SECRET:
                 controlActiverCaseSpeciale = new ControleurCaseSecret(this, boundary);
-                controlActiverCaseSpeciale.action(pirateCourant);
                 break;
             default:
-                System.out.println("Case normale");
                 finActionCase();
                 return;
         }
-        //controlActiverCaseSpeciale.action(pirateCourant);
+        controlActiverCaseSpeciale.action(pirateCourant);
     }
     
     public void finActionCase() {
@@ -119,16 +107,11 @@ public class ControlJeuPirate implements IInfoPartie{
             numeroPirate = (numeroPirate + 1)%2;
             Pirate pirateCourant = jeuPirate.getPirates()[numeroPirate];
             
-            if(pirateCourant.getEtat() == Etat.PASSETOUR) {
-            	
-            	//pirateCourant.setEtat(Etat.ESTVIVANT);
-            	finDeplacer();
-            }
-            else if(pirateCourant.getEtat() == Etat.ESTPRISON) {
-            	finDeplacer();
-            }
-            else {
-            	debutTour();
+            switch (pirateCourant.getEtat()) {
+                case PASSETOUR ->
+                    finDeplacer();
+                case ESTPRISON -> finDeplacer();
+                default -> debutTour();
             }
             
         }else{
@@ -154,6 +137,16 @@ public class ControlJeuPirate implements IInfoPartie{
             //Les deux pirates sont morts
             return -1;
         }
+    }
+    
+    @Override
+    public Etat getEtat() {
+        return jeuPirate.getPirates()[numeroPirate].getEtat();
+    }
+
+    @Override
+    public void finChangerEtat() {
+        
     }
     
     @Override

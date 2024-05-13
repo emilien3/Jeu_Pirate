@@ -5,6 +5,8 @@
 package control;
 
 import boundary.IBoundary;
+import java.util.function.Function;
+import java.util.stream.Stream;
 import model.De;
 import model.Etat;
 import model.Pirate;
@@ -15,10 +17,12 @@ public class ControleurCaseKomodo extends ControlActiverCaseSpeciale implements 
     private final int PERTEPOINTDEVIE = 3;
     private final int GAGNE = 8;
     private int arrivee,depart;
+    private De[] des;
     
-    public ControleurCaseKomodo(ControlJeuPirate controlJeuPirate, IBoundary boundary){
+    public ControleurCaseKomodo(ControlJeuPirate controlJeuPirate, IBoundary boundary, De[] des){
         super.controlJeuPirate=controlJeuPirate;
         this.boundary=boundary;
+        this.des = des;
     }
     public void action(Pirate pirate) {
     	pirate.getEtat();
@@ -47,16 +51,10 @@ public class ControleurCaseKomodo extends ControlActiverCaseSpeciale implements 
   
 	@Override
 	public int[] getDes() {
-		De de1 = new De();
-	    De de2 = new De();
-	    
-	    de1.roll();
-	    de2.roll();
-	    
-	    int[] des = {de1.getValue(), de2.getValue()};
-	    
-	    return des;
+            Function<De[], int[]> getValeurs = d -> Stream.of(d).mapToInt(d1 -> d1.getValue()).toArray();
+            return getValeurs.apply(des);
 	}
+        
 	@Override
 	public void finLancer() {
 		// TODO Auto-generated method stub

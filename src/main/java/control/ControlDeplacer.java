@@ -65,7 +65,8 @@ public class ControlDeplacer implements IDeplacerPirate, ILancerDe{
 
     @Override
     public void finLancer() {
-        //Est appelée quand l'affichage a fini d'afficher le lancer de dés -> On début le déplacement
+        //Est appelée quand l'affichage a fini d'afficher le lancer de dés -> On débute le déplacement
+        effectuerDeplacement();
     }
     
     
@@ -106,9 +107,7 @@ public class ControlDeplacer implements IDeplacerPirate, ILancerDe{
 
     @Override
     public void finDeplacement() {
-
         //Est appelée quand l'affichage a fini d'afficher le déplacement
-
         controlJeuPirate.finDeplacer();
     }
     
