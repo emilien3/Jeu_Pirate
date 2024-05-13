@@ -5,6 +5,8 @@
 package control;
 
 import boundary.IBoundary;
+import java.util.function.Function;
+import java.util.stream.Stream;
 import model.De;
 import model.Etat;
 import model.Pirate;
@@ -15,64 +17,71 @@ import model.Pirate;
  */
 
 public class ControleurCaseLianes extends ControlActiverCaseSpeciale implements ILancerDe,IChangerEtat {
-    private IBoundary boundary;
+    private Pirate pirate;
+    private int compteur, result;
+    private De[] des;
 
-	public ControleurCaseLianes(ControlJeuPirate controlJeuPirate, IBoundary boundary) {
-		super.controlJeuPirate = controlJeuPirate;
-        this.boundary = boundary;
-		// TODO Auto-generated constructor stub
+	public ControleurCaseLianes(ControlJeuPirate controlJeuPirate, IBoundary boundary, De[] des) {
+            super.controlJeuPirate = controlJeuPirate;
+            super.boundary = boundary;
+            this.des = des;
+            this.compteur = 0;
+            this.result = 0;
 	}
 
 	@Override
 	public Etat getEtat() {
 		// TODO Auto-generated method stub
-		return Etat.ESTPRISON;
+		return pirate.getEtat();
 	}
 
 	@Override
 	public void finChangerEtat() {
-		// TODO Auto-generated method stub
-		
+            if (pirate.getEtat()==Etat.ESTPRISON){
+                boundary.lancerDe(this);
+            }else{
+                controlJeuPirate.finActionCase();
+            }	
 	}
 
 	@Override
 	public int[] getDes() {
-		// TODO Auto-generated method stub
-		De de1 = new De();
-	    De de2 = new De();
-	    
-	    de1.roll();
-	    de2.roll();
-	    
-	    int[] des = {de1.getValue(), de2.getValue()};
-	    
-	    return des;
+            Function<De[], int[]> getValeurs = d -> Stream.of(d).mapToInt(d1 -> d1.getValue()).toArray();
+            return getValeurs.apply(des);
 	}
+        
+        private int totalDes(De[] des){
+            //Pour recupérer la somme des valeurs des dés
+            Function<De[], Integer> somme = d -> Stream.of(d).mapToInt(d1 -> d1.getValue()).reduce(0, (a, b) -> a+b);
+            return somme.apply(des);
+        }
+        
+        private void lancerDes(){
+            for (De d : des){
+                d.roll();
+            }
+            result = totalDes(des);
+            compteur ++;
+        }
 
 	@Override
 	public void finLancer() {
-		// TODO Auto-generated method stub
-		
-		
+            if (compteur<4 && result != 10){
+                lancerDes();
+                boundary.lancerDe(this);
+            }else if (result == 10){
+                pirate.setEtat(Etat.ESTVIVANT);
+                boundary.changerEtat(this);
+            }else{
+                controlJeuPirate.finActionCase();
+            }
 	}
 
 	@Override
 	public void action(Pirate pirate) {
-		// TODO Auto-generated method stub
-		pirate.setEtat(Etat.ESTPRISON);
-		for(int i=0;i<3;i++) {
-			int[] des = getDes();
-			
-			int sommeDes = des[0] + des[1];
-			System.out.println("Lancer " + (i+1) +" : " +sommeDes);
-			if(sommeDes>=10) {
-				pirate.setEtat(Etat.ESTVIVANT);
-    		
-				controlJeuPirate.finActionCase();
-    		
-			}
-    	
-		}
-		controlJeuPirate.finActionCase();
+                this.pirate = pirate;
+                pirate.setEtat(Etat.ESTPRISON);
+                lancerDes();
+		boundary.changerEtat(this);
 	}
 }

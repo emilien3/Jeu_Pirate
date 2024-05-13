@@ -63,11 +63,11 @@ public class ControlJeuPirate implements IInfoPartie, IChangerEtat{
         Pirate pirateCourant = jeuPirate.getPirates()[numeroPirate];
         CaseEnum caseCourante = jeuPirate.getPlateau().donnerCase(pirateCourant.getPosition());
         if(pirateCourant.getEtat()==Etat.PASSETOUR) {
-        	pirateCourant.setEtat(Etat.ESTVIVANT);
-        	finActionCase();
+            pirateCourant.setEtat(Etat.ESTVIVANT);
+            finActionCase();
         }
         if (pirateCourant.getEtat()==Etat.ESTPRISON) {
-        	boundary.debutTour(this);
+            boundary.debutTour(this);
         }
         switch (caseCourante) {
             case BOUE:
@@ -103,7 +103,6 @@ public class ControlJeuPirate implements IInfoPartie, IChangerEtat{
     
     public void finActionCase() {
         if (!jeuPirate.verifierFin()){
-        	
             numeroPirate = (numeroPirate + 1)%2;
             Pirate pirateCourant = jeuPirate.getPirates()[numeroPirate];
             
