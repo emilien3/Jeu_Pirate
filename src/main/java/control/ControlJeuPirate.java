@@ -83,7 +83,7 @@ public class ControlJeuPirate implements IInfoPartie, IChangerEtat{
                 controlActiverCaseSpeciale = new ControleurCaseKomodo(this, boundary, des);
                 break;
             case LIANES:
-                controlActiverCaseSpeciale = new ControleurCaseLianes(this, boundary);
+                controlActiverCaseSpeciale = new ControleurCaseLianes(this, boundary, des);
                 break;
             case NOURRITURE:
                 controlActiverCaseSpeciale = new ControleurCaseNourriture(this, boundary);

@@ -34,6 +34,6 @@ public class ControleurCaseBoue extends ControlActiverCaseSpeciale implements IC
     @Override
     public void finChangement() {
         // Est appelée quand l'affichage a fini d'afficher le changement
-        controlJeuPirate.finActionCase();
+        finAction();
     }
 }

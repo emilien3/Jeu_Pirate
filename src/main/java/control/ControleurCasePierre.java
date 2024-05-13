@@ -9,34 +9,28 @@ import model.Etat;
 import model.Pirate;
 
 public class ControleurCasePierre extends ControlActiverCaseSpeciale implements IChangerEtat {
-	private IBoundary boundary;
 	
 	public ControleurCasePierre( ControlJeuPirate controlJeuPirate,IBoundary boundary ) {
-		super.controlJeuPirate = controlJeuPirate;
-		this.boundary=boundary;
-		// TODO Auto-generated constructor stub
+            super.controlJeuPirate = controlJeuPirate;
+            super.boundary=boundary;
 	}
 
 
 	@Override
 	public Etat getEtat() {
-		// TODO Auto-generated method stub
-		return Etat.PASSETOUR;
+            return Etat.PASSETOUR;
 	}
 
 	@Override
 	public void finChangerEtat() {
-		// TODO Auto-generated method stub
-		controlJeuPirate.finActionCase();
+            finAction();
 	
 	}
 
 	@Override
 	public void action(Pirate pirate) {
-		// TODO Auto-generated method stub
-		pirate.setEtat(Etat.PASSETOUR);
-		boundary.changerEtat(this);
-	
+            pirate.setEtat(Etat.PASSETOUR);
+            boundary.changerEtat(this);
 	}
 
 }

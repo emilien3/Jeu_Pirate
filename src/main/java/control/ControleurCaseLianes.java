@@ -40,7 +40,7 @@ public class ControleurCaseLianes extends ControlActiverCaseSpeciale implements 
             if (pirate.getEtat()==Etat.ESTPRISON){
                 boundary.lancerDe(this);
             }else{
-                controlJeuPirate.finActionCase();
+                finAction();
             }	
 	}
 
@@ -73,7 +73,7 @@ public class ControleurCaseLianes extends ControlActiverCaseSpeciale implements 
                 pirate.setEtat(Etat.ESTVIVANT);
                 boundary.changerEtat(this);
             }else{
-                controlJeuPirate.finActionCase();
+                finAction();
             }
 	}
 
