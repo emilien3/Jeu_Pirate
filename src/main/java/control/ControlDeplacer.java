@@ -33,13 +33,13 @@ public class ControlDeplacer implements IDeplacerPirate, ILancerDe{
     
 
     public void deplacer(int i) {
-        if (pirates[joueurCourant].getEtat()==Etat.ESTVIVANT){
+        this.joueurCourant = i;
+        if (pirates[joueurCourant].getEtat()==Etat.ESTPRISON){
+            controlJeuPirate.finDeplacer();
+        }else{
             //On déplace le pirate i (fonction appelée depuis controlJeuPirate)
-            this.joueurCourant = i;
             this.depart = pirates[joueurCourant].getPosition();
             lancerDes();
-        }else{
-            controlJeuPirate.finDeplacer();
         }
     }
     

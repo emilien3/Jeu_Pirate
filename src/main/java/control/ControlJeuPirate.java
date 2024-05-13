@@ -33,12 +33,17 @@ public class ControlJeuPirate implements IInfoPartie, IChangerEtat{
     }
     
     public void debutTour(){
-        this.numeroPirate = (numeroPirate + 1)%2;;
+        this.numeroPirate = (numeroPirate + 1)%2;
+        System.out.println(numeroPirate);
         //On affiche le début d'un nouveau tour
         boundary.debutTour(this);
-        //On commence le déplacement
-        System.out.println(jeuPirate.getPirates()[numeroPirate].getNom() + " " + jeuPirate.getPirates()[numeroPirate].getEtat());
-        controlDeplacer.deplacer(numeroPirate);
+        if (jeuPirate.getPirates()[numeroPirate].getEtat()==Etat.PASSETOUR){
+            System.out.println("Il passe son tour ! ");
+            jeuPirate.getPirates()[numeroPirate].setEtat(Etat.ESTVIVANT);
+            boundary.changerEtat(this);
+        }else{
+            controlDeplacer.deplacer(numeroPirate);
+        }
     }
     
     public Pirate[] getPirates(){
@@ -68,11 +73,6 @@ public class ControlJeuPirate implements IInfoPartie, IChangerEtat{
     public void finDeplacer(){
         Pirate pirateCourant = jeuPirate.getPirates()[numeroPirate];
         CaseEnum caseCourante = jeuPirate.getPlateau().donnerCase(pirateCourant.getPosition());
-        if(pirateCourant.getEtat()==Etat.PASSETOUR) {
-            pirateCourant.setEtat(Etat.ESTVIVANT);
-            boundary.changerEtat(this);
-            return;
-        }
         switch (caseCourante) {
             case BOUE:
                 controlActiverCaseSpeciale = new ControleurCaseBoue(this, boundary);
@@ -119,11 +119,11 @@ public class ControlJeuPirate implements IInfoPartie, IChangerEtat{
     }
     
     private int gagnant() {
-        if(jeuPirate.getPirates()[1].getLife()==0 || jeuPirate.getPirates()[0].getPosition()==jeuPirate.getPlateau().getTAILLETABLEAU()-1){
+        if(jeuPirate.getPirates()[1].getLife()<=0 || jeuPirate.getPirates()[0].getPosition()==jeuPirate.getPlateau().getTAILLETABLEAU()-1){
             //Pirate 1 mort ou Pirate 0 arrivé à la fin
             return 0;
         }
-        else if (jeuPirate.getPirates()[0].getLife()==0 || jeuPirate.getPirates()[1].getPosition()==jeuPirate.getPlateau().getTAILLETABLEAU()-1){
+        else if (jeuPirate.getPirates()[0].getLife()<=0 || jeuPirate.getPirates()[1].getPosition()==jeuPirate.getPlateau().getTAILLETABLEAU()-1){
             //Pirate 0 mort ou Pirate 1 arrivé à la fin
             return 1;
         }
@@ -140,7 +140,7 @@ public class ControlJeuPirate implements IInfoPartie, IChangerEtat{
 
     @Override
     public void finChangerEtat() {
-        finActionCase();
+        debutTour();
     }
     
     @Override
