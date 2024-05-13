@@ -21,21 +21,20 @@ public class ControleurCaseBoue extends ControlActiverCaseSpeciale implements IC
     
     @Override
     public void action(Pirate pirate) {
-        changerProchainTour(pirate);
-    }
-
-    @Override
-    public int getChangement(){
-        return CHANGEMENTBOUE;
-    }
-    
-    public void changerProchainTour(Pirate pirate) {
+        //Action de la case
         pirate.setChangement(CHANGEMENTBOUE);
         boundary.changementProchainTour(this);
     }
 
     @Override
+    public int getChangement(){
+        // Est appelée quand l'affichage a besoin du changement
+        return CHANGEMENTBOUE;
+    }
+
+    @Override
     public void finChangement() {
+        // Est appelée quand l'affichage a fini d'afficher le changement
         controlJeuPirate.finActionCase();
     }
 }

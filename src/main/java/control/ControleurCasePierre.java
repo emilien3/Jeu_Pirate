@@ -40,3 +40,4 @@ public class ControleurCasePierre extends ControlActiverCaseSpeciale implements 
 	}
 
 }
+

@@ -7,6 +7,7 @@ package control;
 import boundary.IBoundary;
 import model.Pirate;
 
+
 public class ControleurCaseNourriture extends ControlActiverCaseSpeciale implements IChangement,IModifierVie {
 	private final int CHANGEMENT=2;
 	private final int GAINPOINTDEVIE=1;

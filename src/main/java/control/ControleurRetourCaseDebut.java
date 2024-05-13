@@ -7,6 +7,7 @@ package control;
 import boundary.IBoundary;
 import model.Pirate;
 
+
 public class ControleurRetourCaseDebut extends ControlActiverCaseSpeciale implements IDeplacerPirate{
 	
 	private IBoundary boundary;
@@ -54,5 +55,4 @@ public class ControleurRetourCaseDebut extends ControlActiverCaseSpeciale implem
         boundary.deplacerAuto(this);
 		
 	}
-
 }

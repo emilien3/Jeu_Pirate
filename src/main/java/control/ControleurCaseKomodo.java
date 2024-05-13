@@ -44,22 +44,8 @@ public class ControleurCaseKomodo extends ControlActiverCaseSpeciale implements 
     		
     	}
     	finChangerEtat();//faire un set Etat? 
-        /*
-        System.out.println("Le joueur vient d arriver sur une case komodo et dois relancer les des pour savoir si il court assez vite.");
-        controljeuPirate.setEtat(Etat.ESTPOURSUIVI, pirate);
-        int[] des = controljeuPirate.lancerDe();
-        int sommeDes = des[0] + des[1];
-        if (sommeDes <= GAGNER) {
-            System.out.println("Le joueur n a pas courru assez vite.");
-            controljeuPirate.perdrePointsDeVie(PERTEPOINTDEVIE,pirate);
-            controljeuPirate.setChangement(CHANGEMENT, pirate);
-        } else {
-            System.out.println("Le joueur a courru assez vite.");
-            controljeuPirate.avancerJoueur(des,pirate);
-        }
-        controljeuPirate.setEtat(Etat.ESTVIVANT, pirate);
-        */
     }
+  
 	@Override
 	public int[] getDes() {
 		De de1 = new De();
@@ -75,8 +61,8 @@ public class ControleurCaseKomodo extends ControlActiverCaseSpeciale implements 
 	@Override
 	public void finLancer() {
 		// TODO Auto-generated method stub
-		
 	}
+  
 	@Override
 	public int getDepart() {
 		// TODO Auto-generated method stub
@@ -120,6 +106,7 @@ public class ControleurCaseKomodo extends ControlActiverCaseSpeciale implements 
 	public void modifierVie(int points, Pirate pirate) {
         pirate.setLife(pirate.getLife() + points);
         boundary.modifierVie(this);
+
     }
 	 public void changerProchainTour(Pirate pirate) {
 	        pirate.setChangement(CHANGEMENT);

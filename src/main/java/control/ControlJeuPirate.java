@@ -4,12 +4,10 @@
  */
 package control;
 
-import boundary.BoundaryConsole;
 import boundary.IBoundary;
-import java.util.Scanner;
-import java.util.Scanner;
 import model.*;
-import boundary.IBoundary;
+import static model.CaseEnum.BOUE;
+
 
 /**
  *
@@ -34,6 +32,32 @@ public class ControlJeuPirate implements IInfoPartie{
     }
     
     public void debutTour(){
+        //On affiche le début d'un nouveau tour
+        boundary.debutTour(this);
+        //On commence le déplacement
+        controlDeplacer.deplacer(numeroPirate);
+    }
+   
+    
+    @Override
+    public String getEffetcase(int num) {
+        //Est appelée quand l'affichage a besoin de l'effet de la case num
+        return jeuPirate.getPlateau().donnerCase(num).toString();
+    }
+    
+    @Override
+    public String getNomJoueur(int num) {
+        //Est appelée quand l'affichage a besoin du nom du pirate num
+        return jeuPirate.getPirates()[num].getNom();
+    }
+    
+    @Override
+    public int getVieJoueur(int num) {
+        //Est appelée quand l'affichage a besoin de la vie du pirate num
+        return jeuPirate.getPirates()[num].getLife();
+    }
+    
+    public void debutTour(){
         boundary.debutTour(this);
         controlDeplacer.deplacer(numeroPirate);
     }
@@ -45,7 +69,6 @@ public class ControlJeuPirate implements IInfoPartie{
         	 pirateCourant.setEtat(Etat.ESTVIVANT);
         	 System.out.println("a jouer");
         	finActionCase();
-        	
         }
         if (pirateCourant.getEtat()==Etat.ESTPRISON) {
         	boundary.debutTour(this);
@@ -68,7 +91,7 @@ public class ControlJeuPirate implements IInfoPartie{
                 controlActiverCaseSpeciale.action(pirateCourant);
                 break;
             case LIANES:
-            	
+     
                 controlActiverCaseSpeciale = new ControleurCaseLianes(this, boundary);
                 controlActiverCaseSpeciale.action(pirateCourant);
                 break;
@@ -95,23 +118,6 @@ public class ControlJeuPirate implements IInfoPartie{
     }
     
     public void finActionCase() {
-    	//Pirate pirateCourant = jeuPirate.getPirates()[numeroPirate];
-    	/*if(pirateCourant.getEtat() == Etat.ESTPRISON) {
-    		finDeplacer();
-    		return;
-    	}
-    	 if(pirateCourant.getEtat() == Etat.PASSETOUR) {
-    		 pirateCourant.setEtat(Etat.ESTVIVANT);
-    	        // Passe au joueur suivant
-    		 if (!jeuPirate.verifierFin()) {
-    			 numeroPirate = (numeroPirate + 1)%2;
-    	          debutTour();
-    	        } else {
-    	            boundary.finPartie(this);
-    	        }
-    	        return;
-    	    }*/
-        
         if (!jeuPirate.verifierFin()){
         	
             numeroPirate = (numeroPirate + 1)%2;
@@ -162,15 +168,7 @@ public class ControlJeuPirate implements IInfoPartie{
     @Override
     public int getResultats() {
         return gagnant();
+
     }
     
-    @Override
-    public String getEffetcase(int num) {
-        return jeuPirate.getPlateau().donnerCase(num).toString();
-    }
-    
-    @Override
-    public String getNomJoueur(int num) {
-        return jeuPirate.getPirates()[num].getNom();
-    }
 }

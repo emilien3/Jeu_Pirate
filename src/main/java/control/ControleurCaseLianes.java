@@ -13,6 +13,7 @@ import model.Pirate;
  *
  * @author laura
  */
+
 public class ControleurCaseLianes extends ControlActiverCaseSpeciale implements ILancerDe,IChangerEtat {
     private IBoundary boundary;
 

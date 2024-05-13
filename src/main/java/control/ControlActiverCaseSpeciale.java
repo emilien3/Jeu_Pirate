@@ -5,6 +5,8 @@
 package control;
 import model.Pirate;
 
+import model.Pirate;
+
 /**
  *
  * @author Ninon

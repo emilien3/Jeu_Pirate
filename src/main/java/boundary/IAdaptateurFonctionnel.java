@@ -1,3 +1,4 @@
+
 /*
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Interface.java to edit this template
@@ -6,7 +7,12 @@ package boundary;
 
 import model.Etat;
 
+/**
+ *
+ * @author Ninon
+ */
 public interface IAdaptateurFonctionnel {
+    //Fonctions qui seront appelées depuis le Dialog
     public String getNomPirate(int num);
     public String getDescriptionCase(int num);
     public int[] getResultatsDes();

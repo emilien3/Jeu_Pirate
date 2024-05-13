@@ -7,6 +7,7 @@ package control;
 import boundary.IBoundary;
 import model.Pirate;
 
+
 public class ControleurCaseSecret extends ControlActiverCaseSpeciale  implements IDeplacerPirate{
 	private final int AVANCER = 2;
 	private IBoundary boundary;
@@ -31,6 +32,7 @@ public class ControleurCaseSecret extends ControlActiverCaseSpeciale  implements
 	public void deplacer(Pirate pirate, int deplacement) {
         pirate.setPosition(pirate.getPosition() + deplacement);
         boundary.deplacerAuto(this);
+
     }
 
 	@Override
