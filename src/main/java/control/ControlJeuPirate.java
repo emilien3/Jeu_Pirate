@@ -34,11 +34,9 @@ public class ControlJeuPirate implements IInfoPartie, IChangerEtat{
     
     public void debutTour(){
         this.numeroPirate = (numeroPirate + 1)%2;
-        System.out.println(numeroPirate);
         //On affiche le début d'un nouveau tour
         boundary.debutTour(this);
         if (jeuPirate.getPirates()[numeroPirate].getEtat()==Etat.PASSETOUR){
-            System.out.println("Il passe son tour ! ");
             jeuPirate.getPirates()[numeroPirate].setEtat(Etat.ESTVIVANT);
             boundary.changerEtat(this);
         }else{
