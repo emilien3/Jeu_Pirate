@@ -19,6 +19,7 @@ public class JPion extends javax.swing.JPanel {
 
     private String pathProperty;
     private BufferedImage image;
+    private boolean movable;
     /**
      * Creates new form JPion
      */
@@ -45,6 +46,17 @@ public class JPion extends javax.swing.JPanel {
         this.pathProperty = path;
         firePropertyChange("Image path", null, pathProperty);
     }
+
+    public boolean isMovable() {
+        return movable;
+    }
+
+    public void setMovable(boolean movable) {
+        this.movable = movable;
+        firePropertyChange("movable", null, movable);
+    }
+    
+    
     
     
     

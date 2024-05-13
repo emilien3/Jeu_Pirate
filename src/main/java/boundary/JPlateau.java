@@ -95,6 +95,7 @@ public class JPlateau extends javax.swing.JPanel {
         layeredPaneJeton.setPreferredSize(new java.awt.Dimension(654, 760));
 
         jeton1.setBackground(new java.awt.Color(255, 255, 255));
+        jeton1.setMovable(true);
         jeton1.setPathProperty("pion_jack.png");
         jeton1.setPreferredSize(new java.awt.Dimension(48, 48));
         jeton1.addMouseMotionListener(new java.awt.event.MouseMotionAdapter() {
@@ -592,7 +593,7 @@ public class JPlateau extends javax.swing.JPanel {
         for (int i = 0; i < cases.size(); i++) {
             Rectangle bounds = cases.get(i).getBounds();
             if(bounds.contains(jeton.getX(), jeton.getY())){
-                res = i + 1;
+                res = i;
                 break;
             }
         }
@@ -600,25 +601,27 @@ public class JPlateau extends javax.swing.JPanel {
     }
     
     private void jeton1MouseDragged(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jeton1MouseDragged
-        jetonDeplacement(jeton1);
+        if(jeton1.isMovable()) {
+            jetonDeplacement(jeton1);
+        }
     }//GEN-LAST:event_jeton1MouseDragged
 
     private void jeton1MouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jeton1MouseReleased
         int positionCase = getCaseOnJeton(jeton1);
-        if(positionCase != 0){
-            //si le jeton est sur la bonne case
-        }
+        System.out.println(positionCase);
+        // TODO : informer le JDialog que le pion est a cette case
+
     }//GEN-LAST:event_jeton1MouseReleased
 
     private void jeton2MouseDragged(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jeton2MouseDragged
-        jetonDeplacement(jeton2);
+        if(jeton2.isMovable()) {
+            jetonDeplacement(jeton2);
+        }
     }//GEN-LAST:event_jeton2MouseDragged
 
     private void jeton2MouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jeton2MouseReleased
         int positionCase = getCaseOnJeton(jeton2);
-        if(positionCase != 0){
-            //si le jeton est sur la bonne case
-        }
+        // TODO : informer le JDialog que le pion est a cette case
     }//GEN-LAST:event_jeton2MouseReleased
 
 
