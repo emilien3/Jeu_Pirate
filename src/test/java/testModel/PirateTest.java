@@ -22,6 +22,8 @@ class PirateTest {
 		assertEquals(pirate.getChangement(),2);
 		pirate.setLife(3);
 		assertEquals(pirate.getLife(),3);
+		pirate.setLife(10);
+		assertEquals(pirate.getLife(),5);
 		pirate.setPosition(2);
 		assertEquals(pirate.getPosition(),2);
 		pirate.setLastPosition(1);
