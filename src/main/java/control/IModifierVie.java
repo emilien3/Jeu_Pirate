@@ -1,13 +1,12 @@
+
 /*
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Interface.java to edit this template
  */
 package control;
 
-/**
- *
- * @author Ninon
- */
-public interface IActiverCase {
-    
+public interface IModifierVie {
+    public int getVie();
+    public void finModifVie();
 }
+

@@ -9,21 +9,21 @@ package model;
  * @author Ninon
  */
 public class Pirate {
-    private int life, position, changement;
-    private JeuPirate jeuPirate;
+    private int life, position, changement, lastPosition;
     private final int MAX_LIFE = 5;
     private Etat etat;
+    private String nom;
 	
-    public Pirate(JeuPirate jeuPirate) {
+    public Pirate(String nom) {
+        this.nom = nom;
         this.life = MAX_LIFE;
-        this.jeuPirate = jeuPirate;
         this.position = 0;
         this.changement = 0;
         this.etat = Etat.ESTVIVANT;
     }
     
-    public JeuPirate getJeuPirate(){
-        return jeuPirate;
+    public String getNom(){
+        return nom;
     }
     
     public int getChangement() {
@@ -39,6 +39,9 @@ public class Pirate {
     }
 
     public void setLife(int life) {
+        if (life > 5){
+            life = 5;
+        }
         this.life = life;
     }
 
@@ -47,7 +50,17 @@ public class Pirate {
     }
     
     public void setPosition(int position) {
+    	
         this.position = position;
+    }
+    
+    public int getLastPosition() {
+        return lastPosition;
+    }
+    
+    public void setLastPosition(int position) {
+
+        this.lastPosition = position;
     }
 
     public Etat getEtat() {

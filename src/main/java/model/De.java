@@ -13,19 +13,13 @@ import java.util.Random;
  */
 public class De {
     private int value;
-    private Random seed;
-    
-    public De(){
-        this.seed = new Random();
+
+    public void roll() {
+        Random rdm = new Random();
+        value = rdm.nextInt(6) + 1;
     }
-    
-    
-    public int roll(){
-        value = seed.nextInt(6)+1;
-        return value ;
-    }
-    
-    public int getValue(){
+
+    public int getValue() {
         return value;
     }
 }

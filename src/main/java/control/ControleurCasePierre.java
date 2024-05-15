@@ -4,17 +4,34 @@
  */
 package control;
 
+import boundary.IBoundary;
 import model.Etat;
 import model.Pirate;
 
-/**
- *
- * @author laura
- */
-public class ControleurCasePierre {
-    public void action(Pirate pirate,ControlJeuPirate controlJeuPirate) {
-        System.out.println("Le joueur rencontre une pierre !");
-        System.out.println("Le joueur passe son prochain tour.");
-        controlJeuPirate.setEtat(Etat.PASSETOUR, pirate);
-    }
+public class ControleurCasePierre extends ControlActiverCaseSpeciale implements IChangerEtat {
+	
+	public ControleurCasePierre( ControlJeuPirate controlJeuPirate,IBoundary boundary ) {
+            super.controlJeuPirate = controlJeuPirate;
+            super.boundary=boundary;
+	}
+
+
+	@Override
+	public Etat getEtat() {
+            return Etat.PASSETOUR;
+	}
+
+	@Override
+	public void finChangerEtat() {
+            finAction();
+	
+	}
+
+	@Override
+	public void action(Pirate pirate) {
+            pirate.setEtat(Etat.PASSETOUR);
+            boundary.changerEtat(this);
+	}
+
 }
+

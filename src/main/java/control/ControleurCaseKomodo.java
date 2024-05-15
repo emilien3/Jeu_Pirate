@@ -4,31 +4,99 @@
  */
 package control;
 
+import boundary.IBoundary;
+import java.util.function.Function;
+import java.util.stream.Stream;
+import model.De;
 import model.Etat;
 import model.Pirate;
 
-/**
- *
- * @author laura
- */
-public class ControleurCaseKomodo {
+public class ControleurCaseKomodo extends ControlActiverCaseSpeciale implements IModifierVie,IDeplacerPirate, ILancerDe,IChangement {
+    private IBoundary boundary;
     private final int CHANGEMENT = -3;
-    private final int PERTEPOINTDEVIE = 3;
-    private final int GAGNER = 8;
+    private final int PERTEPOINTDEVIE = -3;
+    private final int GAGNE = 8;
+    private int arrivee,depart;
+    private De[] des;
+    private Pirate pirate;
     
-    public void action(Pirate pirate, ControlJeuPirate controljeuPirate) {
-        System.out.println("Le joueur vient d arriver sur une case komodo et dois relancer les des pour savoir si il court assez vite.");
-        controljeuPirate.setEtat(Etat.ESTPOURSUIVI, pirate);
-        int[] des = controljeuPirate.lancerDe();
-        int sommeDes = des[0] + des[1];
-        if (sommeDes <= GAGNER) {
-            System.out.println("Le joueur n a pas courru assez vite.");
-            controljeuPirate.perdrePointsDeVie(PERTEPOINTDEVIE,pirate);
-            controljeuPirate.setChangement(CHANGEMENT, pirate);
-        } else {
-            System.out.println("Le joueur a courru assez vite.");
-            controljeuPirate.avancerJoueur(des,pirate);
-        }
-        controljeuPirate.setEtat(Etat.ESTVIVANT, pirate);
+    public ControleurCaseKomodo(ControlJeuPirate controlJeuPirate, IBoundary boundary, De[] des){
+        super.controlJeuPirate=controlJeuPirate;
+        this.boundary=boundary;
+        this.des = des;
     }
+    public void action(Pirate pirate) {
+        this.pirate = pirate;
+    	pirate.getEtat();
+        this.depart = pirate.getPosition();
+        lancerDes();
+        boundary.lancerDe(this);
+    }
+  
+	@Override
+	public int[] getDes() {
+            Function<De[], int[]> getValeurs = d -> Stream.of(d).mapToInt(d1 -> d1.getValue()).toArray();
+            return getValeurs.apply(des);
+	}
+        
+        private int totalDes(De[] des){
+            //Pour recupérer la somme des valeurs des dés
+            Function<De[], Integer> somme = d -> Stream.of(d).mapToInt(d1 -> d1.getValue()).reduce(0, (a, b) -> a+b);
+            return somme.apply(des);
+        }
+        
+        private void lancerDes(){
+            for (De d : des){
+                d.roll();
+            }
+        }
+        
+	@Override
+	public void finLancer() {
+            int lancer = totalDes(des);
+            if (lancer<GAGNE) {
+                pirate.setLife(pirate.getLife() + PERTEPOINTDEVIE);
+                boundary.modifierVie(this);
+            }else{
+                this.arrivee=depart + lancer;
+                boundary.deplacer(this);
+            }
+	}
+  
+	@Override
+	public int getDepart() {
+		return depart ;
+	}
+	@Override
+	public int getArrivee() {
+		return arrivee;
+	}
+	@Override
+	public String getEffetCase(int num) {
+            return controlJeuPirate.getEffetcase(num);
+	}
+	@Override
+	public void finDeplacement() {
+            finAction();
+	}
+	@Override
+	public int getVie() {
+            return PERTEPOINTDEVIE;
+	}
+	@Override
+	public void finModifVie() {
+            pirate.setChangement(CHANGEMENT);
+            boundary.changementProchainTour(this);
+	}
+
+	@Override
+	public int getChangement() {
+            return CHANGEMENT;
+	}
+        
+	@Override
+	public void finChangement() {
+            finAction();
+	}
+	
 }

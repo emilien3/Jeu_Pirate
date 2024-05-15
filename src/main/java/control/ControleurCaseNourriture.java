@@ -4,20 +4,44 @@
  */
 package control;
 
+import boundary.IBoundary;
 import model.Pirate;
 
-/**
- *
- * @author laura
- */
-public class ControleurCaseNourriture {
-    private final int CHANGEMENT = 2;
-    private final int GAINPOINTDEVIE = 1;
-    
-    public void action(Pirate pirate,ControlJeuPirate controlJeuPirate) {
-        System.out.println("Le joueur vient d arriver sur une case nourriture il recupere de la vie et est plus for pour le prochain tour.");
-        controlJeuPirate.setChangement(CHANGEMENT, pirate);
-    	//controlJeuPirate.avancerJoueur(2); Variante ou le bonus est direct
-        controlJeuPirate.gagnerPointsDeVie(GAINPOINTDEVIE,pirate); 
-    }
+
+public class ControleurCaseNourriture extends ControlActiverCaseSpeciale implements IChangement,IModifierVie {
+	private final int CHANGEMENT=2;
+	private final int GAINPOINTDEVIE=1;
+
+	public ControleurCaseNourriture(ControlJeuPirate controlJeuPirate, IBoundary boundary) {
+		super.controlJeuPirate= controlJeuPirate;
+		super.boundary = boundary;
+	}
+
+	@Override
+	public int getVie() {
+		return GAINPOINTDEVIE;
+	}
+
+	@Override
+	public int getChangement() {
+		return CHANGEMENT;
+	}
+
+	@Override
+	public void finChangement() {
+            finAction();
+	}
+
+	@Override
+	public void action(Pirate pirate) {
+            pirate.setLife(pirate.getLife() + GAINPOINTDEVIE);
+            pirate.setChangement(CHANGEMENT);
+            boundary.modifierVie(this);
+	}
+
+	@Override
+	public void finModifVie() {
+            boundary.changementProchainTour(this);
+	}
+
 }
