@@ -73,12 +73,14 @@ public class FrameTestToDelete extends javax.swing.JFrame {
                 .addComponent(infosJoueurBill, javax.swing.GroupLayout.PREFERRED_SIZE, 529, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 0, Short.MAX_VALUE))
             .addGroup(jPanelPlayersLayout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(infosJoueurJack, javax.swing.GroupLayout.PREFERRED_SIZE, 545, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanelPlayersLayout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(diceCoursePanel, javax.swing.GroupLayout.PREFERRED_SIZE, 545, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(jPanelPlayersLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanelPlayersLayout.createSequentialGroup()
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(diceCoursePanel, javax.swing.GroupLayout.PREFERRED_SIZE, 545, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanelPlayersLayout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(infosJoueurJack, javax.swing.GroupLayout.PREFERRED_SIZE, 545, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(0, 0, Short.MAX_VALUE)))
                 .addContainerGap())
         );
         jPanelPlayersLayout.setVerticalGroup(
@@ -170,7 +172,7 @@ public class FrameTestToDelete extends javax.swing.JFrame {
     
     public void finDePartie(String etat) {
         JDialog finWindow = new JDialog();
-        finWindow.setSize(300, 150);
+        finWindow.setSize(300, 105);
         finWindow.setLocationRelativeTo(null);
         Container pane = finWindow.getContentPane();
         pane.setLayout(new FlowLayout());
@@ -199,6 +201,7 @@ public class FrameTestToDelete extends javax.swing.JFrame {
             finWindow.dispose();
             this.dispose();
         });
+        finWindow.setDefaultCloseOperation(JDialog.DO_NOTHING_ON_CLOSE);
         finWindow.setVisible(true);
         
     }
