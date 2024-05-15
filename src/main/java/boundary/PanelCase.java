@@ -86,7 +86,9 @@ public class PanelCase extends javax.swing.JPanel {
     }
     
     public void caseSombre(){
-        this.couleur = NOIR;
+        if (!active){
+            this.couleur = NOIR;
+        }
         this.sombre = true;
         repaint();
     }

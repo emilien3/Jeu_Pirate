@@ -521,12 +521,16 @@ public class JPlateau extends javax.swing.JPanel {
         jetonJack.setLayout(jetonJackLayout);
         jetonJackLayout.setHorizontalGroup(
             jetonJackLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 48, Short.MAX_VALUE)
+            .addGap(0, 49, Short.MAX_VALUE)
         );
         jetonJackLayout.setVerticalGroup(
             jetonJackLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGap(0, 48, Short.MAX_VALUE)
         );
+
+        layeredPaneJeton.add(jetonJack);
+        jetonJack.setBounds(21, 18, 49, 48);
+        jetonJack.getAccessibleContext().setAccessibleName("");
 
         jetonBill.setEnabled(false);
         jetonBill.setMovable(true);
@@ -554,32 +558,8 @@ public class JPlateau extends javax.swing.JPanel {
             .addGap(0, 48, Short.MAX_VALUE)
         );
 
-        layeredPaneJeton.setLayer(jetonJack, javax.swing.JLayeredPane.DEFAULT_LAYER);
-        layeredPaneJeton.setLayer(jetonBill, javax.swing.JLayeredPane.DEFAULT_LAYER);
-
-        javax.swing.GroupLayout layeredPaneJetonLayout = new javax.swing.GroupLayout(layeredPaneJeton);
-        layeredPaneJeton.setLayout(layeredPaneJetonLayout);
-        layeredPaneJetonLayout.setHorizontalGroup(
-            layeredPaneJetonLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layeredPaneJetonLayout.createSequentialGroup()
-                .addGroup(layeredPaneJetonLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layeredPaneJetonLayout.createSequentialGroup()
-                        .addGap(70, 70, 70)
-                        .addComponent(jetonBill, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layeredPaneJetonLayout.createSequentialGroup()
-                        .addGap(21, 21, 21)
-                        .addComponent(jetonJack, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(658, Short.MAX_VALUE))
-        );
-        layeredPaneJetonLayout.setVerticalGroup(
-            layeredPaneJetonLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layeredPaneJetonLayout.createSequentialGroup()
-                .addGap(18, 18, 18)
-                .addComponent(jetonJack, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jetonBill, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(640, Short.MAX_VALUE))
-        );
+        layeredPaneJeton.add(jetonBill);
+        jetonBill.setBounds(70, 72, 48, 48);
 
         jLayeredPane1.setLayer(layeredPaneCase, javax.swing.JLayeredPane.DEFAULT_LAYER);
         jLayeredPane1.setLayer(layeredPaneJeton, javax.swing.JLayeredPane.DRAG_LAYER);
@@ -718,6 +698,8 @@ public class JPlateau extends javax.swing.JPanel {
 
 
     private Dialog dialog;
+    private Point positionBill;
+    private Point positionJack;
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private boundary.PanelCase case1;
     private boundary.PanelCase case10;
