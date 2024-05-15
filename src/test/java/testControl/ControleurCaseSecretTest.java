@@ -32,5 +32,10 @@ class ControleurCaseSecretTest {
         assertEquals(CaseEnum.SECRET.toString(), cCS.getEffetCase(3));
 	
 	}
+	
+	@Test
+	void testArret() {
+		cCS.action(pirates[tour]);
+	}
 
 }
