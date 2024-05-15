@@ -39,7 +39,7 @@
               <EmptySpace max="-2" attributes="0"/>
               <Group type="103" groupAlignment="0" attributes="0">
                   <Component id="jPanelPlayers" max="32767" attributes="0"/>
-                  <Component id="jPanelBoard" max="32767" attributes="0"/>
+                  <Component id="jPanelBoard" pref="780" max="32767" attributes="0"/>
               </Group>
               <EmptySpace max="-2" attributes="0"/>
           </Group>
@@ -83,11 +83,13 @@
               </Group>
               <Group type="102" attributes="0">
                   <EmptySpace max="-2" attributes="0"/>
-                  <Group type="103" groupAlignment="0" attributes="0">
-                      <Component id="infosJoueurJack" alignment="0" min="-2" pref="545" max="-2" attributes="0"/>
-                      <Component id="diceCoursePanel" alignment="0" min="-2" pref="545" max="-2" attributes="0"/>
-                  </Group>
+                  <Component id="infosJoueurJack" min="-2" pref="545" max="-2" attributes="0"/>
                   <EmptySpace max="32767" attributes="0"/>
+              </Group>
+              <Group type="102" alignment="1" attributes="0">
+                  <EmptySpace max="32767" attributes="0"/>
+                  <Component id="diceCoursePanel" min="-2" pref="545" max="-2" attributes="0"/>
+                  <EmptySpace max="-2" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
@@ -98,7 +100,7 @@
                   <Component id="infosJoueurBill" min="-2" pref="271" max="-2" attributes="0"/>
                   <EmptySpace max="32767" attributes="0"/>
                   <Component id="diceCoursePanel" min="-2" pref="119" max="-2" attributes="0"/>
-                  <EmptySpace min="-2" pref="42" max="-2" attributes="0"/>
+                  <EmptySpace min="-2" pref="52" max="-2" attributes="0"/>
                   <Component id="infosJoueurJack" min="-2" pref="265" max="-2" attributes="0"/>
                   <EmptySpace max="-2" attributes="0"/>
               </Group>
@@ -123,13 +125,14 @@
         <Component class="boundary.InfosJoueur" name="infosJoueurJack">
           <Properties>
             <Property name="PV" type="int" value="5"/>
-            <Property name="dureeEffet" type="int" value="5"/>
+            <Property name="dureeEffet" type="int" value="0"/>
             <Property name="effet" type="boundary.Effet$TypeEffet" editor="org.netbeans.modules.form.editors.EnumEditor">
-              <Value id="avalanche"/>
+              <Value id="none"/>
             </Property>
             <Property name="joueur" type="boundary.InfosJoueur$Joueur" editor="org.netbeans.modules.form.editors.EnumEditor">
               <Value id="Jack"/>
             </Property>
+            <Property name="turn" type="boolean" value="false"/>
           </Properties>
         </Component>
       </SubComponents>
