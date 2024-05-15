@@ -34,11 +34,7 @@ public class Dialog implements IPirates {
         frame.setDialog(this);
         //Initialisation des pirates
         frame.getInfosJoueurBill().setPV(5);
-        frame.getInfosJoueurBill().setEffet(Effet.TypeEffet.none);
-        frame.getInfosJoueurBill().setDureeEffet(0);
         frame.getInfosJoueurJack().setPV(5);
-        frame.getInfosJoueurJack().setEffet(Effet.TypeEffet.none);
-        frame.getInfosJoueurJack().setDureeEffet(0);
         //Initialisation des images des cases
         Map<CaseEnum, String> mapPlateau = new EnumMap<>(CaseEnum.class);
         mapPlateau.put(CaseEnum.NORMALE, "bateau.png");
@@ -148,7 +144,8 @@ public class Dialog implements IPirates {
     public void changerEtat() {
         Etat etat = adaptateur.getEtat();
         //TODO : mettre etat de numPirate à changement
-        InfosJoueur infos =  adaptateur.getPirateCourant()==0 ? frame.getInfosJoueurBill() : frame.getInfosJoueurJack();
+        PanelInfosJoueur joueur =  adaptateur.getPirateCourant() == 0 ? frame.getInfosJoueurBill() : frame.getInfosJoueurJack();
+        joueur.setEtat(etat);
         adaptateur.finChangerEtat();
         
     }
@@ -158,8 +155,8 @@ public class Dialog implements IPirates {
         int joueurCourant = adaptateur.getPirateCourant();
         int vie = adaptateur.getPointsVie();
         //TODO : mettre vie de numPirate à changement
-        InfosJoueur currPlayer = joueurCourant == 0 ? frame.getInfosJoueurBill() : frame.getInfosJoueurJack();
-        currPlayer.setPV(vie);
+        PanelInfosJoueur currPlayer = joueurCourant == 0 ? frame.getInfosJoueurBill() : frame.getInfosJoueurJack();
+        currPlayer.setPV(currPlayer.getPV() + vie);
         adaptateur.finChangerVie();
     }
 

@@ -16,7 +16,15 @@ import javax.imageio.ImageIO;
 public class Effet extends javax.swing.JPanel {
 
     private BufferedImage effetImage;
-    private model.Etat etat = null;
+    private model.Etat etat = model.Etat.ESTVIVANT;
+    private EtatImage etatImage = EtatImage.none;
+            
+    public enum EtatImage {
+        falaise,
+        monstre,
+        ile,
+        none
+    }
     
     /**
      * Creates new form Effet
@@ -54,12 +62,27 @@ public class Effet extends javax.swing.JPanel {
     }
         
     private void updateImageFile() {
-        if(etat == null)
+        
+        
+        switch(etat.name()) {
+            case "PASSETOUR":
+                etatImage = EtatImage.falaise;
+                break;
+            case "ESTPRISON":
+                etatImage = EtatImage.ile;
+                break;
+            case "ESTPOURSUIVI":
+                etatImage = EtatImage.monstre;
+                break;
+            default:
+                etatImage = etatImage.none;
+        }
+        if(etatImage == EtatImage.none)
             return;
         
         try {
             effetImage = ImageIO.read(
-                    getClass().getResource("/" + formatName(etat.name()) + ".png"));
+                    getClass().getResource("/" + formatName(etatImage.name()) + ".png"));
             
         } catch (IOException e) {
             e.printStackTrace();

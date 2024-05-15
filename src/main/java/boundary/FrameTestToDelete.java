@@ -42,8 +42,8 @@ public class FrameTestToDelete extends javax.swing.JFrame {
         jPlateau = new boundary.JPlateau();
         jPanelPlayers = new javax.swing.JPanel();
         diceCoursePanel = new boundary.DiceCoursePanel();
-        infosJoueurBill = new boundary.InfosJoueur();
-        infosJoueurJack = new boundary.InfosJoueur();
+        infosJoueurBill = new boundary.PanelInfosJoueur();
+        infosJoueurJack = new boundary.PanelInfosJoueur();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setResizable(false);
@@ -54,15 +54,12 @@ public class FrameTestToDelete extends javax.swing.JFrame {
 
         jPanelPlayers.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
 
-        infosJoueurBill.setPV(5);
-        infosJoueurBill.setDureeEffet(0);
-        infosJoueurBill.setEffet(boundary.Effet.TypeEffet.none);
-        infosJoueurBill.setJoueur(boundary.InfosJoueur.Joueur.Bill);
+        infosJoueurBill.setEtat(model.Etat.ESTVIVANT);
+        infosJoueurBill.setJoueur(boundary.PanelInfosJoueur.Joueur.Bill);
+        infosJoueurBill.setTurn(false);
 
-        infosJoueurJack.setPV(5);
-        infosJoueurJack.setDureeEffet(0);
-        infosJoueurJack.setEffet(boundary.Effet.TypeEffet.none);
-        infosJoueurJack.setJoueur(boundary.InfosJoueur.Joueur.Jack);
+        infosJoueurJack.setEtat(model.Etat.ESTVIVANT);
+        infosJoueurJack.setJoueur(boundary.PanelInfosJoueur.Joueur.Jack);
         infosJoueurJack.setTurn(false);
 
         javax.swing.GroupLayout jPanelPlayersLayout = new javax.swing.GroupLayout(jPanelPlayers);
@@ -70,29 +67,25 @@ public class FrameTestToDelete extends javax.swing.JFrame {
         jPanelPlayersLayout.setHorizontalGroup(
             jPanelPlayersLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanelPlayersLayout.createSequentialGroup()
-                .addComponent(infosJoueurBill, javax.swing.GroupLayout.PREFERRED_SIZE, 529, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, Short.MAX_VALUE))
-            .addGroup(jPanelPlayersLayout.createSequentialGroup()
                 .addGroup(jPanelPlayersLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(diceCoursePanel, javax.swing.GroupLayout.DEFAULT_SIZE, 551, Short.MAX_VALUE)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanelPlayersLayout.createSequentialGroup()
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(diceCoursePanel, javax.swing.GroupLayout.PREFERRED_SIZE, 545, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jPanelPlayersLayout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(infosJoueurJack, javax.swing.GroupLayout.PREFERRED_SIZE, 545, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(0, 0, Short.MAX_VALUE)))
+                        .addGap(0, 0, Short.MAX_VALUE)
+                        .addGroup(jPanelPlayersLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(infosJoueurJack, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(infosJoueurBill, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
                 .addContainerGap())
         );
         jPanelPlayersLayout.setVerticalGroup(
             jPanelPlayersLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanelPlayersLayout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(infosJoueurBill, javax.swing.GroupLayout.PREFERRED_SIZE, 271, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGap(43, 43, 43)
+                .addComponent(infosJoueurBill, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(diceCoursePanel, javax.swing.GroupLayout.PREFERRED_SIZE, 119, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(52, 52, 52)
-                .addComponent(infosJoueurJack, javax.swing.GroupLayout.PREFERRED_SIZE, 265, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap())
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(infosJoueurJack, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -100,20 +93,22 @@ public class FrameTestToDelete extends javax.swing.JFrame {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
                 .addComponent(jPanelBoard, javax.swing.GroupLayout.PREFERRED_SIZE, 794, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jPanelPlayers, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap())
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jPanelPlayers, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jPanelBoard, javax.swing.GroupLayout.DEFAULT_SIZE, 780, Short.MAX_VALUE))
-                .addContainerGap())
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(jPanelBoard, javax.swing.GroupLayout.PREFERRED_SIZE, 779, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(jPanelPlayers, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addContainerGap())))
         );
 
         pack();
@@ -153,15 +148,14 @@ public class FrameTestToDelete extends javax.swing.JFrame {
             }
         });
     }
-
-    public InfosJoueur getInfosJoueurBill() {
+    
+    public PanelInfosJoueur getInfosJoueurBill() {
         return infosJoueurBill;
     }
 
-    public InfosJoueur getInfosJoueurJack() {
+    public PanelInfosJoueur getInfosJoueurJack() {
         return infosJoueurJack;
     }
-
     public JPlateau getjPlateau() {
         return jPlateau;
     }
@@ -209,8 +203,8 @@ public class FrameTestToDelete extends javax.swing.JFrame {
     private Dialog dialog;
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private boundary.DiceCoursePanel diceCoursePanel;
-    private boundary.InfosJoueur infosJoueurBill;
-    private boundary.InfosJoueur infosJoueurJack;
+    private boundary.PanelInfosJoueur infosJoueurBill;
+    private boundary.PanelInfosJoueur infosJoueurJack;
     private javax.swing.JPanel jPanelBoard;
     private javax.swing.JPanel jPanelPlayers;
     private boundary.JPlateau jPlateau;
