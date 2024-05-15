@@ -6,10 +6,15 @@ package boundary;
 
 import java.awt.Dimension;
 import java.awt.Point;
+import java.util.EnumMap;
 import java.util.List;
+import java.util.Map;
 import java.util.Random;
 import java.util.stream.IntStream;
+import model.CaseEnum;
+import model.De;
 import model.Etat;
+import model.Plateau;
 /**
  *
  * @author Ninon
@@ -17,6 +22,7 @@ import model.Etat;
 public class Dialog implements IPirates {
     private IAdaptateurFonctionnel adaptateur;
     private FrameTestToDelete frame;
+    private De[] des;
     
     public Dialog(IAdaptateurFonctionnel adaptateur){
         this.adaptateur = adaptateur;
@@ -29,6 +35,22 @@ public class Dialog implements IPirates {
         //initialiser les cases, les pirates, et les des
         frame.getInfosJoueurBill().setPV(5);
         frame.getInfosJoueurJack().setPV(5);
+        Plateau plateau = new Plateau();
+        Map<CaseEnum, String> mapPlateau = new EnumMap<>(CaseEnum.class);
+        mapPlateau.put(CaseEnum.NORMALE, "bateau.png");
+        mapPlateau.put(CaseEnum.DEBUT, "ile.png");
+        mapPlateau.put(CaseEnum.FALAISE, "falaise.png");
+        mapPlateau.put(CaseEnum.NOURRITURE, "nourriture.png");
+        mapPlateau.put(CaseEnum.PIERRE, "falaise.png");
+        mapPlateau.put(CaseEnum.KOMODO, "monstre.png");
+        mapPlateau.put(CaseEnum.BOUE, "ile.png");
+        mapPlateau.put(CaseEnum.LIANES, "ile.png");
+        mapPlateau.put(CaseEnum.SECRET, "ile.png");
+        String[] stringPlateau = new String[plateau.getTAILLETABLEAU()];
+        for (int i = 0; i < stringPlateau.length; i++) {
+            stringPlateau[i] = mapPlateau.get(plateau.donnerCase(i));
+        }
+        des = new De[2];
     }
 
     @Override
@@ -51,7 +73,7 @@ public class Dialog implements IPirates {
         //L'utilisateur à appuyé sur lancer les des
         int[] des = adaptateur.getResultatsDes();
         //TODO : lancer l'animation des des puis afficher le resultat
-        
+        frame.getDiceCoursePanel().diceAnimation();
         adaptateur.finLancerDes();
     }
 
@@ -92,6 +114,7 @@ public class Dialog implements IPirates {
             changerPositionPirate(adaptateur.getDerniereCase());
             currPawn.setLocation(currLocation);
         }
+        adaptateur.finDeplacement();
     }
 
     @Override
@@ -112,18 +135,23 @@ public class Dialog implements IPirates {
         randomLocation.translate(caseLocation.x, caseLocation.y);
         //On deplace le jeton
         currPawn.setLocation(randomLocation);
+        adaptateur.finDeplacement();
     }
 
     @Override
     public void changerChangement() {
         int changement = adaptateur.getChangement();
         //TODO : mettre changement de numPirate à changement
+        adaptateur.finChangement();
     }
 
     @Override
     public void changerEtat() {
         Etat etat = adaptateur.getEtat();
+        int joueurCourant = adaptateur.getPirateCourant();
         //TODO : mettre etat de numPirate à changement
+        adaptateur.finChangerEtat();
+        
     }
 
     @Override
@@ -131,8 +159,9 @@ public class Dialog implements IPirates {
         int joueurCourant = adaptateur.getPirateCourant();
         int vie = adaptateur.getPointsVie();
         //TODO : mettre vie de numPirate à changement
-        InfosJoueur currPlayer = joueurCourant == 0 ? frame.getInfosJoueurJack() : frame.getInfosJoueurBill();
+        InfosJoueur currPlayer = joueurCourant == 0 ? frame.getInfosJoueurBill() : frame.getInfosJoueurJack();
         currPlayer.setPV(vie);
+        adaptateur.finChangerVie();
     }
 
     @Override
@@ -142,14 +171,17 @@ public class Dialog implements IPirates {
             case 0:
                 //Pirate 0 a gagné
                 //TODO : animation fin, victoire pirate 0
+                frame.finDePartie("Bill");
                 break;
             case 1:
                 //Pirate 1 a gagné
                 //TODO : animation fin, victoire pirate 1
+                frame.finDePartie("Jack");
                 break;
             default:
                 //Les deux sont morts donc égalité
                 //TODO : animation fin, defaite des deux pirates
+                frame.finDePartie("Egalité");
                 break;
         }
     }
