@@ -9,7 +9,7 @@ package boundary;
  * @author ogled
  */
 public class InfosJoueur extends javax.swing.JPanel {
-    
+
     public enum Joueur {Bill, Jack};
     private Joueur joueur = Joueur.Bill;
     private boolean turn = true;
@@ -23,42 +23,35 @@ public class InfosJoueur extends javax.swing.JPanel {
 
     public void setJoueur(Joueur joueur) {
         this.joueur = joueur;
-        
+
         // Pour l'édition dans le GUI
         firePropertyChange("joueur", null, joueur);
-        
+
         // On mets à jour les images
         this.background.setAlternative(joueur == Joueur.Jack);
         this.pointsVie.setAlternative(joueur == Joueur.Jack);
     }
-    
+
     public void setPV(int PV) {
         this.pointsVie.setNombrePV(PV);
-        
+
         // Pour l'édition dans le GUI
         firePropertyChange("PV", null, PV);
     }
-    
-    public void setDureeEffet(int duree) {
-        this.effet.setDureeEffet(duree);
-        
+
+    public void setEtat(model.Etat etat) {
+        this.effet.setEffet(etat);
+
         // Pour l'édition dans le GUI
-        firePropertyChange("effetDuree", null, duree);
+        firePropertyChange("etat", null, effet);
     }
-    
-    public void setEffet(Effet.TypeEffet effet) {
-        this.effet.setEffet(effet);
-        
-        // Pour l'édition dans le GUI
-        firePropertyChange("effet", null, effet);
-    }
-    
+
     public void setTurn(boolean turn) {
         this.turn = turn;
         panelTurn.setVisible(turn);
         firePropertyChange("turn", null, turn);
     }
-    
+
     public boolean getTurn() {
         return turn;
     }
@@ -93,7 +86,6 @@ public class InfosJoueur extends javax.swing.JPanel {
             .addGap(0, 32, Short.MAX_VALUE)
         );
 
-        effet.setEffet(boundary.Effet.TypeEffet.none);
         effet.setPreferredSize(new java.awt.Dimension(160, 80));
 
         javax.swing.GroupLayout backgroundLayout = new javax.swing.GroupLayout(background);

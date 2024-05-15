@@ -26,7 +26,7 @@
               <EmptySpace pref="69" max="32767" attributes="0"/>
               <Group type="103" groupAlignment="0" max="-2" attributes="0">
                   <Component id="labelNomEffet" max="32767" attributes="0"/>
-                  <Component id="labelDureeEffet" pref="85" max="32767" attributes="0"/>
+                  <Component id="labelDescriptionEffet" pref="85" max="32767" attributes="0"/>
               </Group>
               <EmptySpace max="-2" attributes="0"/>
           </Group>
@@ -38,7 +38,7 @@
               <EmptySpace max="-2" attributes="0"/>
               <Component id="labelNomEffet" min="-2" max="-2" attributes="0"/>
               <EmptySpace max="-2" attributes="0"/>
-              <Component id="labelDureeEffet" min="-2" max="-2" attributes="0"/>
+              <Component id="labelDescriptionEffet" min="-2" max="-2" attributes="0"/>
               <EmptySpace pref="52" max="32767" attributes="0"/>
           </Group>
       </Group>
@@ -55,7 +55,7 @@
         </Property>
       </Properties>
     </Component>
-    <Component class="javax.swing.JLabel" name="labelDureeEffet">
+    <Component class="javax.swing.JLabel" name="labelDescriptionEffet">
       <Properties>
         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
           <Font name="Segoe UI" size="14" style="0"/>
