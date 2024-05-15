@@ -107,6 +107,7 @@ public class Dialog implements IPirates {
         JPion currPawn = adaptateur.getPirateCourant() == 0 ? frame.getjPlateau().getJetonBill() : frame.getjPlateau().getJetonJack();
         
         if (arrivee == adaptateur.getProchaineCase()){
+            System.out.println(adaptateur.getDescriptionCase(arrivee));
             //Case valide
             //TODO : animation case valide (caseArrive)
             frame.getjPlateau().getCase(arrivee).caseValide();
