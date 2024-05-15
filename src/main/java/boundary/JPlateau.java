@@ -5,10 +5,14 @@
 package boundary;
 
 import java.awt.Component;
+import java.awt.Dimension;
+import java.awt.Point;
 import java.awt.Rectangle;
 import java.util.List;
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.Random;
+import java.util.stream.IntStream;
 
 /**
  *
@@ -41,17 +45,17 @@ public class JPlateau extends javax.swing.JPanel {
         int posCase2 = layeredPaneCase.getPosition(case2);
         return Integer.compare(posCase1, posCase2);
         });
-        for (int i = 1; i < cases.size() + 1; i++) {
-            PanelCase caseAct = cases.get(i - 1);
-            caseAct.setNumero(i);
+        for (int i = 0; i < cases.size(); i++) {
+            PanelCase caseAct = cases.get(i);
+            caseAct.setNumero(i + 1);
             caseAct.setImage("ile.png"); // pour les images personaliser
         }
     }
     
     public void setImage(String[] images) {
-        for (int i = 1; i < cases.size() + 1; i++) {
-            PanelCase caseAct = cases.get(i - 1);
-            caseAct.setImage(images[i - 1]);
+        for (int i = 0; i < cases.size(); i++) {
+            PanelCase caseAct = cases.get(i);
+            caseAct.setImage(images[i]);
         }
     }
     
@@ -64,9 +68,7 @@ public class JPlateau extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        layeredPaneJeton = new javax.swing.JLayeredPane();
-        jetonJack = new boundary.JPion();
-        jetonBill = new boundary.JPion();
+        jLayeredPane1 = new javax.swing.JLayeredPane();
         layeredPaneCase = new javax.swing.JLayeredPane();
         case1 = new boundary.PanelCase();
         case2 = new boundary.PanelCase();
@@ -98,8 +100,408 @@ public class JPlateau extends javax.swing.JPanel {
         case28 = new boundary.PanelCase();
         case29 = new boundary.PanelCase();
         case30 = new boundary.PanelCase();
+        layeredPaneJeton = new javax.swing.JLayeredPane();
+        jetonJack = new boundary.JPion();
+        jetonBill = new boundary.JPion();
 
-        layeredPaneJeton.setPreferredSize(new java.awt.Dimension(654, 760));
+        setPreferredSize(new java.awt.Dimension(794, 764));
+
+        jLayeredPane1.setPreferredSize(new java.awt.Dimension(794, 764));
+
+        layeredPaneCase.setPreferredSize(new java.awt.Dimension(794, 764));
+        layeredPaneCase.setLayout(new java.awt.GridLayout(6, 5));
+
+        javax.swing.GroupLayout case1Layout = new javax.swing.GroupLayout(case1);
+        case1.setLayout(case1Layout);
+        case1Layout.setHorizontalGroup(
+            case1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 153, Short.MAX_VALUE)
+        );
+        case1Layout.setVerticalGroup(
+            case1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 125, Short.MAX_VALUE)
+        );
+
+        layeredPaneCase.add(case1);
+
+        javax.swing.GroupLayout case2Layout = new javax.swing.GroupLayout(case2);
+        case2.setLayout(case2Layout);
+        case2Layout.setHorizontalGroup(
+            case2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 153, Short.MAX_VALUE)
+        );
+        case2Layout.setVerticalGroup(
+            case2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 125, Short.MAX_VALUE)
+        );
+
+        layeredPaneCase.add(case2);
+
+        javax.swing.GroupLayout case3Layout = new javax.swing.GroupLayout(case3);
+        case3.setLayout(case3Layout);
+        case3Layout.setHorizontalGroup(
+            case3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 153, Short.MAX_VALUE)
+        );
+        case3Layout.setVerticalGroup(
+            case3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 125, Short.MAX_VALUE)
+        );
+
+        layeredPaneCase.add(case3);
+
+        javax.swing.GroupLayout case4Layout = new javax.swing.GroupLayout(case4);
+        case4.setLayout(case4Layout);
+        case4Layout.setHorizontalGroup(
+            case4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 153, Short.MAX_VALUE)
+        );
+        case4Layout.setVerticalGroup(
+            case4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 125, Short.MAX_VALUE)
+        );
+
+        layeredPaneCase.add(case4);
+
+        javax.swing.GroupLayout case5Layout = new javax.swing.GroupLayout(case5);
+        case5.setLayout(case5Layout);
+        case5Layout.setHorizontalGroup(
+            case5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 153, Short.MAX_VALUE)
+        );
+        case5Layout.setVerticalGroup(
+            case5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 125, Short.MAX_VALUE)
+        );
+
+        layeredPaneCase.add(case5);
+
+        javax.swing.GroupLayout case6Layout = new javax.swing.GroupLayout(case6);
+        case6.setLayout(case6Layout);
+        case6Layout.setHorizontalGroup(
+            case6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 153, Short.MAX_VALUE)
+        );
+        case6Layout.setVerticalGroup(
+            case6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 125, Short.MAX_VALUE)
+        );
+
+        layeredPaneCase.add(case6);
+
+        javax.swing.GroupLayout case7Layout = new javax.swing.GroupLayout(case7);
+        case7.setLayout(case7Layout);
+        case7Layout.setHorizontalGroup(
+            case7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 153, Short.MAX_VALUE)
+        );
+        case7Layout.setVerticalGroup(
+            case7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 125, Short.MAX_VALUE)
+        );
+
+        layeredPaneCase.add(case7);
+
+        javax.swing.GroupLayout case8Layout = new javax.swing.GroupLayout(case8);
+        case8.setLayout(case8Layout);
+        case8Layout.setHorizontalGroup(
+            case8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 153, Short.MAX_VALUE)
+        );
+        case8Layout.setVerticalGroup(
+            case8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 125, Short.MAX_VALUE)
+        );
+
+        layeredPaneCase.add(case8);
+
+        javax.swing.GroupLayout case9Layout = new javax.swing.GroupLayout(case9);
+        case9.setLayout(case9Layout);
+        case9Layout.setHorizontalGroup(
+            case9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 153, Short.MAX_VALUE)
+        );
+        case9Layout.setVerticalGroup(
+            case9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 125, Short.MAX_VALUE)
+        );
+
+        layeredPaneCase.add(case9);
+
+        javax.swing.GroupLayout case10Layout = new javax.swing.GroupLayout(case10);
+        case10.setLayout(case10Layout);
+        case10Layout.setHorizontalGroup(
+            case10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 153, Short.MAX_VALUE)
+        );
+        case10Layout.setVerticalGroup(
+            case10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 125, Short.MAX_VALUE)
+        );
+
+        layeredPaneCase.add(case10);
+
+        javax.swing.GroupLayout case11Layout = new javax.swing.GroupLayout(case11);
+        case11.setLayout(case11Layout);
+        case11Layout.setHorizontalGroup(
+            case11Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 153, Short.MAX_VALUE)
+        );
+        case11Layout.setVerticalGroup(
+            case11Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 125, Short.MAX_VALUE)
+        );
+
+        layeredPaneCase.add(case11);
+
+        javax.swing.GroupLayout case12Layout = new javax.swing.GroupLayout(case12);
+        case12.setLayout(case12Layout);
+        case12Layout.setHorizontalGroup(
+            case12Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 153, Short.MAX_VALUE)
+        );
+        case12Layout.setVerticalGroup(
+            case12Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 125, Short.MAX_VALUE)
+        );
+
+        layeredPaneCase.add(case12);
+
+        javax.swing.GroupLayout case13Layout = new javax.swing.GroupLayout(case13);
+        case13.setLayout(case13Layout);
+        case13Layout.setHorizontalGroup(
+            case13Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 153, Short.MAX_VALUE)
+        );
+        case13Layout.setVerticalGroup(
+            case13Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 125, Short.MAX_VALUE)
+        );
+
+        layeredPaneCase.add(case13);
+
+        javax.swing.GroupLayout case14Layout = new javax.swing.GroupLayout(case14);
+        case14.setLayout(case14Layout);
+        case14Layout.setHorizontalGroup(
+            case14Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 153, Short.MAX_VALUE)
+        );
+        case14Layout.setVerticalGroup(
+            case14Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 125, Short.MAX_VALUE)
+        );
+
+        layeredPaneCase.add(case14);
+
+        javax.swing.GroupLayout case15Layout = new javax.swing.GroupLayout(case15);
+        case15.setLayout(case15Layout);
+        case15Layout.setHorizontalGroup(
+            case15Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 153, Short.MAX_VALUE)
+        );
+        case15Layout.setVerticalGroup(
+            case15Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 125, Short.MAX_VALUE)
+        );
+
+        layeredPaneCase.add(case15);
+
+        javax.swing.GroupLayout case16Layout = new javax.swing.GroupLayout(case16);
+        case16.setLayout(case16Layout);
+        case16Layout.setHorizontalGroup(
+            case16Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 153, Short.MAX_VALUE)
+        );
+        case16Layout.setVerticalGroup(
+            case16Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 125, Short.MAX_VALUE)
+        );
+
+        layeredPaneCase.add(case16);
+
+        javax.swing.GroupLayout case17Layout = new javax.swing.GroupLayout(case17);
+        case17.setLayout(case17Layout);
+        case17Layout.setHorizontalGroup(
+            case17Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 153, Short.MAX_VALUE)
+        );
+        case17Layout.setVerticalGroup(
+            case17Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 125, Short.MAX_VALUE)
+        );
+
+        layeredPaneCase.add(case17);
+
+        javax.swing.GroupLayout case18Layout = new javax.swing.GroupLayout(case18);
+        case18.setLayout(case18Layout);
+        case18Layout.setHorizontalGroup(
+            case18Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 153, Short.MAX_VALUE)
+        );
+        case18Layout.setVerticalGroup(
+            case18Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 125, Short.MAX_VALUE)
+        );
+
+        layeredPaneCase.add(case18);
+
+        javax.swing.GroupLayout case19Layout = new javax.swing.GroupLayout(case19);
+        case19.setLayout(case19Layout);
+        case19Layout.setHorizontalGroup(
+            case19Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 153, Short.MAX_VALUE)
+        );
+        case19Layout.setVerticalGroup(
+            case19Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 125, Short.MAX_VALUE)
+        );
+
+        layeredPaneCase.add(case19);
+
+        javax.swing.GroupLayout case20Layout = new javax.swing.GroupLayout(case20);
+        case20.setLayout(case20Layout);
+        case20Layout.setHorizontalGroup(
+            case20Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 153, Short.MAX_VALUE)
+        );
+        case20Layout.setVerticalGroup(
+            case20Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 125, Short.MAX_VALUE)
+        );
+
+        layeredPaneCase.add(case20);
+
+        javax.swing.GroupLayout case21Layout = new javax.swing.GroupLayout(case21);
+        case21.setLayout(case21Layout);
+        case21Layout.setHorizontalGroup(
+            case21Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 153, Short.MAX_VALUE)
+        );
+        case21Layout.setVerticalGroup(
+            case21Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 125, Short.MAX_VALUE)
+        );
+
+        layeredPaneCase.add(case21);
+
+        javax.swing.GroupLayout case22Layout = new javax.swing.GroupLayout(case22);
+        case22.setLayout(case22Layout);
+        case22Layout.setHorizontalGroup(
+            case22Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 153, Short.MAX_VALUE)
+        );
+        case22Layout.setVerticalGroup(
+            case22Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 125, Short.MAX_VALUE)
+        );
+
+        layeredPaneCase.add(case22);
+
+        javax.swing.GroupLayout case23Layout = new javax.swing.GroupLayout(case23);
+        case23.setLayout(case23Layout);
+        case23Layout.setHorizontalGroup(
+            case23Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 153, Short.MAX_VALUE)
+        );
+        case23Layout.setVerticalGroup(
+            case23Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 125, Short.MAX_VALUE)
+        );
+
+        layeredPaneCase.add(case23);
+
+        javax.swing.GroupLayout case24Layout = new javax.swing.GroupLayout(case24);
+        case24.setLayout(case24Layout);
+        case24Layout.setHorizontalGroup(
+            case24Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 153, Short.MAX_VALUE)
+        );
+        case24Layout.setVerticalGroup(
+            case24Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 125, Short.MAX_VALUE)
+        );
+
+        layeredPaneCase.add(case24);
+
+        javax.swing.GroupLayout case25Layout = new javax.swing.GroupLayout(case25);
+        case25.setLayout(case25Layout);
+        case25Layout.setHorizontalGroup(
+            case25Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 153, Short.MAX_VALUE)
+        );
+        case25Layout.setVerticalGroup(
+            case25Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 125, Short.MAX_VALUE)
+        );
+
+        layeredPaneCase.add(case25);
+
+        javax.swing.GroupLayout case26Layout = new javax.swing.GroupLayout(case26);
+        case26.setLayout(case26Layout);
+        case26Layout.setHorizontalGroup(
+            case26Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 153, Short.MAX_VALUE)
+        );
+        case26Layout.setVerticalGroup(
+            case26Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 125, Short.MAX_VALUE)
+        );
+
+        layeredPaneCase.add(case26);
+
+        javax.swing.GroupLayout case27Layout = new javax.swing.GroupLayout(case27);
+        case27.setLayout(case27Layout);
+        case27Layout.setHorizontalGroup(
+            case27Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 153, Short.MAX_VALUE)
+        );
+        case27Layout.setVerticalGroup(
+            case27Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 125, Short.MAX_VALUE)
+        );
+
+        layeredPaneCase.add(case27);
+
+        javax.swing.GroupLayout case28Layout = new javax.swing.GroupLayout(case28);
+        case28.setLayout(case28Layout);
+        case28Layout.setHorizontalGroup(
+            case28Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 153, Short.MAX_VALUE)
+        );
+        case28Layout.setVerticalGroup(
+            case28Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 125, Short.MAX_VALUE)
+        );
+
+        layeredPaneCase.add(case28);
+
+        javax.swing.GroupLayout case29Layout = new javax.swing.GroupLayout(case29);
+        case29.setLayout(case29Layout);
+        case29Layout.setHorizontalGroup(
+            case29Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 153, Short.MAX_VALUE)
+        );
+        case29Layout.setVerticalGroup(
+            case29Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 125, Short.MAX_VALUE)
+        );
+
+        layeredPaneCase.add(case29);
+
+        javax.swing.GroupLayout case30Layout = new javax.swing.GroupLayout(case30);
+        case30.setLayout(case30Layout);
+        case30Layout.setHorizontalGroup(
+            case30Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 153, Short.MAX_VALUE)
+        );
+        case30Layout.setVerticalGroup(
+            case30Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 125, Short.MAX_VALUE)
+        );
+
+        layeredPaneCase.add(case30);
+
+        layeredPaneJeton.setPreferredSize(new java.awt.Dimension(794, 764));
 
         jetonJack.setBackground(new java.awt.Color(255, 255, 255));
         jetonJack.setPathProperty("pion_jack.png");
@@ -126,6 +528,7 @@ public class JPlateau extends javax.swing.JPanel {
             .addGap(0, 48, Short.MAX_VALUE)
         );
 
+        jetonBill.setEnabled(false);
         jetonBill.setMovable(true);
         jetonBill.setPathProperty("pion_bill.png");
         jetonBill.setPreferredSize(new java.awt.Dimension(48, 48));
@@ -166,7 +569,7 @@ public class JPlateau extends javax.swing.JPanel {
                     .addGroup(layeredPaneJetonLayout.createSequentialGroup()
                         .addGap(21, 21, 21)
                         .addComponent(jetonJack, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(536, Short.MAX_VALUE))
+                .addContainerGap(658, Short.MAX_VALUE))
         );
         layeredPaneJetonLayout.setVerticalGroup(
             layeredPaneJetonLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -178,421 +581,82 @@ public class JPlateau extends javax.swing.JPanel {
                 .addContainerGap(640, Short.MAX_VALUE))
         );
 
-        layeredPaneCase.setPreferredSize(new java.awt.Dimension(654, 760));
-        layeredPaneCase.setLayout(new java.awt.GridLayout(6, 5));
+        jLayeredPane1.setLayer(layeredPaneCase, javax.swing.JLayeredPane.DEFAULT_LAYER);
+        jLayeredPane1.setLayer(layeredPaneJeton, javax.swing.JLayeredPane.DRAG_LAYER);
 
-        javax.swing.GroupLayout case1Layout = new javax.swing.GroupLayout(case1);
-        case1.setLayout(case1Layout);
-        case1Layout.setHorizontalGroup(
-            case1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 130, Short.MAX_VALUE)
+        javax.swing.GroupLayout jLayeredPane1Layout = new javax.swing.GroupLayout(jLayeredPane1);
+        jLayeredPane1.setLayout(jLayeredPane1Layout);
+        jLayeredPane1Layout.setHorizontalGroup(
+            jLayeredPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 788, Short.MAX_VALUE)
+            .addGroup(jLayeredPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(jLayeredPane1Layout.createSequentialGroup()
+                    .addContainerGap()
+                    .addComponent(layeredPaneCase, javax.swing.GroupLayout.DEFAULT_SIZE, 782, Short.MAX_VALUE)
+                    .addContainerGap()))
+            .addGroup(jLayeredPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(jLayeredPane1Layout.createSequentialGroup()
+                    .addContainerGap()
+                    .addComponent(layeredPaneJeton, javax.swing.GroupLayout.DEFAULT_SIZE, 776, Short.MAX_VALUE)
+                    .addContainerGap()))
         );
-        case1Layout.setVerticalGroup(
-            case1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 126, Short.MAX_VALUE)
+        jLayeredPane1Layout.setVerticalGroup(
+            jLayeredPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 0, Short.MAX_VALUE)
+            .addGroup(jLayeredPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(jLayeredPane1Layout.createSequentialGroup()
+                    .addContainerGap()
+                    .addComponent(layeredPaneCase, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+            .addGroup(jLayeredPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(jLayeredPane1Layout.createSequentialGroup()
+                    .addContainerGap()
+                    .addComponent(layeredPaneJeton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
         );
-
-        layeredPaneCase.add(case1);
-
-        javax.swing.GroupLayout case2Layout = new javax.swing.GroupLayout(case2);
-        case2.setLayout(case2Layout);
-        case2Layout.setHorizontalGroup(
-            case2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 130, Short.MAX_VALUE)
-        );
-        case2Layout.setVerticalGroup(
-            case2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 126, Short.MAX_VALUE)
-        );
-
-        layeredPaneCase.add(case2);
-
-        javax.swing.GroupLayout case3Layout = new javax.swing.GroupLayout(case3);
-        case3.setLayout(case3Layout);
-        case3Layout.setHorizontalGroup(
-            case3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 130, Short.MAX_VALUE)
-        );
-        case3Layout.setVerticalGroup(
-            case3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 126, Short.MAX_VALUE)
-        );
-
-        layeredPaneCase.add(case3);
-
-        javax.swing.GroupLayout case4Layout = new javax.swing.GroupLayout(case4);
-        case4.setLayout(case4Layout);
-        case4Layout.setHorizontalGroup(
-            case4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 130, Short.MAX_VALUE)
-        );
-        case4Layout.setVerticalGroup(
-            case4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 126, Short.MAX_VALUE)
-        );
-
-        layeredPaneCase.add(case4);
-
-        javax.swing.GroupLayout case5Layout = new javax.swing.GroupLayout(case5);
-        case5.setLayout(case5Layout);
-        case5Layout.setHorizontalGroup(
-            case5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 130, Short.MAX_VALUE)
-        );
-        case5Layout.setVerticalGroup(
-            case5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 126, Short.MAX_VALUE)
-        );
-
-        layeredPaneCase.add(case5);
-
-        javax.swing.GroupLayout case6Layout = new javax.swing.GroupLayout(case6);
-        case6.setLayout(case6Layout);
-        case6Layout.setHorizontalGroup(
-            case6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 130, Short.MAX_VALUE)
-        );
-        case6Layout.setVerticalGroup(
-            case6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 126, Short.MAX_VALUE)
-        );
-
-        layeredPaneCase.add(case6);
-
-        javax.swing.GroupLayout case7Layout = new javax.swing.GroupLayout(case7);
-        case7.setLayout(case7Layout);
-        case7Layout.setHorizontalGroup(
-            case7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 130, Short.MAX_VALUE)
-        );
-        case7Layout.setVerticalGroup(
-            case7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 126, Short.MAX_VALUE)
-        );
-
-        layeredPaneCase.add(case7);
-
-        javax.swing.GroupLayout case8Layout = new javax.swing.GroupLayout(case8);
-        case8.setLayout(case8Layout);
-        case8Layout.setHorizontalGroup(
-            case8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 130, Short.MAX_VALUE)
-        );
-        case8Layout.setVerticalGroup(
-            case8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 126, Short.MAX_VALUE)
-        );
-
-        layeredPaneCase.add(case8);
-
-        javax.swing.GroupLayout case9Layout = new javax.swing.GroupLayout(case9);
-        case9.setLayout(case9Layout);
-        case9Layout.setHorizontalGroup(
-            case9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 130, Short.MAX_VALUE)
-        );
-        case9Layout.setVerticalGroup(
-            case9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 126, Short.MAX_VALUE)
-        );
-
-        layeredPaneCase.add(case9);
-
-        javax.swing.GroupLayout case10Layout = new javax.swing.GroupLayout(case10);
-        case10.setLayout(case10Layout);
-        case10Layout.setHorizontalGroup(
-            case10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 130, Short.MAX_VALUE)
-        );
-        case10Layout.setVerticalGroup(
-            case10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 126, Short.MAX_VALUE)
-        );
-
-        layeredPaneCase.add(case10);
-
-        javax.swing.GroupLayout case11Layout = new javax.swing.GroupLayout(case11);
-        case11.setLayout(case11Layout);
-        case11Layout.setHorizontalGroup(
-            case11Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 130, Short.MAX_VALUE)
-        );
-        case11Layout.setVerticalGroup(
-            case11Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 126, Short.MAX_VALUE)
-        );
-
-        layeredPaneCase.add(case11);
-
-        javax.swing.GroupLayout case12Layout = new javax.swing.GroupLayout(case12);
-        case12.setLayout(case12Layout);
-        case12Layout.setHorizontalGroup(
-            case12Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 130, Short.MAX_VALUE)
-        );
-        case12Layout.setVerticalGroup(
-            case12Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 126, Short.MAX_VALUE)
-        );
-
-        layeredPaneCase.add(case12);
-
-        javax.swing.GroupLayout case13Layout = new javax.swing.GroupLayout(case13);
-        case13.setLayout(case13Layout);
-        case13Layout.setHorizontalGroup(
-            case13Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 130, Short.MAX_VALUE)
-        );
-        case13Layout.setVerticalGroup(
-            case13Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 126, Short.MAX_VALUE)
-        );
-
-        layeredPaneCase.add(case13);
-
-        javax.swing.GroupLayout case14Layout = new javax.swing.GroupLayout(case14);
-        case14.setLayout(case14Layout);
-        case14Layout.setHorizontalGroup(
-            case14Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 130, Short.MAX_VALUE)
-        );
-        case14Layout.setVerticalGroup(
-            case14Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 126, Short.MAX_VALUE)
-        );
-
-        layeredPaneCase.add(case14);
-
-        javax.swing.GroupLayout case15Layout = new javax.swing.GroupLayout(case15);
-        case15.setLayout(case15Layout);
-        case15Layout.setHorizontalGroup(
-            case15Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 130, Short.MAX_VALUE)
-        );
-        case15Layout.setVerticalGroup(
-            case15Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 126, Short.MAX_VALUE)
-        );
-
-        layeredPaneCase.add(case15);
-
-        javax.swing.GroupLayout case16Layout = new javax.swing.GroupLayout(case16);
-        case16.setLayout(case16Layout);
-        case16Layout.setHorizontalGroup(
-            case16Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 130, Short.MAX_VALUE)
-        );
-        case16Layout.setVerticalGroup(
-            case16Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 126, Short.MAX_VALUE)
-        );
-
-        layeredPaneCase.add(case16);
-
-        javax.swing.GroupLayout case17Layout = new javax.swing.GroupLayout(case17);
-        case17.setLayout(case17Layout);
-        case17Layout.setHorizontalGroup(
-            case17Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 130, Short.MAX_VALUE)
-        );
-        case17Layout.setVerticalGroup(
-            case17Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 126, Short.MAX_VALUE)
-        );
-
-        layeredPaneCase.add(case17);
-
-        javax.swing.GroupLayout case18Layout = new javax.swing.GroupLayout(case18);
-        case18.setLayout(case18Layout);
-        case18Layout.setHorizontalGroup(
-            case18Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 130, Short.MAX_VALUE)
-        );
-        case18Layout.setVerticalGroup(
-            case18Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 126, Short.MAX_VALUE)
-        );
-
-        layeredPaneCase.add(case18);
-
-        javax.swing.GroupLayout case19Layout = new javax.swing.GroupLayout(case19);
-        case19.setLayout(case19Layout);
-        case19Layout.setHorizontalGroup(
-            case19Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 130, Short.MAX_VALUE)
-        );
-        case19Layout.setVerticalGroup(
-            case19Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 126, Short.MAX_VALUE)
-        );
-
-        layeredPaneCase.add(case19);
-
-        javax.swing.GroupLayout case20Layout = new javax.swing.GroupLayout(case20);
-        case20.setLayout(case20Layout);
-        case20Layout.setHorizontalGroup(
-            case20Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 130, Short.MAX_VALUE)
-        );
-        case20Layout.setVerticalGroup(
-            case20Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 126, Short.MAX_VALUE)
-        );
-
-        layeredPaneCase.add(case20);
-
-        javax.swing.GroupLayout case21Layout = new javax.swing.GroupLayout(case21);
-        case21.setLayout(case21Layout);
-        case21Layout.setHorizontalGroup(
-            case21Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 130, Short.MAX_VALUE)
-        );
-        case21Layout.setVerticalGroup(
-            case21Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 126, Short.MAX_VALUE)
-        );
-
-        layeredPaneCase.add(case21);
-
-        javax.swing.GroupLayout case22Layout = new javax.swing.GroupLayout(case22);
-        case22.setLayout(case22Layout);
-        case22Layout.setHorizontalGroup(
-            case22Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 130, Short.MAX_VALUE)
-        );
-        case22Layout.setVerticalGroup(
-            case22Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 126, Short.MAX_VALUE)
-        );
-
-        layeredPaneCase.add(case22);
-
-        javax.swing.GroupLayout case23Layout = new javax.swing.GroupLayout(case23);
-        case23.setLayout(case23Layout);
-        case23Layout.setHorizontalGroup(
-            case23Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 130, Short.MAX_VALUE)
-        );
-        case23Layout.setVerticalGroup(
-            case23Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 126, Short.MAX_VALUE)
-        );
-
-        layeredPaneCase.add(case23);
-
-        javax.swing.GroupLayout case24Layout = new javax.swing.GroupLayout(case24);
-        case24.setLayout(case24Layout);
-        case24Layout.setHorizontalGroup(
-            case24Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 130, Short.MAX_VALUE)
-        );
-        case24Layout.setVerticalGroup(
-            case24Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 126, Short.MAX_VALUE)
-        );
-
-        layeredPaneCase.add(case24);
-
-        javax.swing.GroupLayout case25Layout = new javax.swing.GroupLayout(case25);
-        case25.setLayout(case25Layout);
-        case25Layout.setHorizontalGroup(
-            case25Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 130, Short.MAX_VALUE)
-        );
-        case25Layout.setVerticalGroup(
-            case25Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 126, Short.MAX_VALUE)
-        );
-
-        layeredPaneCase.add(case25);
-
-        javax.swing.GroupLayout case26Layout = new javax.swing.GroupLayout(case26);
-        case26.setLayout(case26Layout);
-        case26Layout.setHorizontalGroup(
-            case26Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 130, Short.MAX_VALUE)
-        );
-        case26Layout.setVerticalGroup(
-            case26Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 126, Short.MAX_VALUE)
-        );
-
-        layeredPaneCase.add(case26);
-
-        javax.swing.GroupLayout case27Layout = new javax.swing.GroupLayout(case27);
-        case27.setLayout(case27Layout);
-        case27Layout.setHorizontalGroup(
-            case27Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 130, Short.MAX_VALUE)
-        );
-        case27Layout.setVerticalGroup(
-            case27Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 126, Short.MAX_VALUE)
-        );
-
-        layeredPaneCase.add(case27);
-
-        javax.swing.GroupLayout case28Layout = new javax.swing.GroupLayout(case28);
-        case28.setLayout(case28Layout);
-        case28Layout.setHorizontalGroup(
-            case28Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 130, Short.MAX_VALUE)
-        );
-        case28Layout.setVerticalGroup(
-            case28Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 126, Short.MAX_VALUE)
-        );
-
-        layeredPaneCase.add(case28);
-
-        javax.swing.GroupLayout case29Layout = new javax.swing.GroupLayout(case29);
-        case29.setLayout(case29Layout);
-        case29Layout.setHorizontalGroup(
-            case29Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 130, Short.MAX_VALUE)
-        );
-        case29Layout.setVerticalGroup(
-            case29Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 126, Short.MAX_VALUE)
-        );
-
-        layeredPaneCase.add(case29);
-
-        javax.swing.GroupLayout case30Layout = new javax.swing.GroupLayout(case30);
-        case30.setLayout(case30Layout);
-        case30Layout.setHorizontalGroup(
-            case30Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 130, Short.MAX_VALUE)
-        );
-        case30Layout.setVerticalGroup(
-            case30Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 126, Short.MAX_VALUE)
-        );
-
-        layeredPaneCase.add(case30);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(layeredPaneJeton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addComponent(layeredPaneCase, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jLayeredPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 788, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(layeredPaneJeton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(layout.createSequentialGroup()
-                    .addComponent(layeredPaneCase, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGap(0, 0, Short.MAX_VALUE)))
+            .addGroup(layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jLayeredPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
+    
+    public void setDialog(Dialog dialog){
+        this.dialog = dialog;
+    }
     
     private void jetonDeplacement(JPion jeton){
         int newX = (int) this.getMousePosition().getX()- jeton.getWidth() / 2;
         int newY = (int) this.getMousePosition().getY() - jeton.getHeight() / 2;
         jeton.setLocation(newX, newY);
+    }
+    
+    public void replacerJeton(JPion jeton, int numCase){
+        Point cornerCase = getCase(numCase).getBounds().getLocation();
+        System.out.println(cornerCase.x + " " + cornerCase.y);
+        //On genere une coordonnee aleatoire pour eviter la superposition des panels Pion
+        Random random = new Random();
+        int randomX = random.nextInt(getCase(numCase).getWidth() - jeton.getWidth());
+        int randomY = random.nextInt(getCase(numCase).getHeight() - jeton.getHeight());
+        System.out.println(cornerCase.x + " " + cornerCase.y);
+        System.out.println(getCase(numCase).getWidth()+ " " + getCase(numCase).getHeight());
+        System.out.println(randomX + " " + randomY);
+        Point randomLocation = new Point(randomX, randomY);
+        //On recupere la coordonnee de la case
+        randomLocation.translate(cornerCase.x + randomX, cornerCase.y + randomY);
+        //On deplace le jeton
+        jeton.setLocation(randomLocation);
     }
     
     public int getCaseOnJeton(JPion jeton){
@@ -619,8 +683,19 @@ public class JPlateau extends javax.swing.JPanel {
         return cases.get(i);
     }
     
-        public List<PanelCase> getCases() {
+    public List<PanelCase> getCases() {
         return cases;
+    }
+        
+    public void plateauModeDeplacement(int num){
+        IntStream.range(0, cases.size())
+                .filter(i -> i != num)
+                .forEach(i -> cases.get(i).caseSombre());
+    }
+    
+    public void plateauModeNormal(){
+        IntStream.range(0, cases.size())
+                .forEach(i -> cases.get(i).caseClaire());
     }
         
     private void jetonJackMouseDragged(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jetonJackMouseDragged
@@ -630,10 +705,11 @@ public class JPlateau extends javax.swing.JPanel {
     }//GEN-LAST:event_jetonJackMouseDragged
 
     private void jetonJackMouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jetonJackMouseReleased
-        int positionCase = getCaseOnJeton(jetonJack);
-        System.out.println(positionCase);
-        // TODO : informer le JDialog que le pion est a cette case
-
+        if(jetonJack.isMovable()) {
+            int positionCase = getCaseOnJeton(jetonJack);
+            // TODO : informer le JDialog que le pion est a cette case
+            dialog.eventDeplacement(positionCase);
+        }
     }//GEN-LAST:event_jetonJackMouseReleased
 
     private void jetonBillMouseDragged(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jetonBillMouseDragged
@@ -643,12 +719,16 @@ public class JPlateau extends javax.swing.JPanel {
     }//GEN-LAST:event_jetonBillMouseDragged
 
     private void jetonBillMouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jetonBillMouseReleased
-        int positionCase = getCaseOnJeton(jetonBill);
-        System.out.println(positionCase);
-        // TODO : informer le JDialog que le pion est a cette case
+        if(jetonBill.isMovable()) {
+            int positionCase = getCaseOnJeton(jetonBill);
+            System.out.println(positionCase);
+            // TODO : informer le JDialog que le pion est a cette case
+            dialog.eventDeplacement(positionCase);
+        }
     }//GEN-LAST:event_jetonBillMouseReleased
 
 
+    private Dialog dialog;
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private boundary.PanelCase case1;
     private boundary.PanelCase case10;
@@ -680,6 +760,7 @@ public class JPlateau extends javax.swing.JPanel {
     private boundary.PanelCase case7;
     private boundary.PanelCase case8;
     private boundary.PanelCase case9;
+    private javax.swing.JLayeredPane jLayeredPane1;
     private boundary.JPion jetonBill;
     private boundary.JPion jetonJack;
     private javax.swing.JLayeredPane layeredPaneCase;

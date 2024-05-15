@@ -34,7 +34,11 @@ public class Dialog implements IPirates {
         frame.setDialog(this);
         //Initialisation des pirates
         frame.getInfosJoueurBill().setPV(5);
+        frame.getInfosJoueurBill().setEffet(Effet.TypeEffet.none);
+        frame.getInfosJoueurBill().setDureeEffet(0);
         frame.getInfosJoueurJack().setPV(5);
+        frame.getInfosJoueurJack().setEffet(Effet.TypeEffet.none);
+        frame.getInfosJoueurJack().setDureeEffet(0);
         //Initialisation des images des cases
         Map<CaseEnum, String> mapPlateau = new EnumMap<>(CaseEnum.class);
         mapPlateau.put(CaseEnum.NORMALE, "bateau.png");
@@ -54,6 +58,10 @@ public class Dialog implements IPirates {
         }
         frame.getjPlateau().setImage(imageCases);
         
+        //On ne peut pas bouger les pions tant que le tour n'a pas commencé
+        frame.getjPlateau().getJetonBill().setMovable(false);
+        frame.getjPlateau().getJetonJack().setMovable(false);
+        
         
     }
 
@@ -70,15 +78,14 @@ public class Dialog implements IPirates {
     @Override
     public void enableLancerDe() {
         //TODO : enable bouton lancer de des
-        frame.getDiceCoursePanel().getjButtonThrow().setEnabled(true);
+        frame.getDiceCoursePanel().enablejButtonThrow(true);
     }
 
     public void eventLancerDe() {
         //L'utilisateur à appuyé sur lancer les des
         int[] des = adaptateur.getResultatsDes();
-        System.out.println(des[0] + " " + des[1]);
         //TODO : lancer l'animation des des puis afficher le resultat
-        frame.getDiceCoursePanel().getjButtonThrow().setEnabled(false);
+        frame.getDiceCoursePanel().enablejButtonThrow(false);
         frame.getDiceCoursePanel().setValuesDice(des);
         adaptateur.finLancerDes();
     }
@@ -88,39 +95,35 @@ public class Dialog implements IPirates {
         int joueurCourant = adaptateur.getPirateCourant();
         int arrivee = adaptateur.getProchaineCase();
         boolean turn = joueurCourant == 0;
+        //TODO : on assombrit toutes les cases sauf celle sur laquelle il doit aller (numCase)
+        frame.getjPlateau().plateauModeDeplacement(arrivee);
         //TODO : on permet à l'utilisateur de déplacer son pion (pion numPirate)
         frame.getjPlateau().getJetonBill().setMovable(turn);
         frame.getjPlateau().getJetonJack().setMovable(!turn);
-        //TODO : on assombrit toutes les cases sauf celle sur laquelle il doit aller (numCase)
-        List<PanelCase> cases = frame.getjPlateau().getCases();
-        IntStream.range(0, cases.size())
-                .filter(i -> i != arrivee)
-                .forEach(i -> cases.get(i).caseSombre());
     }
 
     public void eventDeplacement(int arrivee) {
         //L'utilisateur a déplacé son pion depuis caseDepart jusqu'à caseArrivee
         JPion currPawn = adaptateur.getPirateCourant() == 0 ? frame.getjPlateau().getJetonBill() : frame.getjPlateau().getJetonJack();
-        List<PanelCase> cases = frame.getjPlateau().getCases();
-        Point currLocation = currPawn.getLocation();
         
         if (arrivee == adaptateur.getProchaineCase()){
             //Case valide
             //TODO : animation case valide (caseArrive)
-            cases.get(arrivee).caseValide();
+            frame.getjPlateau().getCase(arrivee).caseValide();
             //TODO : On remet les cases normale (pas assombries)
-            
+            frame.getjPlateau().plateauModeNormal();
             //TODO : on desactive le deplacement du pion numPirate
             currPawn.setMovable(false);
+            adaptateur.finDeplacement();
         }else{
             //Case invalide
             //TODO : animation case invalide (caseArrivee)
-            cases.get(arrivee).caseInvalide();
+            frame.getjPlateau().getCase(arrivee).caseInvalide();
             //On renvoie le pirate sur la case d'ou il venait
-            changerPositionPirate(adaptateur.getDerniereCase());
-            currPawn.setLocation(currLocation);
+            currPawn.setMovable(false);
+            frame.getjPlateau().replacerJeton(currPawn, adaptateur.getDerniereCase());
+            enableDeplacement();
         }
-        adaptateur.finDeplacement();
     }
 
     @Override
@@ -128,19 +131,8 @@ public class Dialog implements IPirates {
         //TODO : Automatique -> deplacer jeton numPirate jusqu'a numCase
         //On reprend le pion a bouger
         JPion currPawn = adaptateur.getPirateCourant() == 0 ? frame.getjPlateau().getJetonBill() : frame.getjPlateau().getJetonJack();
-        //On recupere la taille de la case
-        Dimension caseSize = frame.getjPlateau().getCase(numCase).getSize(),
-                pawnSize = currPawn.getSize();
-        //On genere une coordonnee aleatoire pour eviter la superposition des panels Pion
-        Random random = new Random();
-        int randomX = random.nextInt(caseSize.width - pawnSize.width);
-        int randomY = random.nextInt(caseSize.height - pawnSize.height);
-        Point randomLocation = new Point(randomX, randomY);
-        //On recupere la coordonnee de la case
-        Point caseLocation = frame.getjPlateau().getCase(numCase).getLocationOnScreen();
-        randomLocation.translate(caseLocation.x, caseLocation.y);
-        //On deplace le jeton
-        currPawn.setLocation(randomLocation);
+        currPawn.setMovable(false);
+        frame.getjPlateau().replacerJeton(currPawn, numCase);
         adaptateur.finDeplacement();
     }
 
@@ -154,8 +146,8 @@ public class Dialog implements IPirates {
     @Override
     public void changerEtat() {
         Etat etat = adaptateur.getEtat();
-        int joueurCourant = adaptateur.getPirateCourant();
         //TODO : mettre etat de numPirate à changement
+        InfosJoueur infos =  adaptateur.getPirateCourant()==0 ? frame.getInfosJoueurBill() : frame.getInfosJoueurJack();
         adaptateur.finChangerEtat();
         
     }

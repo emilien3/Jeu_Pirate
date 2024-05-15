@@ -91,6 +91,11 @@ public class PanelCase extends javax.swing.JPanel {
         repaint();
     }
     
+    public void caseClaire(){
+        this.sombre = false;
+        repaint();
+    }
+    
     public void caseValide(){
         this.couleur = VERT;
         this.active = true;
@@ -163,7 +168,7 @@ public class PanelCase extends javax.swing.JPanel {
     private final Color NORMAL = new java.awt.Color(240, 215, 125);
     private final Color VERT = new java.awt.Color(0, 181, 45, 80);
     private final Color ROUGE = new java.awt.Color(255, 0, 0, 80);
-    private final Color NOIR = new java.awt.Color(0, 0, 0, 80);
+    private final Color NOIR = new java.awt.Color(0, 0, 0, 90);
     private boolean sombre = false;
     private boolean active = false;
     private String description;

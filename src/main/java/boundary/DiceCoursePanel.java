@@ -60,6 +60,7 @@ public class DiceCoursePanel extends JPanel{
         timerArray[2] = new Timer(2000, e -> {
             timerArray[0].stop();
             timerArray[1].stop();
+            timerArray[2].stop();
             endAnimation();
         });
     }
@@ -137,6 +138,7 @@ public class DiceCoursePanel extends JPanel{
 
     private void jButtonThrowActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonThrowActionPerformed
         diceAnimation();
+        
     }//GEN-LAST:event_jButtonThrowActionPerformed
 
     private Dialog dialog;
@@ -176,8 +178,8 @@ public class DiceCoursePanel extends JPanel{
         timerArray[2].start();
     } 
 
-    public JButton getjButtonThrow() {
-        return jButtonThrow;
+    public void enablejButtonThrow(boolean enabled) {
+        jButtonThrow.setEnabled(enabled);
     }
     
     public void setValuesDice(int[] values){
