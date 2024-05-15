@@ -24,18 +24,18 @@ public class Dialog implements IPirates {
     private FrameTestToDelete frame;
     private De[] des;
     
-    public Dialog(IAdaptateurFonctionnel adaptateur){
+    public Dialog(IAdaptateurFonctionnel adaptateur, FrameTestToDelete frame){
         this.adaptateur = adaptateur;
+        this.frame = frame;
     }
 
     @Override
-    public void initDialog(FrameTestToDelete frame) {
-        this.frame = frame;
-        //frame.setDialog(this);
-        //initialiser les cases, les pirates, et les des
+    public void initDialog() {
+        frame.setDialog(this);
+        //Initialisation des pirates
         frame.getInfosJoueurBill().setPV(5);
         frame.getInfosJoueurJack().setPV(5);
-        Plateau plateau = new Plateau();
+        //Initialisation des images des cases
         Map<CaseEnum, String> mapPlateau = new EnumMap<>(CaseEnum.class);
         mapPlateau.put(CaseEnum.NORMALE, "bateau.png");
         mapPlateau.put(CaseEnum.DEBUT, "ile.png");
@@ -46,11 +46,15 @@ public class Dialog implements IPirates {
         mapPlateau.put(CaseEnum.BOUE, "ile.png");
         mapPlateau.put(CaseEnum.LIANES, "ile.png");
         mapPlateau.put(CaseEnum.SECRET, "ile.png");
-        String[] stringPlateau = new String[plateau.getTAILLETABLEAU()];
-        for (int i = 0; i < stringPlateau.length; i++) {
-            stringPlateau[i] = mapPlateau.get(plateau.donnerCase(i));
+        adaptateur.getTypeCase(0);
+        int taillePlateau = adaptateur.getNombreCases();
+        String[] imageCases = new String[taillePlateau];
+        for (int i = 0; i < taillePlateau; i++) {
+            imageCases[i] = mapPlateau.get(adaptateur.getTypeCase(i));
         }
-        des = new De[2];
+        frame.getjPlateau().setImage(imageCases);
+        
+        
     }
 
     @Override
@@ -72,8 +76,10 @@ public class Dialog implements IPirates {
     public void eventLancerDe() {
         //L'utilisateur à appuyé sur lancer les des
         int[] des = adaptateur.getResultatsDes();
+        System.out.println(des[0] + " " + des[1]);
         //TODO : lancer l'animation des des puis afficher le resultat
-        frame.getDiceCoursePanel().diceAnimation();
+        frame.getDiceCoursePanel().getjButtonThrow().setEnabled(false);
+        frame.getDiceCoursePanel().setValuesDice(des);
         adaptateur.finLancerDes();
     }
 

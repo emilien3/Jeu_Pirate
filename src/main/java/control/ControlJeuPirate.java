@@ -4,6 +4,9 @@
  */
 package control;
 
+import boundary.AdaptateurNoyau;
+import boundary.BoundaryConsole;
+import boundary.FrameTestToDelete;
 import boundary.IBoundary;
 import model.*;
 import static model.CaseEnum.BOUE;
@@ -32,6 +35,11 @@ public class ControlJeuPirate implements IInfoPartie, IChangerEtat{
         this.numeroPirate = 0;
     }
     
+    public void debutJeu(){
+        boundary.debutPartie(this);
+        debutTour();
+    }
+    
     public void debutTour(){
         //On affiche le début d'un nouveau tour
         boundary.debutTour(this);
@@ -44,6 +52,12 @@ public class ControlJeuPirate implements IInfoPartie, IChangerEtat{
     public String getEffetcase(int num) {
         //Est appelée quand l'affichage a besoin de l'effet de la case num
         return jeuPirate.getPlateau().donnerCase(num).toString();
+    }
+    
+    @Override
+    public CaseEnum getTypeCase(int num) {
+        //Est appelée quand l'affichage a besoin du type de la case num
+        return jeuPirate.getPlateau().donnerCase(num);
     }
     
     @Override

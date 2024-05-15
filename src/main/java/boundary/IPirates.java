@@ -14,7 +14,7 @@ import model.Etat;
 public interface IPirates {
 
     //Fonction qui seront appelées depuis l'adaptateur noyau
-    public void initDialog(FrameTestToDelete frame);
+    public void initDialog();
     public void changerJoueur();
     public void enableLancerDe();
     public void enableDeplacement();

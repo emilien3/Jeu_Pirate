@@ -5,6 +5,8 @@
  */
 package control;
 
+import model.CaseEnum;
+
 /**
  *
  * @author Ninon
@@ -15,4 +17,5 @@ public interface IInfoPartie {
     public int getVieJoueur(int num);
     public String getEffetcase(int num);
     public int getResultats();
+    public CaseEnum getTypeCase(int num);
 }

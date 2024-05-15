@@ -20,6 +20,10 @@ public class BoundaryConsole implements IBoundary {
     private int courant;
     private String[] noms = new String[2];
     
+    @Override
+    public void debutPartie(IInfoPartie control) {
+        System.out.println("Début de la partie");
+    }
 
     @Override
     public void debutTour(IInfoPartie controlInfoPartie) {
@@ -118,4 +122,6 @@ public class BoundaryConsole implements IBoundary {
                 throw new AssertionError();
         }
     }
+
+    
 }

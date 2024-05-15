@@ -5,6 +5,7 @@
  */
 package boundary;
 
+import model.CaseEnum;
 import model.Etat;
 
 /**
@@ -13,8 +14,10 @@ import model.Etat;
  */
 public interface IAdaptateurFonctionnel {
     //Fonctions qui seront appelées depuis le Dialog
+    public int getNombreCases();
     public String getNomPirate(int num);
     public String getDescriptionCase(int num);
+    public CaseEnum getTypeCase(int num);
     public int[] getResultatsDes();
     public int getPirateCourant();
     public int getProchaineCase();

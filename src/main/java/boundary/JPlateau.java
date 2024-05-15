@@ -51,7 +51,7 @@ public class JPlateau extends javax.swing.JPanel {
     public void setImage(String[] images) {
         for (int i = 1; i < cases.size() + 1; i++) {
             PanelCase caseAct = cases.get(i - 1);
-            caseAct.setImage(images[i]);
+            caseAct.setImage(images[i - 1]);
         }
     }
     

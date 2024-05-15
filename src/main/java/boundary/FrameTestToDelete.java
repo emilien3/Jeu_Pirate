@@ -21,6 +21,11 @@ public class FrameTestToDelete extends javax.swing.JFrame {
     public FrameTestToDelete() {
         initComponents();
     }
+    
+    public void setDialog(Dialog dialog){
+        this.dialog = dialog;
+        diceCoursePanel.setDialog(dialog);
+    }
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -86,14 +91,14 @@ public class FrameTestToDelete extends javax.swing.JFrame {
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanelPlayersLayout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(infosJoueurBill, javax.swing.GroupLayout.PREFERRED_SIZE, 300, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanelPlayersLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanelPlayersLayout.createSequentialGroup()
-                        .addComponent(diceCoursePanel, javax.swing.GroupLayout.PREFERRED_SIZE, 119, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(12, 12, 12))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanelPlayersLayout.createSequentialGroup()
-                        .addComponent(jButton1)
-                        .addGap(58, 58, 58)))
+                        .addGap(62, 62, 62)
+                        .addComponent(jButton1))
+                    .addGroup(jPanelPlayersLayout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(diceCoursePanel, javax.swing.GroupLayout.PREFERRED_SIZE, 119, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(18, 18, 18)
                 .addComponent(infosJoueurJack, javax.swing.GroupLayout.PREFERRED_SIZE, 314, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
@@ -212,6 +217,7 @@ public class FrameTestToDelete extends javax.swing.JFrame {
         
     }
 
+    private Dialog dialog;
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private boundary.DiceCoursePanel diceCoursePanel;
     private boundary.InfosJoueur infosJoueurBill;

@@ -60,6 +60,7 @@ public class DiceCoursePanel extends JPanel{
         timerArray[2] = new Timer(2000, e -> {
             timerArray[0].stop();
             timerArray[1].stop();
+            endAnimation();
         });
     }
 
@@ -135,28 +136,30 @@ public class DiceCoursePanel extends JPanel{
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButtonThrowActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonThrowActionPerformed
-        
-        
-        // TO-DO -> FONCTION DU DIALOG 
-        dicePanel1.setNumber((getSeed().nextInt(6) + 1));
-        dicePanel2.setNumber((getSeed().nextInt(6) + 1));
-        //
-        
         diceAnimation();
     }//GEN-LAST:event_jButtonThrowActionPerformed
 
-
+    private Dialog dialog;
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private boundary.DicePanel dicePanel1;
     private boundary.DicePanel dicePanel2;
     private javax.swing.JButton jButtonThrow;
     // End of variables declaration//GEN-END:variables
 
+    
+    private void endAnimation(){
+        dialog.eventLancerDe();
+    }
+    
     /**
      * @return the buffer
      */
     public List <BufferedImage> getBuffer() {
         return buffer;
+    }
+    
+    public void setDialog(Dialog dialog){
+        this.dialog = dialog;
     }
     
     /**
@@ -168,7 +171,6 @@ public class DiceCoursePanel extends JPanel{
 
     
     public void diceAnimation(){
-        
         timerArray[0].start();
         timerArray[1].start();
         timerArray[2].start();
@@ -176,6 +178,11 @@ public class DiceCoursePanel extends JPanel{
 
     public JButton getjButtonThrow() {
         return jButtonThrow;
+    }
+    
+    public void setValuesDice(int[] values){
+        dicePanel1.changeImage(getBuffer().get(values[0] - 1));
+        dicePanel2.changeImage(getBuffer().get(values[1] - 1));
     }
     
 }

@@ -15,8 +15,11 @@ public class TestLancement {
         FrameTestToDelete frame = new FrameTestToDelete();
         AdaptateurNoyau adaptateur = new AdaptateurNoyau(frame);
         ControlJeuPirate control = new ControlJeuPirate(adaptateur, 2);
-        
-        control.debutTour();
-        
+        control.debutJeu();
+        java.awt.EventQueue.invokeLater(new Runnable() {
+            public void run() {
+                frame.setVisible(true);
+            }
+        });
     }
 }
