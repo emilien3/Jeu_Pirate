@@ -157,6 +157,8 @@ public class Dialog implements IPirates {
         //TODO : mettre vie de numPirate à changement
         PanelInfosJoueur currPlayer = joueurCourant == 0 ? frame.getInfosJoueurBill() : frame.getInfosJoueurJack();
         currPlayer.setPV(currPlayer.getPV() + vie);
+        if (currPlayer.getPV() > 5) currPlayer.setPV(5);
+        System.out.println(currPlayer.getPV());
         adaptateur.finChangerVie();
     }
 
