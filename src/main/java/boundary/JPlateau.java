@@ -644,19 +644,8 @@ public class JPlateau extends javax.swing.JPanel {
     
     public void replacerJeton(JPion jeton, int numCase){
         Point cornerCase = getCase(numCase).getBounds().getLocation();
-        System.out.println(cornerCase.x + " " + cornerCase.y);
-        //On genere une coordonnee aleatoire pour eviter la superposition des panels Pion
-        Random random = new Random();
-        int randomX = random.nextInt(getCase(numCase).getWidth() - jeton.getWidth());
-        int randomY = random.nextInt(getCase(numCase).getHeight() - jeton.getHeight());
-        System.out.println(cornerCase.x + " " + cornerCase.y);
-        System.out.println(getCase(numCase).getWidth()+ " " + getCase(numCase).getHeight());
-        System.out.println(randomX + " " + randomY);
-        Point randomLocation = new Point(randomX, randomY);
-        //On recupere la coordonnee de la case
-        randomLocation.translate(cornerCase.x + randomX, cornerCase.y + randomY);
-        //On deplace le jeton
-        jeton.setLocation(randomLocation);
+        Point pawnLocation = jeton.getPathProperty().equals("pion_bill.png") ? cornerCase : new Point(cornerCase.x + jeton.getWidth(), cornerCase.y);
+        jeton.setLocation(pawnLocation);
     }
     
     public int getCaseOnJeton(JPion jeton){

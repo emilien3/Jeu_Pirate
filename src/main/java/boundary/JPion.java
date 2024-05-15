@@ -55,7 +55,10 @@ public class JPion extends javax.swing.JPanel {
         this.movable = movable;
         firePropertyChange("movable", null, movable);
     }
-    
+
+    public String getPathProperty() {
+        return pathProperty;
+    }
     
     
     
