@@ -4,17 +4,12 @@
  */
 package boundary;
 
-import java.awt.Dimension;
-import java.awt.Point;
+
 import java.util.EnumMap;
-import java.util.List;
 import java.util.Map;
-import java.util.Random;
-import java.util.stream.IntStream;
 import model.CaseEnum;
 import model.De;
 import model.Etat;
-import model.Plateau;
 /**
  *
  * @author Ninon
@@ -153,12 +148,12 @@ public class Dialog implements IPirates {
     @Override
     public void changerVie() {
         int joueurCourant = adaptateur.getPirateCourant();
-        int vie = adaptateur.getPointsVie();
+        int vieDiff = adaptateur.getPointsVie();
         //TODO : mettre vie de numPirate à changement
         PanelInfosJoueur currPlayer = joueurCourant == 0 ? frame.getInfosJoueurBill() : frame.getInfosJoueurJack();
-        currPlayer.setPV(currPlayer.getPV() + vie);
-        if (currPlayer.getPV() > 5) currPlayer.setPV(5);
-        System.out.println(currPlayer.getPV());
+        int vie = currPlayer.getPV() + vieDiff;
+        if (vie > 5) vie = 5;
+        currPlayer.setPV(vie);
         adaptateur.finChangerVie();
     }
 
