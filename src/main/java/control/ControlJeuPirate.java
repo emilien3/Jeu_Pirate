@@ -162,4 +162,8 @@ public class ControlJeuPirate implements IInfoPartie, IChangerEtat{
 
     }
     
+    public Pirate[] getPirates() {
+    	return jeuPirate.getPirates();
+    }
+    
 }
