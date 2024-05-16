@@ -77,7 +77,7 @@ public class ControlDeplacer implements IDeplacerPirate, ILancerDe, IChangement{
     
     private void effectuerDeplacement(){
         //On modifie les données pour effectuer le déplacement
-        int changement = pirates[joueurCourant].getChangement();
+        changement = pirates[joueurCourant].getChangement();
         int avancement = deplacement + changement;
         int newPosition = depart + avancement ;
         if (newPosition > TAILLE_MAX ) {

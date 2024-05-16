@@ -41,10 +41,15 @@ public class ControlJeuPirate implements IInfoPartie, IChangerEtat{
     }
     
     public void debutTour(){
+        this.numeroPirate = (numeroPirate + 1)%2;
         //On affiche le début d'un nouveau tour
         boundary.debutTour(this);
-        //On commence le déplacement
-        controlDeplacer.deplacer(numeroPirate);
+        if (jeuPirate.getPirates()[numeroPirate].getEtat()==Etat.PASSETOUR){
+            jeuPirate.getPirates()[numeroPirate].setEtat(Etat.ESTVIVANT);
+            boundary.changerEtat(this);
+        }else{
+            controlDeplacer.deplacer(numeroPirate);
+        }
     }
    
     
@@ -76,13 +81,6 @@ public class ControlJeuPirate implements IInfoPartie, IChangerEtat{
     public void finDeplacer(){
         Pirate pirateCourant = jeuPirate.getPirates()[numeroPirate];
         CaseEnum caseCourante = jeuPirate.getPlateau().donnerCase(pirateCourant.getPosition());
-        if(pirateCourant.getEtat()==Etat.PASSETOUR) {
-            pirateCourant.setEtat(Etat.ESTVIVANT);
-            boundary.changerEtat(this);
-        }
-        if (pirateCourant.getEtat()==Etat.ESTPRISON) {
-            boundary.debutTour(this);
-        }
         switch (caseCourante) {
             case BOUE:
                 controlActiverCaseSpeciale = new ControleurCaseBoue(this, boundary);
@@ -117,15 +115,7 @@ public class ControlJeuPirate implements IInfoPartie, IChangerEtat{
     
     public void finActionCase() {
         if (!jeuPirate.verifierFin()){
-            numeroPirate = (numeroPirate + 1)%2;
-            Pirate pirateCourant = jeuPirate.getPirates()[numeroPirate];
-            switch (pirateCourant.getEtat()) {
-                case PASSETOUR ->
-                    finDeplacer();
-                case ESTPRISON -> finDeplacer();
-                default -> debutTour();
-            }
-            
+            debutTour();     
         }else{
             boundary.finPartie(this);
         }

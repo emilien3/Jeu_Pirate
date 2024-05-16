@@ -32,15 +32,15 @@ public class Dialog implements IPirates {
         frame.getInfosJoueurJack().setPV(5);
         //Initialisation des images des cases
         Map<CaseEnum, String> mapPlateau = new EnumMap<>(CaseEnum.class);
-        mapPlateau.put(CaseEnum.NORMALE, "bateau.png");
-        mapPlateau.put(CaseEnum.DEBUT, "ile.png");
+        mapPlateau.put(CaseEnum.NORMALE, "ile.png");
+        mapPlateau.put(CaseEnum.DEBUT, "crane.png");
         mapPlateau.put(CaseEnum.FALAISE, "falaise.png");
         mapPlateau.put(CaseEnum.NOURRITURE, "nourriture.png");
-        mapPlateau.put(CaseEnum.PIERRE, "falaise.png");
+        mapPlateau.put(CaseEnum.PIERRE, "avalanche.png");
         mapPlateau.put(CaseEnum.KOMODO, "monstre.png");
-        mapPlateau.put(CaseEnum.BOUE, "ile.png");
-        mapPlateau.put(CaseEnum.LIANES, "ile.png");
-        mapPlateau.put(CaseEnum.SECRET, "ile.png");
+        mapPlateau.put(CaseEnum.BOUE, "crane.png");
+        mapPlateau.put(CaseEnum.LIANES, "crane.png");
+        mapPlateau.put(CaseEnum.SECRET, "longuevue.png");
         adaptateur.getTypeCase(0);
         int taillePlateau = adaptateur.getNombreCases();
         String[] imageCases = new String[taillePlateau];
@@ -49,6 +49,8 @@ public class Dialog implements IPirates {
             imageCases[i] = mapPlateau.get(adaptateur.getTypeCase(i));
             descriptions[i] = adaptateur.getTypeCase(i).toString();
         }
+        //La dernière case est la case d'arrivee
+        imageCases[29] = "bateau.png";
         frame.getjPlateau().setImage(imageCases);
         frame.getjPlateau().setDescriptions(descriptions);
         
@@ -101,7 +103,6 @@ public class Dialog implements IPirates {
         JPion currPawn = adaptateur.getPirateCourant() == 0 ? frame.getjPlateau().getJetonBill() : frame.getjPlateau().getJetonJack();
         
         if (arrivee == adaptateur.getProchaineCase()){
-            System.out.println(adaptateur.getDescriptionCase(arrivee));
             //Case valide
             //TODO : animation case valide (caseArrive)
             frame.getjPlateau().getCase(arrivee).caseValide();
