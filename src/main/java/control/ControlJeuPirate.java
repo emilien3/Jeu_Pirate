@@ -137,11 +137,11 @@ public class ControlJeuPirate implements IInfoPartie, IChangerEtat{
     }
     
     private int gagnant() {
-        if(jeuPirate.getPirates()[1].getLife()==0 || jeuPirate.getPirates()[0].getPosition()==jeuPirate.getPlateau().getTAILLETABLEAU()-1){
+        if(jeuPirate.getPirates()[1].getLife()<=0 || jeuPirate.getPirates()[0].getPosition()==jeuPirate.getPlateau().getTAILLETABLEAU()-1){
             //Pirate 1 mort ou Pirate 0 arrivé à la fin
             return 0;
         }
-        else if (jeuPirate.getPirates()[0].getLife()==0 || jeuPirate.getPirates()[1].getPosition()==jeuPirate.getPlateau().getTAILLETABLEAU()-1){
+        else if (jeuPirate.getPirates()[0].getLife()<=0 || jeuPirate.getPirates()[1].getPosition()==jeuPirate.getPlateau().getTAILLETABLEAU()-1){
             //Pirate 0 mort ou Pirate 1 arrivé à la fin
             return 1;
         }
