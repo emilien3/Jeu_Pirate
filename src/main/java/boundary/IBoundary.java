@@ -17,6 +17,7 @@ import control.IModifierVie;
 public interface IBoundary {
 
     //Fonction qui seront appelées depuis les controleurs
+    public void debutPartie(IInfoPartie control);
     public void debutTour(IInfoPartie control);
     public void lancerDe(ILancerDe control);
     public void deplacer(IDeplacerPirate control);

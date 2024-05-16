@@ -38,7 +38,6 @@ public class ControleurCaseLianes extends ControlActiverCaseSpeciale implements 
 	@Override
 	public void finChangerEtat() {
             if (pirate.getEtat()==Etat.ESTPRISON){
-                lancerDes();
                 boundary.lancerDe(this);
             }else{
                 finAction();
@@ -67,7 +66,7 @@ public class ControleurCaseLianes extends ControlActiverCaseSpeciale implements 
 
 	@Override
 	public void finLancer() {
-            if (result != 10 && compteur<3){
+            if (compteur<3 && result != 10){
                 lancerDes();
                 boundary.lancerDe(this);
             }else if (result == 10){
@@ -82,6 +81,7 @@ public class ControleurCaseLianes extends ControlActiverCaseSpeciale implements 
 	public void action(Pirate pirate) {
                 this.pirate = pirate;
                 pirate.setEtat(Etat.ESTPRISON);
+                lancerDes();
 		boundary.changerEtat(this);
 	}
 }

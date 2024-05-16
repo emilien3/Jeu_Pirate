@@ -10,6 +10,7 @@ import control.IDeplacerPirate;
 import control.IInfoPartie;
 import control.ILancerDe;
 import control.IModifierVie;
+import model.CaseEnum;
 import model.Etat;
 
 /**
@@ -17,6 +18,7 @@ import model.Etat;
  * @author Ninon
  */
 public class AdaptateurNoyau implements IBoundary, IAdaptateurFonctionnel {
+    private final int TAILLE_TABLEAU = 30;
     private IPirates dialog;
     private IInfoPartie controlInfoPartie;
     private ILancerDe controlLancerDe;
@@ -25,8 +27,13 @@ public class AdaptateurNoyau implements IBoundary, IAdaptateurFonctionnel {
     private IChangerEtat controlEtat;
     private IModifierVie controlModifVie;
     
-    public AdaptateurNoyau(){
-        this.dialog = new Dialog(this);
+    public AdaptateurNoyau(FrameTestToDelete frame){
+        this.dialog = new Dialog(this, frame);
+    }
+    
+    @Override
+    public void debutPartie(IInfoPartie control) {
+        this.controlInfoPartie = control;
         dialog.initDialog();
     }
 
@@ -34,6 +41,11 @@ public class AdaptateurNoyau implements IBoundary, IAdaptateurFonctionnel {
     public void debutTour(IInfoPartie control) {
         this.controlInfoPartie = control;
         dialog.changerJoueur();
+    }
+    
+    @Override
+    public int getNombreCases() {
+        return TAILLE_TABLEAU;
     }
 
     @Override
@@ -86,6 +98,11 @@ public class AdaptateurNoyau implements IBoundary, IAdaptateurFonctionnel {
     @Override
     public String getDescriptionCase(int num) {
         return controlInfoPartie.getEffetcase(num);
+    }
+    
+    @Override
+    public CaseEnum getTypeCase(int num) {
+        return controlInfoPartie.getTypeCase(num);
     }
 
     @Override

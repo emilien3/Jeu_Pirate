@@ -4,6 +4,9 @@
  */
 package control;
 
+import boundary.AdaptateurNoyau;
+import boundary.BoundaryConsole;
+import boundary.FrameTestToDelete;
 import boundary.IBoundary;
 import model.*;
 import static model.CaseEnum.BOUE;
@@ -29,23 +32,19 @@ public class ControlJeuPirate implements IInfoPartie, IChangerEtat{
             des[i] = new De();
         }
         this.controlDeplacer = new ControlDeplacer(this, boundary, jeuPirate.getPlateau().getTAILLETABLEAU(), des, jeuPirate.getPirates());
-        this.numeroPirate = 1;
+        this.numeroPirate = 0;
+    }
+    
+    public void debutJeu(){
+        boundary.debutPartie(this);
+        debutTour();
     }
     
     public void debutTour(){
-        this.numeroPirate = (numeroPirate + 1)%2;
         //On affiche le début d'un nouveau tour
         boundary.debutTour(this);
-        if (jeuPirate.getPirates()[numeroPirate].getEtat()==Etat.PASSETOUR){
-            jeuPirate.getPirates()[numeroPirate].setEtat(Etat.ESTVIVANT);
-            boundary.changerEtat(this);
-        }else{
-            controlDeplacer.deplacer(numeroPirate);
-        }
-    }
-    
-    public Pirate[] getPirates(){
-        return jeuPirate.getPirates();
+        //On commence le déplacement
+        controlDeplacer.deplacer(numeroPirate);
     }
    
     
@@ -53,6 +52,12 @@ public class ControlJeuPirate implements IInfoPartie, IChangerEtat{
     public String getEffetcase(int num) {
         //Est appelée quand l'affichage a besoin de l'effet de la case num
         return jeuPirate.getPlateau().donnerCase(num).toString();
+    }
+    
+    @Override
+    public CaseEnum getTypeCase(int num) {
+        //Est appelée quand l'affichage a besoin du type de la case num
+        return jeuPirate.getPlateau().donnerCase(num);
     }
     
     @Override
@@ -71,6 +76,13 @@ public class ControlJeuPirate implements IInfoPartie, IChangerEtat{
     public void finDeplacer(){
         Pirate pirateCourant = jeuPirate.getPirates()[numeroPirate];
         CaseEnum caseCourante = jeuPirate.getPlateau().donnerCase(pirateCourant.getPosition());
+        if(pirateCourant.getEtat()==Etat.PASSETOUR) {
+            pirateCourant.setEtat(Etat.ESTVIVANT);
+            boundary.changerEtat(this);
+        }
+        if (pirateCourant.getEtat()==Etat.ESTPRISON) {
+            boundary.debutTour(this);
+        }
         switch (caseCourante) {
             case BOUE:
                 controlActiverCaseSpeciale = new ControleurCaseBoue(this, boundary);
@@ -105,7 +117,15 @@ public class ControlJeuPirate implements IInfoPartie, IChangerEtat{
     
     public void finActionCase() {
         if (!jeuPirate.verifierFin()){
-            debutTour();     
+            numeroPirate = (numeroPirate + 1)%2;
+            Pirate pirateCourant = jeuPirate.getPirates()[numeroPirate];
+            switch (pirateCourant.getEtat()) {
+                case PASSETOUR ->
+                    finDeplacer();
+                case ESTPRISON -> finDeplacer();
+                default -> debutTour();
+            }
+            
         }else{
             boundary.finPartie(this);
         }
@@ -138,7 +158,7 @@ public class ControlJeuPirate implements IInfoPartie, IChangerEtat{
 
     @Override
     public void finChangerEtat() {
-        debutTour();
+        finActionCase();
     }
     
     @Override

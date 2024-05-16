@@ -9,9 +9,10 @@ package boundary;
  * @author ogled
  */
 public class InfosJoueur extends javax.swing.JPanel {
-    
+
     public enum Joueur {Bill, Jack};
     private Joueur joueur = Joueur.Bill;
+    private boolean turn = true;
 
     /**
      * Creates new form InfosJoueur
@@ -22,36 +23,38 @@ public class InfosJoueur extends javax.swing.JPanel {
 
     public void setJoueur(Joueur joueur) {
         this.joueur = joueur;
-        
+
         // Pour l'édition dans le GUI
         firePropertyChange("joueur", null, joueur);
-        
+
         // On mets à jour les images
         this.background.setAlternative(joueur == Joueur.Jack);
         this.pointsVie.setAlternative(joueur == Joueur.Jack);
     }
-    
+
     public void setPV(int PV) {
         this.pointsVie.setNombrePV(PV);
-        
+
         // Pour l'édition dans le GUI
         firePropertyChange("PV", null, PV);
     }
-    
-    public void setDureeEffet(int duree) {
-        this.effet.setDureeEffet(duree);
-        
+
+    public void setEtat(model.Etat etat) {
+        this.effet.setEffet(etat);
+
         // Pour l'édition dans le GUI
-        firePropertyChange("effetDuree", null, duree);
-    }
-    
-    public void setEffet(Effet.TypeEffet effet) {
-        this.effet.setEffet(effet);
-        
-        // Pour l'édition dans le GUI
-        firePropertyChange("effet", null, effet);
+        firePropertyChange("etat", null, effet);
     }
 
+    public void setTurn(boolean turn) {
+        this.turn = turn;
+        panelTurn.setVisible(turn);
+        firePropertyChange("turn", null, turn);
+    }
+
+    public boolean getTurn() {
+        return turn;
+    }
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -64,6 +67,7 @@ public class InfosJoueur extends javax.swing.JPanel {
         background = new boundary.IconJoueur();
         pointsVie = new boundary.barreDeVie();
         effet = new boundary.Effet();
+        panelTurn = new boundary.PanelTurn();
 
         setPreferredSize(new java.awt.Dimension(306, 306));
 
@@ -82,7 +86,7 @@ public class InfosJoueur extends javax.swing.JPanel {
             .addGap(0, 32, Short.MAX_VALUE)
         );
 
-        effet.setEffet(boundary.Effet.TypeEffet.none);
+        effet.setPreferredSize(new java.awt.Dimension(160, 80));
 
         javax.swing.GroupLayout backgroundLayout = new javax.swing.GroupLayout(background);
         background.setLayout(backgroundLayout);
@@ -93,7 +97,7 @@ public class InfosJoueur extends javax.swing.JPanel {
                 .addGroup(backgroundLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(effet, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(pointsVie, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(207, Short.MAX_VALUE))
+                .addContainerGap(222, Short.MAX_VALUE))
         );
         backgroundLayout.setVerticalGroup(
             backgroundLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -101,19 +105,42 @@ public class InfosJoueur extends javax.swing.JPanel {
                 .addGap(115, 115, 115)
                 .addComponent(pointsVie, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(effet, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(89, Short.MAX_VALUE))
+                .addComponent(effet, javax.swing.GroupLayout.PREFERRED_SIZE, 112, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(41, Short.MAX_VALUE))
+        );
+
+        panelTurn.setPathTurn("Green_Arrow_Right.png");
+        panelTurn.setPreferredSize(new java.awt.Dimension(64, 64));
+
+        javax.swing.GroupLayout panelTurnLayout = new javax.swing.GroupLayout(panelTurn);
+        panelTurn.setLayout(panelTurnLayout);
+        panelTurnLayout.setHorizontalGroup(
+            panelTurnLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 64, Short.MAX_VALUE)
+        );
+        panelTurnLayout.setVerticalGroup(
+            panelTurnLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 64, Short.MAX_VALUE)
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(background, javax.swing.GroupLayout.DEFAULT_SIZE, 477, Short.MAX_VALUE)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(panelTurn, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(background, javax.swing.GroupLayout.PREFERRED_SIZE, 492, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(background, javax.swing.GroupLayout.DEFAULT_SIZE, 306, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addGap(106, 106, 106)
+                .addComponent(panelTurn, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
@@ -121,6 +148,7 @@ public class InfosJoueur extends javax.swing.JPanel {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private boundary.IconJoueur background;
     private boundary.Effet effet;
+    private boundary.PanelTurn panelTurn;
     private boundary.barreDeVie pointsVie;
     // End of variables declaration//GEN-END:variables
 }

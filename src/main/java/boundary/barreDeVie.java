@@ -113,6 +113,7 @@ public class barreDeVie extends ImageDisplayer {
 
         setMaximumSize(new java.awt.Dimension(160, 32));
         setMinimumSize(new java.awt.Dimension(160, 32));
+        setOpaque(false);
         setPreferredSize(new java.awt.Dimension(160, 32));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);

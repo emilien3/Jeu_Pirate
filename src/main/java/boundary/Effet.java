@@ -8,26 +8,20 @@ import java.awt.Graphics;
 import java.awt.image.BufferedImage;
 import java.io.IOException;
 import javax.imageio.ImageIO;
+import static model.Etat.ESTPOURSUIVI;
+import static model.Etat.ESTPRISON;
+import static model.Etat.PASSETOUR;
 
 /**
  *
  * @author ogled
  */
 public class Effet extends javax.swing.JPanel {
-
     private BufferedImage effetImage;
-    private TypeEffet effet = TypeEffet.avalanche;
-    private int dureeEffet = 0;
-    
-    public enum TypeEffet {
-        avalanche,
-        crane,
-        falaise,
-        longueVue,
-        monstre,
-        nourriture,
-        none
-    }
+    private model.Etat etat = model.Etat.ESTVIVANT;
+    private String image = null;
+    private int changement = 0;
+          
     
     /**
      * Creates new form Effet
@@ -42,19 +36,15 @@ public class Effet extends javax.swing.JPanel {
         updateImageFile();
     }
 
-    public TypeEffet getEffet() {
-        return effet;
+    public model.Etat getEffet() {
+        return etat;
     }
 
-    public int getDureeEffet() {
-        return dureeEffet;
-    }
-
-    public void setEffet(TypeEffet effet) {
-        this.effet = effet;
+    public void setEffet(model.Etat etat) {
+        this.etat = etat;
         
         // Pour l'édition dans le GUI
-        firePropertyChange("effet", null, effet);
+        firePropertyChange("effet", null, etat);
         
         // Mise à jour de l'image
         updateImageFile();
@@ -63,26 +53,45 @@ public class Effet extends javax.swing.JPanel {
         // repaint de la frame
         repaint();
     }
-
-    public void setDureeEffet(int dureeEffet) {
-        this.dureeEffet = dureeEffet;
+    
+    public void setChangement(int changement) {
+        this.changement  = changement;
         
         // Pour l'édition dans le GUI
-        firePropertyChange("dureeEffet", null, dureeEffet);
+        firePropertyChange("changement", 0, changement);
+        
+        // Mise à jour de l'image
+        updateImageFile();
         updateLabels();
-    }
-    
-    private String formatName(String str) {
-        return str.substring(0, 1).toUpperCase() + str.substring(1);
+        
+        // repaint de la frame
+        repaint();
     }
         
     private void updateImageFile() {
-        if(effet == TypeEffet.none)
+        switch(etat) {
+            case PASSETOUR:
+                image = "falaise";
+                break;
+            case ESTPRISON:
+                image = "ile";
+                break;
+            case ESTPOURSUIVI:
+                image = "monstre";
+                break;
+            default:
+                if (changement !=0){
+                    image = "des";
+                }else{
+                    image = null;
+                }
+        }
+        if(image == null)
             return;
         
         try {
             effetImage = ImageIO.read(
-                    getClass().getResource("/" + formatName(effet.name()) + ".png"));
+                    getClass().getResource("/" + image + ".png"));
             
         } catch (IOException e) {
             e.printStackTrace();
@@ -90,20 +99,41 @@ public class Effet extends javax.swing.JPanel {
     }
     
     private void updateLabels() {
-        if(effet == TypeEffet.none || dureeEffet == 0) {
-            labelNomEffet.setText("");
-            labelDureeEffet.setText("");
-            return;
+        String nom, description;
+        switch(etat) {
+            case PASSETOUR:
+                nom = "Bloqué";
+                description = "Passe un tour";
+                break;
+            case ESTPRISON:
+                nom = "Emprisonné";
+                description = "Jusqu'à faire un 10";
+                break;
+            case ESTPOURSUIVI:
+                nom = "Poursuivi";
+                description = "Doit faire un 8";
+                break;
+            default:
+                if (changement > 0){
+                    nom = "Boost";
+                    description = "+" + changement + " au prochain lancer";
+                }else if (changement < 0){
+                    nom = "Malus";
+                    description = changement + " au prochain lancer";
+                }else{
+                    nom = "";
+                    description = "";
+                }
         }
-        labelNomEffet.setText(formatName(effet.name()));
-        labelDureeEffet.setText(dureeEffet + " Tours");
+        labelNomEffet.setText(nom);
+        labelDescriptionEffet.setText(description);
     }
     
     @Override
     public void paintComponent(Graphics g) {
         super.paintComponent(g);
         
-        if(effet != TypeEffet.none && dureeEffet != 0)
+        if(etat != model.Etat.ESTVIVANT)
             g.drawImage(effetImage, 0, 0, null);
     } 
 
@@ -117,16 +147,16 @@ public class Effet extends javax.swing.JPanel {
     private void initComponents() {
 
         labelNomEffet = new javax.swing.JLabel();
-        labelDureeEffet = new javax.swing.JLabel();
+        labelDescriptionEffet = new javax.swing.JLabel();
 
         setOpaque(false);
-        setPreferredSize(new java.awt.Dimension(160, 64));
+        setPreferredSize(new java.awt.Dimension(160, 90));
 
         labelNomEffet.setFont(new java.awt.Font("Segoe UI", 1, 16)); // NOI18N
         labelNomEffet.setForeground(java.awt.Color.black);
 
-        labelDureeEffet.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        labelDureeEffet.setForeground(java.awt.Color.black);
+        labelDescriptionEffet.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        labelDescriptionEffet.setForeground(java.awt.Color.black);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -136,7 +166,7 @@ public class Effet extends javax.swing.JPanel {
                 .addContainerGap(69, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(labelNomEffet, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(labelDureeEffet, javax.swing.GroupLayout.DEFAULT_SIZE, 85, Short.MAX_VALUE))
+                    .addComponent(labelDescriptionEffet, javax.swing.GroupLayout.DEFAULT_SIZE, 85, Short.MAX_VALUE))
                 .addContainerGap())
         );
         layout.setVerticalGroup(
@@ -145,14 +175,14 @@ public class Effet extends javax.swing.JPanel {
                 .addContainerGap()
                 .addComponent(labelNomEffet)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(labelDureeEffet)
+                .addComponent(labelDescriptionEffet)
                 .addContainerGap(52, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JLabel labelDureeEffet;
+    private javax.swing.JLabel labelDescriptionEffet;
     private javax.swing.JLabel labelNomEffet;
     // End of variables declaration//GEN-END:variables
 }

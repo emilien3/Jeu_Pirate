@@ -4,6 +4,12 @@
  */
 package boundary;
 
+import java.awt.Container;
+import java.awt.FlowLayout;
+import javax.swing.JButton;
+import javax.swing.JDialog;
+import javax.swing.JLabel;
+
 /**
  *
  * @author emilien
@@ -16,6 +22,12 @@ public class FrameTestToDelete extends javax.swing.JFrame {
     public FrameTestToDelete() {
         initComponents();
     }
+    
+    public void setDialog(Dialog dialog){
+        this.dialog = dialog;
+        diceCoursePanel.setDialog(dialog);
+        jPlateau.setDialog(dialog);
+    }
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -26,17 +38,75 @@ public class FrameTestToDelete extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jPanelBoard = new javax.swing.JPanel();
+        jPlateau = new boundary.JPlateau();
+        jPanelPlayers = new javax.swing.JPanel();
+        diceCoursePanel = new boundary.DiceCoursePanel();
+        infosJoueurBill = new boundary.PanelInfosJoueur();
+        infosJoueurJack = new boundary.PanelInfosJoueur();
+
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setResizable(false);
+
+        jPanelBoard.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        jPanelBoard.setLayout(new java.awt.GridLayout(1, 0));
+        jPanelBoard.add(jPlateau);
+
+        jPanelPlayers.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+
+        infosJoueurBill.setEtat(model.Etat.ESTVIVANT);
+        infosJoueurBill.setJoueur(boundary.PanelInfosJoueur.Joueur.Bill);
+        infosJoueurBill.setTurn(false);
+
+        infosJoueurJack.setEtat(model.Etat.ESTVIVANT);
+        infosJoueurJack.setJoueur(boundary.PanelInfosJoueur.Joueur.Jack);
+        infosJoueurJack.setTurn(false);
+
+        javax.swing.GroupLayout jPanelPlayersLayout = new javax.swing.GroupLayout(jPanelPlayers);
+        jPanelPlayers.setLayout(jPanelPlayersLayout);
+        jPanelPlayersLayout.setHorizontalGroup(
+            jPanelPlayersLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanelPlayersLayout.createSequentialGroup()
+                .addGroup(jPanelPlayersLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(diceCoursePanel, javax.swing.GroupLayout.DEFAULT_SIZE, 551, Short.MAX_VALUE)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanelPlayersLayout.createSequentialGroup()
+                        .addGap(0, 0, Short.MAX_VALUE)
+                        .addGroup(jPanelPlayersLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(infosJoueurJack, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(infosJoueurBill, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                .addContainerGap())
+        );
+        jPanelPlayersLayout.setVerticalGroup(
+            jPanelPlayersLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanelPlayersLayout.createSequentialGroup()
+                .addGap(43, 43, 43)
+                .addComponent(infosJoueurBill, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(diceCoursePanel, javax.swing.GroupLayout.PREFERRED_SIZE, 119, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(infosJoueurJack, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 403, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addComponent(jPanelBoard, javax.swing.GroupLayout.PREFERRED_SIZE, 794, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jPanelPlayers, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 300, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(jPanelPlayers, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addContainerGap())
+                    .addComponent(jPanelBoard, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 785, Short.MAX_VALUE)))
         );
 
         pack();
@@ -76,7 +146,65 @@ public class FrameTestToDelete extends javax.swing.JFrame {
             }
         });
     }
+    
+    public PanelInfosJoueur getInfosJoueurBill() {
+        return infosJoueurBill;
+    }
 
+    public PanelInfosJoueur getInfosJoueurJack() {
+        return infosJoueurJack;
+    }
+    public JPlateau getjPlateau() {
+        return jPlateau;
+    }
+
+    public DiceCoursePanel getDiceCoursePanel() {
+        return diceCoursePanel;
+    }
+    
+    public void finDePartie(String etat) {
+        JDialog finWindow = new JDialog();
+        finWindow.setSize(300, 105);
+        finWindow.setLocationRelativeTo(null);
+        Container pane = finWindow.getContentPane();
+        pane.setLayout(new FlowLayout());
+        String labelStr = switch (etat) {
+            case "Egalité" -> "Défaite des deux joueurs !";
+            default -> etat + " est victorieux !";
+        };
+        JLabel labelVictory = new JLabel(labelStr);
+        pane.add(labelVictory);
+        labelVictory.setHorizontalAlignment(JLabel.CENTER);
+        labelVictory.setVerticalTextPosition(JLabel.TOP);
+        
+        
+        JButton buttonRestart = new JButton("Recommencer");
+        JButton buttonQuitter = new JButton("Quitter");
+        pane.add(buttonRestart);
+        pane.add(buttonQuitter);
+        buttonRestart.setBounds(10, 80, 110, 25);
+        buttonQuitter.setBounds(165, 80, 110, 25);
+        buttonRestart.addActionListener((java.awt.event.ActionEvent e) -> {
+           TestLancement.main(new String[]{});
+           finWindow.dispose();
+           this.dispose();
+        });
+        buttonQuitter.addActionListener((java.awt.event.ActionEvent e) -> {
+            finWindow.dispose();
+            this.dispose();
+        });
+        finWindow.setDefaultCloseOperation(JDialog.DO_NOTHING_ON_CLOSE);
+        finWindow.setVisible(true);
+        
+    }
+
+    private Dialog dialog;
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private boundary.DiceCoursePanel diceCoursePanel;
+    private boundary.PanelInfosJoueur infosJoueurBill;
+    private boundary.PanelInfosJoueur infosJoueurJack;
+    private javax.swing.JPanel jPanelBoard;
+    private javax.swing.JPanel jPanelPlayers;
+    private boundary.JPlateau jPlateau;
     // End of variables declaration//GEN-END:variables
 }
