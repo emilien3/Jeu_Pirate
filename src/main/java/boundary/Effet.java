@@ -71,10 +71,10 @@ public class Effet extends javax.swing.JPanel {
     private void updateImageFile() {
         switch(etat) {
             case PASSETOUR:
-                image = "falaise";
+                image = "avalanche";
                 break;
             case ESTPRISON:
-                image = "ile";
+                image = "crane";
                 break;
             case ESTPOURSUIVI:
                 image = "monstre";

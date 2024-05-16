@@ -11,27 +11,46 @@ import model.De;
 import model.Etat;
 import model.Pirate;
 
-public class ControleurCaseKomodo extends ControlActiverCaseSpeciale implements IModifierVie,IDeplacerPirate, ILancerDe,IChangement {
+public class ControleurCaseKomodo extends ControlActiverCaseSpeciale implements IModifierVie,IDeplacerPirate, ILancerDe,IChangement, IChangerEtat {
     private IBoundary boundary;
     private final int CHANGEMENT = -3;
     private final int PERTEPOINTDEVIE = -3;
     private final int GAGNE = 8;
-    private int arrivee,depart;
+    private int arrivee,depart, lancer;
     private De[] des;
     private Pirate pirate;
     
-    public ControleurCaseKomodo(ControlJeuPirate controlJeuPirate, IBoundary boundary, De[] des){
-        super.controlJeuPirate=controlJeuPirate;
-        this.boundary=boundary;
-        this.des = des;
-    }
-    public void action(Pirate pirate) {
-        this.pirate = pirate;
-    	pirate.getEtat();
-        this.depart = pirate.getPosition();
-        lancerDes();
-        boundary.lancerDe(this);
-    }
+        public ControleurCaseKomodo(ControlJeuPirate controlJeuPirate, IBoundary boundary, De[] des){
+            super.controlJeuPirate=controlJeuPirate;
+            this.boundary=boundary;
+            this.des = des;
+
+        }
+        public void action(Pirate pirate) {
+            this.pirate = pirate;
+            this.depart = pirate.getPosition();
+            pirate.setEtat(Etat.ESTPOURSUIVI);
+            boundary.changerEtat(this);
+        }
+    
+        @Override
+        public Etat getEtat() {
+            return pirate.getEtat();
+        }
+
+        @Override
+        public void finChangerEtat() {
+            if (pirate.getEtat()==Etat.ESTPOURSUIVI){
+                lancerDes();
+                boundary.lancerDe(this);
+            }else if (pirate.getEtat()==Etat.ESTVIVANT && lancer >=8){
+                finAction();
+            }else{
+                pirate.setChangement(CHANGEMENT);
+                boundary.changementProchainTour(this);
+            }
+            
+        }
   
 	@Override
 	public int[] getDes() {
@@ -49,11 +68,11 @@ public class ControleurCaseKomodo extends ControlActiverCaseSpeciale implements 
             for (De d : des){
                 d.roll();
             }
+            lancer = totalDes(des);
         }
         
 	@Override
 	public void finLancer() {
-            int lancer = totalDes(des);
             if (lancer<GAGNE) {
                 pirate.setLife(pirate.getLife() + PERTEPOINTDEVIE);
                 boundary.modifierVie(this);
@@ -77,7 +96,8 @@ public class ControleurCaseKomodo extends ControlActiverCaseSpeciale implements 
 	}
 	@Override
 	public void finDeplacement() {
-            finAction();
+            pirate.setEtat(Etat.ESTVIVANT);
+            boundary.changerEtat(this);
 	}
 	@Override
 	public int getVie() {
@@ -85,8 +105,8 @@ public class ControleurCaseKomodo extends ControlActiverCaseSpeciale implements 
 	}
 	@Override
 	public void finModifVie() {
-            pirate.setChangement(CHANGEMENT);
-            boundary.changementProchainTour(this);
+            pirate.setEtat(Etat.ESTVIVANT);
+            boundary.changerEtat(this);
 	}
 
 	@Override
@@ -98,5 +118,7 @@ public class ControleurCaseKomodo extends ControlActiverCaseSpeciale implements 
 	public void finChangement() {
             finAction();
 	}
+
+        
 	
 }
