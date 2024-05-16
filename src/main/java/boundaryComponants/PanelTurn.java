@@ -2,59 +2,48 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JPanel.java to edit this template
  */
-package boundary;
+package boundaryComponants;
 
 import java.awt.Graphics;
 import java.awt.image.BufferedImage;
 import java.io.IOException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.imageio.ImageIO;
 
 /**
  *
- * @author ogled
+ * @author quang
  */
-public class IconJoueur extends ImageDisplayer {
-    
-    private String sourcePath = "joueur";
-    private BufferedImage icon;
+public class PanelTurn extends javax.swing.JPanel {
 
+    private String pathTurn;
+    private BufferedImage image;
     /**
-     * Creates new form IconeJoueur
+     * Creates new form PanelTurn
      */
-    public IconJoueur() {
+    public PanelTurn() {
         initComponents();
-        
-        // Initialisation de l'image
-        updateImagesFiles();
     }
     
-    /**
-     * cf. super.paintComponent(Graphics g)
-     * Dessine les points de vie basés sur les images chargées les uns à la
-     * suite des autres.
-     * @param g variable d'environnement graphique
-     */
     @Override
-    public void paintComponent(Graphics g) {
+    protected void paintComponent(Graphics g) {
         super.paintComponent(g);
-        
-        // Afficher le personnage
-        g.drawImage(icon, 0, 0, null);
-    }
-    
-    /**
-     * Met a jour l'icone du personnage.
-     * ATTENTION : Penser à actualiser le composant avec repaint() ensuite
-     */
-    @Override
-    protected void updateImagesFiles() {
         try {
-            this.icon = ImageIO.read(getClass().getResource("/" + sourcePath + getImageExtension()));
-            
-        } catch (IOException e) {
-            e.printStackTrace();
+            image = ImageIO.read(getClass().getResource("/" + pathTurn));
+            g.drawImage(image, 0, 0, this);
+        } catch (IOException ex) {
+            g.drawOval(0, 0, g.getClipBounds().width, g.getClipBounds().height);
+            Logger.getLogger(JPion.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
+
+    public void setPathTurn(String pathTurn) {
+        this.pathTurn = pathTurn;
+        firePropertyChange("Turn path", null, pathTurn);
+    }
+    
+    
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -64,10 +53,6 @@ public class IconJoueur extends ImageDisplayer {
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
-
-        setMaximumSize(new java.awt.Dimension(64, 64));
-        setMinimumSize(new java.awt.Dimension(64, 64));
-        setPreferredSize(new java.awt.Dimension(64, 64));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -80,6 +65,8 @@ public class IconJoueur extends ImageDisplayer {
             .addGap(0, 300, Short.MAX_VALUE)
         );
     }// </editor-fold>//GEN-END:initComponents
+
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
     // End of variables declaration//GEN-END:variables
 }

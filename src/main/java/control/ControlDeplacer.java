@@ -56,14 +56,16 @@ public class ControlDeplacer implements IDeplacerPirate, ILancerDe, IChangement{
     
     private int valeurDeplacement(De[] des){
         //Pour recupérer la somme des valeurs des dés
-        Function<De[], Integer> somme = d -> Stream.of(d).mapToInt(d1 -> d1.getValue()).reduce(0, (a, b) -> a+b);
+        Function<De[], Integer> somme = d -> Stream.of(d)
+                .mapToInt(d1 -> d1.getValue()).reduce(0, (a, b) -> a+b);
         return somme.apply(des);
     }
     
     @Override
     public int[] getDes() {
         //Est appelée quand l'affichage a besoin du résultat des dés
-        Function<De[], int[]> getValeurs = d -> Stream.of(d).mapToInt(d1 -> d1.getValue()).toArray();
+        Function<De[], int[]> getValeurs = d -> Stream.of(d)
+                .mapToInt(d1 -> d1.getValue()).toArray();
         return getValeurs.apply(de);
     }
     

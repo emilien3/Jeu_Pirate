@@ -2,36 +2,40 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JPanel.java to edit this template
  */
-package boundary;
+package boundaryComponants;
 
 /**
  *
- * @author ogled
+ * @author Megaport
  */
-public class InfosJoueur extends javax.swing.JPanel {
+public class PanelInfosJoueur extends javax.swing.JPanel {
 
     public enum Joueur {Bill, Jack};
     private Joueur joueur = Joueur.Bill;
     private boolean turn = true;
-
+    
     /**
-     * Creates new form InfosJoueur
+     * Creates new form PanelInfosJoueur
      */
-    public InfosJoueur() {
+    public PanelInfosJoueur() {
         initComponents();
     }
 
-    public void setJoueur(Joueur joueur) {
+    public void setJoueur(PanelInfosJoueur.Joueur joueur) {
         this.joueur = joueur;
 
         // Pour l'édition dans le GUI
         firePropertyChange("joueur", null, joueur);
 
         // On mets à jour les images
-        this.background.setAlternative(joueur == Joueur.Jack);
-        this.pointsVie.setAlternative(joueur == Joueur.Jack);
+        this.background.setAlternative(joueur == PanelInfosJoueur.Joueur.Jack);
+        this.pointsVie.setAlternative(joueur == PanelInfosJoueur.Joueur.Jack);
     }
-
+    
+    public int getPV() {
+        return this.pointsVie.getNombrePV();
+    }
+    
     public void setPV(int PV) {
         this.pointsVie.setNombrePV(PV);
 
@@ -45,6 +49,13 @@ public class InfosJoueur extends javax.swing.JPanel {
         // Pour l'édition dans le GUI
         firePropertyChange("etat", null, effet);
     }
+    
+    public void setChangement(int changement) {
+        this.effet.setChangement(changement);
+
+        // Pour l'édition dans le GUI
+        firePropertyChange("changemennt", 0, changement);
+    }
 
     public void setTurn(boolean turn) {
         this.turn = turn;
@@ -55,6 +66,7 @@ public class InfosJoueur extends javax.swing.JPanel {
     public boolean getTurn() {
         return turn;
     }
+    
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -64,16 +76,16 @@ public class InfosJoueur extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        background = new boundary.IconJoueur();
-        pointsVie = new boundary.barreDeVie();
-        effet = new boundary.Effet();
-        panelTurn = new boundary.PanelTurn();
-
-        setPreferredSize(new java.awt.Dimension(306, 306));
+        effet1 = new boundaryComponants.JEffet();
+        background = new boundaryComponants.IconJoueur();
+        pointsVie = new boundaryComponants.barreDeVie();
+        effet = new boundaryComponants.JEffet();
+        jPanel1 = new javax.swing.JPanel();
+        panelTurn = new boundaryComponants.PanelTurn();
 
         background.setX2Res(true);
 
-        pointsVie.setOpaque(false);
+        pointsVie.setNombrePV(5);
 
         javax.swing.GroupLayout pointsVieLayout = new javax.swing.GroupLayout(pointsVie);
         pointsVie.setLayout(pointsVieLayout);
@@ -86,41 +98,57 @@ public class InfosJoueur extends javax.swing.JPanel {
             .addGap(0, 32, Short.MAX_VALUE)
         );
 
-        effet.setPreferredSize(new java.awt.Dimension(160, 80));
+        effet.setChangement(0);
 
         javax.swing.GroupLayout backgroundLayout = new javax.swing.GroupLayout(background);
         background.setLayout(backgroundLayout);
         backgroundLayout.setHorizontalGroup(
             backgroundLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(backgroundLayout.createSequentialGroup()
-                .addGap(110, 110, 110)
                 .addGroup(backgroundLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(effet, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(pointsVie, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(222, Short.MAX_VALUE))
+                    .addGroup(backgroundLayout.createSequentialGroup()
+                        .addGap(109, 109, 109)
+                        .addComponent(pointsVie, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(backgroundLayout.createSequentialGroup()
+                        .addGap(99, 99, 99)
+                        .addComponent(effet, javax.swing.GroupLayout.PREFERRED_SIZE, 185, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(168, Short.MAX_VALUE))
         );
         backgroundLayout.setVerticalGroup(
             backgroundLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(backgroundLayout.createSequentialGroup()
-                .addGap(115, 115, 115)
+                .addGap(117, 117, 117)
                 .addComponent(pointsVie, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(effet, javax.swing.GroupLayout.PREFERRED_SIZE, 112, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(41, Short.MAX_VALUE))
+                .addComponent(effet, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(30, Short.MAX_VALUE))
         );
 
         panelTurn.setPathTurn("Green_Arrow_Right.png");
-        panelTurn.setPreferredSize(new java.awt.Dimension(64, 64));
 
         javax.swing.GroupLayout panelTurnLayout = new javax.swing.GroupLayout(panelTurn);
         panelTurn.setLayout(panelTurnLayout);
         panelTurnLayout.setHorizontalGroup(
             panelTurnLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 64, Short.MAX_VALUE)
+            .addGap(0, 68, Short.MAX_VALUE)
         );
         panelTurnLayout.setVerticalGroup(
             panelTurnLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 64, Short.MAX_VALUE)
+            .addGap(0, 66, Short.MAX_VALUE)
+        );
+
+        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
+        jPanel1.setLayout(jPanel1Layout);
+        jPanel1Layout.setHorizontalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(panelTurn, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+        );
+        jPanel1Layout.setVerticalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGap(101, 101, 101)
+                .addComponent(panelTurn, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
@@ -128,27 +156,30 @@ public class InfosJoueur extends javax.swing.JPanel {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(panelTurn, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(background, javax.swing.GroupLayout.PREFERRED_SIZE, 492, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap())
+                .addComponent(background, javax.swing.GroupLayout.PREFERRED_SIZE, 452, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(background, javax.swing.GroupLayout.DEFAULT_SIZE, 306, Short.MAX_VALUE)
             .addGroup(layout.createSequentialGroup()
-                .addGap(106, 106, 106)
-                .addComponent(panelTurn, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(background, javax.swing.GroupLayout.PREFERRED_SIZE, 275, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private boundary.IconJoueur background;
-    private boundary.Effet effet;
-    private boundary.PanelTurn panelTurn;
-    private boundary.barreDeVie pointsVie;
+    private boundaryComponants.IconJoueur background;
+    private boundaryComponants.JEffet effet;
+    private boundaryComponants.JEffet effet1;
+    private javax.swing.JPanel jPanel1;
+    private boundaryComponants.PanelTurn panelTurn;
+    private boundaryComponants.barreDeVie pointsVie;
     // End of variables declaration//GEN-END:variables
 }

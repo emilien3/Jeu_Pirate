@@ -4,6 +4,9 @@
  */
 package boundary;
 
+import boundaryComponants.DiceCoursePanel;
+import boundaryComponants.JPlateau;
+import boundaryComponants.PanelInfosJoueur;
 import java.awt.Container;
 import java.awt.FlowLayout;
 import javax.swing.JButton;
@@ -39,11 +42,11 @@ public class FrameTestToDelete extends javax.swing.JFrame {
     private void initComponents() {
 
         jPanelBoard = new javax.swing.JPanel();
-        jPlateau = new boundary.JPlateau();
+        jPlateau = new boundaryComponants.JPlateau();
         jPanelPlayers = new javax.swing.JPanel();
-        diceCoursePanel = new boundary.DiceCoursePanel();
-        infosJoueurBill = new boundary.PanelInfosJoueur();
-        infosJoueurJack = new boundary.PanelInfosJoueur();
+        diceCoursePanel = new boundaryComponants.DiceCoursePanel();
+        infosJoueurBill = new boundaryComponants.PanelInfosJoueur();
+        infosJoueurJack = new boundaryComponants.PanelInfosJoueur();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setResizable(false);
@@ -55,11 +58,11 @@ public class FrameTestToDelete extends javax.swing.JFrame {
         jPanelPlayers.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
 
         infosJoueurBill.setEtat(model.Etat.ESTVIVANT);
-        infosJoueurBill.setJoueur(boundary.PanelInfosJoueur.Joueur.Bill);
+        infosJoueurBill.setJoueur(boundaryComponants.PanelInfosJoueur.Joueur.Bill);
         infosJoueurBill.setTurn(false);
 
         infosJoueurJack.setEtat(model.Etat.ESTVIVANT);
-        infosJoueurJack.setJoueur(boundary.PanelInfosJoueur.Joueur.Jack);
+        infosJoueurJack.setJoueur(boundaryComponants.PanelInfosJoueur.Joueur.Jack);
         infosJoueurJack.setTurn(false);
 
         javax.swing.GroupLayout jPanelPlayersLayout = new javax.swing.GroupLayout(jPanelPlayers);
@@ -200,11 +203,11 @@ public class FrameTestToDelete extends javax.swing.JFrame {
 
     private Dialog dialog;
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private boundary.DiceCoursePanel diceCoursePanel;
-    private boundary.PanelInfosJoueur infosJoueurBill;
-    private boundary.PanelInfosJoueur infosJoueurJack;
+    private boundaryComponants.DiceCoursePanel diceCoursePanel;
+    private boundaryComponants.PanelInfosJoueur infosJoueurBill;
+    private boundaryComponants.PanelInfosJoueur infosJoueurJack;
     private javax.swing.JPanel jPanelBoard;
     private javax.swing.JPanel jPanelPlayers;
-    private boundary.JPlateau jPlateau;
+    private boundaryComponants.JPlateau jPlateau;
     // End of variables declaration//GEN-END:variables
 }

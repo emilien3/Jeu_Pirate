@@ -2,7 +2,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JPanel.java to edit this template
  */
-package boundary;
+package boundaryComponants;
 
 import java.awt.Graphics;
 import java.awt.image.BufferedImage;
@@ -16,7 +16,7 @@ import static model.Etat.PASSETOUR;
  *
  * @author ogled
  */
-public class Effet extends javax.swing.JPanel {
+public class JEffet extends javax.swing.JPanel {
     private BufferedImage effetImage;
     private model.Etat etat = model.Etat.ESTVIVANT;
     private String image = null;
@@ -26,7 +26,7 @@ public class Effet extends javax.swing.JPanel {
     /**
      * Creates new form Effet
      */
-    public Effet() {
+    public JEffet() {
         initComponents();
         
         // Init du label
@@ -74,17 +74,20 @@ public class Effet extends javax.swing.JPanel {
                 image = "avalanche";
                 break;
             case ESTPRISON:
-                image = "crane";
+                image = "lianes";
                 break;
             case ESTPOURSUIVI:
                 image = "monstre";
                 break;
             default:
-                if (changement !=0){
-                    image = "des";
+                if (changement<0){
+                    image = "crane";
+                }else if (changement>0){
+                    image = "nourriture";
                 }else{
                     image = null;
                 }
+                break;
         }
         if(image == null)
             return;
@@ -133,8 +136,8 @@ public class Effet extends javax.swing.JPanel {
     public void paintComponent(Graphics g) {
         super.paintComponent(g);
         
-        if(etat != model.Etat.ESTVIVANT)
-            g.drawImage(effetImage, 0, 0, null);
+        if(etat != model.Etat.ESTVIVANT || changement !=0)
+            g.drawImage(effetImage, 0, 0,64, 64, null);
     } 
 
     /**
@@ -153,30 +156,30 @@ public class Effet extends javax.swing.JPanel {
         setPreferredSize(new java.awt.Dimension(160, 90));
 
         labelNomEffet.setFont(new java.awt.Font("Segoe UI", 1, 16)); // NOI18N
-        labelNomEffet.setForeground(java.awt.Color.black);
 
         labelDescriptionEffet.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        labelDescriptionEffet.setForeground(java.awt.Color.black);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap(69, Short.MAX_VALUE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(labelNomEffet, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(labelDescriptionEffet, javax.swing.GroupLayout.DEFAULT_SIZE, 85, Short.MAX_VALUE))
+                .addContainerGap()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(labelDescriptionEffet, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(0, 46, Short.MAX_VALUE)
+                        .addComponent(labelNomEffet, javax.swing.GroupLayout.PREFERRED_SIZE, 102, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(labelNomEffet)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(labelDescriptionEffet)
-                .addContainerGap(52, Short.MAX_VALUE))
+                .addGap(18, 18, 18)
+                .addComponent(labelNomEffet, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(labelDescriptionEffet, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(10, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 

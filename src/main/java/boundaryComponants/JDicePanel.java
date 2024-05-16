@@ -1,4 +1,4 @@
-package boundary;
+package boundaryComponants;
 
 import java.awt.Graphics;
 import java.awt.Graphics2D;
@@ -6,7 +6,7 @@ import java.awt.image.BufferedImage;
 
 
 
-public class DicePanel extends javax.swing.JPanel {
+public class JDicePanel extends javax.swing.JPanel {
 
     
     private BufferedImage image;
@@ -16,7 +16,7 @@ public class DicePanel extends javax.swing.JPanel {
     /**
      * Creates new form mon_panel
      */
-    public DicePanel() {
+    public JDicePanel() {
         initComponents();
     }
 

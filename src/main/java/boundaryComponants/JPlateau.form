@@ -98,7 +98,7 @@
             <Property name="rows" type="int" value="6"/>
           </Layout>
           <SubComponents>
-            <Container class="boundary.PanelCase" name="case1">
+            <Container class="boundaryComponants.PanelCase" name="case1">
 
               <Layout>
                 <DimensionLayout dim="0">
@@ -113,7 +113,7 @@
                 </DimensionLayout>
               </Layout>
             </Container>
-            <Container class="boundary.PanelCase" name="case2">
+            <Container class="boundaryComponants.PanelCase" name="case2">
 
               <Layout>
                 <DimensionLayout dim="0">
@@ -128,7 +128,7 @@
                 </DimensionLayout>
               </Layout>
             </Container>
-            <Container class="boundary.PanelCase" name="case3">
+            <Container class="boundaryComponants.PanelCase" name="case3">
 
               <Layout>
                 <DimensionLayout dim="0">
@@ -143,7 +143,7 @@
                 </DimensionLayout>
               </Layout>
             </Container>
-            <Container class="boundary.PanelCase" name="case4">
+            <Container class="boundaryComponants.PanelCase" name="case4">
 
               <Layout>
                 <DimensionLayout dim="0">
@@ -158,7 +158,7 @@
                 </DimensionLayout>
               </Layout>
             </Container>
-            <Container class="boundary.PanelCase" name="case5">
+            <Container class="boundaryComponants.PanelCase" name="case5">
 
               <Layout>
                 <DimensionLayout dim="0">
@@ -173,7 +173,7 @@
                 </DimensionLayout>
               </Layout>
             </Container>
-            <Container class="boundary.PanelCase" name="case6">
+            <Container class="boundaryComponants.PanelCase" name="case6">
 
               <Layout>
                 <DimensionLayout dim="0">
@@ -188,7 +188,7 @@
                 </DimensionLayout>
               </Layout>
             </Container>
-            <Container class="boundary.PanelCase" name="case7">
+            <Container class="boundaryComponants.PanelCase" name="case7">
 
               <Layout>
                 <DimensionLayout dim="0">
@@ -203,7 +203,7 @@
                 </DimensionLayout>
               </Layout>
             </Container>
-            <Container class="boundary.PanelCase" name="case8">
+            <Container class="boundaryComponants.PanelCase" name="case8">
 
               <Layout>
                 <DimensionLayout dim="0">
@@ -218,7 +218,7 @@
                 </DimensionLayout>
               </Layout>
             </Container>
-            <Container class="boundary.PanelCase" name="case9">
+            <Container class="boundaryComponants.PanelCase" name="case9">
 
               <Layout>
                 <DimensionLayout dim="0">
@@ -233,7 +233,7 @@
                 </DimensionLayout>
               </Layout>
             </Container>
-            <Container class="boundary.PanelCase" name="case10">
+            <Container class="boundaryComponants.PanelCase" name="case10">
 
               <Layout>
                 <DimensionLayout dim="0">
@@ -248,7 +248,7 @@
                 </DimensionLayout>
               </Layout>
             </Container>
-            <Container class="boundary.PanelCase" name="case11">
+            <Container class="boundaryComponants.PanelCase" name="case11">
 
               <Layout>
                 <DimensionLayout dim="0">
@@ -263,7 +263,7 @@
                 </DimensionLayout>
               </Layout>
             </Container>
-            <Container class="boundary.PanelCase" name="case12">
+            <Container class="boundaryComponants.PanelCase" name="case12">
 
               <Layout>
                 <DimensionLayout dim="0">
@@ -278,7 +278,7 @@
                 </DimensionLayout>
               </Layout>
             </Container>
-            <Container class="boundary.PanelCase" name="case13">
+            <Container class="boundaryComponants.PanelCase" name="case13">
 
               <Layout>
                 <DimensionLayout dim="0">
@@ -293,7 +293,7 @@
                 </DimensionLayout>
               </Layout>
             </Container>
-            <Container class="boundary.PanelCase" name="case14">
+            <Container class="boundaryComponants.PanelCase" name="case14">
 
               <Layout>
                 <DimensionLayout dim="0">
@@ -308,7 +308,7 @@
                 </DimensionLayout>
               </Layout>
             </Container>
-            <Container class="boundary.PanelCase" name="case15">
+            <Container class="boundaryComponants.PanelCase" name="case15">
 
               <Layout>
                 <DimensionLayout dim="0">
@@ -323,7 +323,7 @@
                 </DimensionLayout>
               </Layout>
             </Container>
-            <Container class="boundary.PanelCase" name="case16">
+            <Container class="boundaryComponants.PanelCase" name="case16">
 
               <Layout>
                 <DimensionLayout dim="0">
@@ -338,7 +338,7 @@
                 </DimensionLayout>
               </Layout>
             </Container>
-            <Container class="boundary.PanelCase" name="case17">
+            <Container class="boundaryComponants.PanelCase" name="case17">
 
               <Layout>
                 <DimensionLayout dim="0">
@@ -353,7 +353,7 @@
                 </DimensionLayout>
               </Layout>
             </Container>
-            <Container class="boundary.PanelCase" name="case18">
+            <Container class="boundaryComponants.PanelCase" name="case18">
 
               <Layout>
                 <DimensionLayout dim="0">
@@ -368,7 +368,7 @@
                 </DimensionLayout>
               </Layout>
             </Container>
-            <Container class="boundary.PanelCase" name="case19">
+            <Container class="boundaryComponants.PanelCase" name="case19">
 
               <Layout>
                 <DimensionLayout dim="0">
@@ -383,7 +383,7 @@
                 </DimensionLayout>
               </Layout>
             </Container>
-            <Container class="boundary.PanelCase" name="case20">
+            <Container class="boundaryComponants.PanelCase" name="case20">
 
               <Layout>
                 <DimensionLayout dim="0">
@@ -398,7 +398,7 @@
                 </DimensionLayout>
               </Layout>
             </Container>
-            <Container class="boundary.PanelCase" name="case21">
+            <Container class="boundaryComponants.PanelCase" name="case21">
 
               <Layout>
                 <DimensionLayout dim="0">
@@ -413,7 +413,7 @@
                 </DimensionLayout>
               </Layout>
             </Container>
-            <Container class="boundary.PanelCase" name="case22">
+            <Container class="boundaryComponants.PanelCase" name="case22">
 
               <Layout>
                 <DimensionLayout dim="0">
@@ -428,7 +428,7 @@
                 </DimensionLayout>
               </Layout>
             </Container>
-            <Container class="boundary.PanelCase" name="case23">
+            <Container class="boundaryComponants.PanelCase" name="case23">
 
               <Layout>
                 <DimensionLayout dim="0">
@@ -443,7 +443,7 @@
                 </DimensionLayout>
               </Layout>
             </Container>
-            <Container class="boundary.PanelCase" name="case24">
+            <Container class="boundaryComponants.PanelCase" name="case24">
 
               <Layout>
                 <DimensionLayout dim="0">
@@ -458,7 +458,7 @@
                 </DimensionLayout>
               </Layout>
             </Container>
-            <Container class="boundary.PanelCase" name="case25">
+            <Container class="boundaryComponants.PanelCase" name="case25">
 
               <Layout>
                 <DimensionLayout dim="0">
@@ -473,7 +473,7 @@
                 </DimensionLayout>
               </Layout>
             </Container>
-            <Container class="boundary.PanelCase" name="case26">
+            <Container class="boundaryComponants.PanelCase" name="case26">
 
               <Layout>
                 <DimensionLayout dim="0">
@@ -488,7 +488,7 @@
                 </DimensionLayout>
               </Layout>
             </Container>
-            <Container class="boundary.PanelCase" name="case27">
+            <Container class="boundaryComponants.PanelCase" name="case27">
 
               <Layout>
                 <DimensionLayout dim="0">
@@ -503,7 +503,7 @@
                 </DimensionLayout>
               </Layout>
             </Container>
-            <Container class="boundary.PanelCase" name="case28">
+            <Container class="boundaryComponants.PanelCase" name="case28">
 
               <Layout>
                 <DimensionLayout dim="0">
@@ -518,7 +518,7 @@
                 </DimensionLayout>
               </Layout>
             </Container>
-            <Container class="boundary.PanelCase" name="case29">
+            <Container class="boundaryComponants.PanelCase" name="case29">
 
               <Layout>
                 <DimensionLayout dim="0">
@@ -533,7 +533,7 @@
                 </DimensionLayout>
               </Layout>
             </Container>
-            <Container class="boundary.PanelCase" name="case30">
+            <Container class="boundaryComponants.PanelCase" name="case30">
 
               <Layout>
                 <DimensionLayout dim="0">
@@ -564,7 +564,7 @@
             <Property name="useNullLayout" type="boolean" value="true"/>
           </Layout>
           <SubComponents>
-            <Container class="boundary.JPion" name="jetonJack">
+            <Container class="boundaryComponants.JPion" name="jetonJack">
               <Properties>
                 <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                   <Color blue="ff" green="ff" red="ff" type="rgb"/>
@@ -600,7 +600,7 @@
                 </DimensionLayout>
               </Layout>
             </Container>
-            <Container class="boundary.JPion" name="jetonBill">
+            <Container class="boundaryComponants.JPion" name="jetonBill">
               <Properties>
                 <Property name="enabled" type="boolean" value="false"/>
                 <Property name="movable" type="boolean" value="true"/>

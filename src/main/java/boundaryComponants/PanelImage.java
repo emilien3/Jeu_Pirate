@@ -2,45 +2,45 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JPanel.java to edit this template
  */
-package boundary;
+package boundaryComponants;
 
 import java.awt.Graphics;
-import java.awt.image.BufferedImage;
+import java.awt.Image;
+import java.io.File;
 import java.io.IOException;
+import java.net.URISyntaxException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.imageio.ImageIO;
 
 /**
  *
- * @author quang
+ * @author Ninon
  */
-public class PanelTurn extends javax.swing.JPanel {
+public class PanelImage extends javax.swing.JPanel {
 
-    private String pathTurn;
-    private BufferedImage image;
     /**
-     * Creates new form PanelTurn
+     * Creates new form PanelImage
      */
-    public PanelTurn() {
+    public PanelImage() {
         initComponents();
     }
     
-    @Override
-    protected void paintComponent(Graphics g) {
-        super.paintComponent(g);
+    public void setImage(String fichier){
         try {
-            image = ImageIO.read(getClass().getResource("/" + pathTurn));
-            g.drawImage(image, 0, 0, this);
-        } catch (IOException ex) {
-            g.drawOval(0, 0, g.getClipBounds().width, g.getClipBounds().height);
-            Logger.getLogger(JPion.class.getName()).log(Level.SEVERE, null, ex);
+            this.image = ImageIO.read(new File(getClass().getResource(fichier).toURI()));
+        } catch (IOException | URISyntaxException ex) {
+            Logger.getLogger(PanelImage.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
 
-    public void setPathTurn(String pathTurn) {
-        this.pathTurn = pathTurn;
-        firePropertyChange("Turn path", null, pathTurn);
+    @Override
+    protected void paintComponent(Graphics g) {
+        super.paintComponent(g); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/OverriddenMethodBody
+        if (image != null){
+            g.drawImage(image, 0, 0, getWidth(), getHeight(), this);
+        }
+        
     }
     
     
@@ -58,15 +58,15 @@ public class PanelTurn extends javax.swing.JPanel {
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 400, Short.MAX_VALUE)
+            .addGap(0, 130, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 300, Short.MAX_VALUE)
+            .addGap(0, 130, Short.MAX_VALUE)
         );
     }// </editor-fold>//GEN-END:initComponents
 
-
+    private Image image;
     // Variables declaration - do not modify//GEN-BEGIN:variables
     // End of variables declaration//GEN-END:variables
 }

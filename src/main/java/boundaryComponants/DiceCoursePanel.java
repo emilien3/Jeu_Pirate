@@ -1,5 +1,7 @@
-package boundary;
+package boundaryComponants;
 
+import boundary.Dialog;
+import boundaryComponants.JDicePanel;
 import java.awt.image.BufferedImage;
 import java.io.IOException;
 import java.util.ArrayList;
@@ -14,7 +16,7 @@ import javax.swing.JPanel;
 public class DiceCoursePanel extends JPanel{
 
     private List <BufferedImage> buffer;
-    private DicePanel diceArray[];
+    private JDicePanel diceArray[];
     private Timer timerArray[];
     
     private Random seed;
@@ -28,7 +30,7 @@ public class DiceCoursePanel extends JPanel{
         
         this.seed = new Random();
         
-        this.diceArray = new DicePanel[2];
+        this.diceArray = new JDicePanel[2];
         this.timerArray = new Timer[3];
         
         try {
@@ -78,8 +80,8 @@ public class DiceCoursePanel extends JPanel{
     private void initComponents() {
 
         jButtonThrow = new javax.swing.JButton();
-        dicePanel1 = new boundary.DicePanel();
-        dicePanel2 = new boundary.DicePanel();
+        dicePanel1 = new boundaryComponants.JDicePanel();
+        dicePanel2 = new boundaryComponants.JDicePanel();
 
         jButtonThrow.setText("Throw");
         jButtonThrow.addActionListener(new java.awt.event.ActionListener() {
@@ -146,8 +148,8 @@ public class DiceCoursePanel extends JPanel{
 
     private Dialog dialog;
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private boundary.DicePanel dicePanel1;
-    private boundary.DicePanel dicePanel2;
+    private boundaryComponants.JDicePanel dicePanel1;
+    private boundaryComponants.JDicePanel dicePanel2;
     private javax.swing.JButton jButtonThrow;
     // End of variables declaration//GEN-END:variables
 

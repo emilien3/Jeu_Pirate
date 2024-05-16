@@ -5,8 +5,12 @@
 package boundary;
 
 
+import boundaryComponants.JPion;
+import boundaryComponants.PanelInfosJoueur;
 import java.util.EnumMap;
 import java.util.Map;
+import java.util.function.Function;
+import java.util.stream.Stream;
 import model.CaseEnum;
 import model.De;
 import model.Etat;
@@ -45,6 +49,7 @@ public class Dialog implements IPirates {
         int taillePlateau = adaptateur.getNombreCases();
         String[] imageCases = new String[taillePlateau];
         String[] descriptions = new String[taillePlateau];
+        
         for (int i = 0; i < taillePlateau; i++) {
             imageCases[i] = mapPlateau.get(adaptateur.getTypeCase(i));
             descriptions[i] = adaptateur.getTypeCase(i).toString();

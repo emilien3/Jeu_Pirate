@@ -78,6 +78,7 @@ public class ControleurCaseKomodo extends ControlActiverCaseSpeciale implements 
                 boundary.modifierVie(this);
             }else{
                 this.arrivee=depart + lancer;
+                pirate.setPosition(arrivee);
                 boundary.deplacerAuto(this);
             }
 	}
