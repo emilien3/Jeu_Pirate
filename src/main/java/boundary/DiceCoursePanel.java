@@ -63,6 +63,9 @@ public class DiceCoursePanel extends JPanel{
             timerArray[2].stop();
             endAnimation();
         });
+        
+        diceArray[0].changeImage(getBuffer().get(0));
+        diceArray[1].changeImage(getBuffer().get(5));
     }
 
     /**

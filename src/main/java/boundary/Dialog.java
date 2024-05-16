@@ -33,13 +33,13 @@ public class Dialog implements IPirates {
         //Initialisation des images des cases
         Map<CaseEnum, String> mapPlateau = new EnumMap<>(CaseEnum.class);
         mapPlateau.put(CaseEnum.NORMALE, "ile.png");
-        mapPlateau.put(CaseEnum.DEBUT, "crane.png");
+        mapPlateau.put(CaseEnum.DEBUT, "retour.png");
         mapPlateau.put(CaseEnum.FALAISE, "falaise.png");
         mapPlateau.put(CaseEnum.NOURRITURE, "nourriture.png");
         mapPlateau.put(CaseEnum.PIERRE, "avalanche.png");
         mapPlateau.put(CaseEnum.KOMODO, "monstre.png");
-        mapPlateau.put(CaseEnum.BOUE, "crane.png");
-        mapPlateau.put(CaseEnum.LIANES, "crane.png");
+        mapPlateau.put(CaseEnum.BOUE, "boue.png");
+        mapPlateau.put(CaseEnum.LIANES, "lianes.png");
         mapPlateau.put(CaseEnum.SECRET, "longuevue.png");
         adaptateur.getTypeCase(0);
         int taillePlateau = adaptateur.getNombreCases();
