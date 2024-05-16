@@ -39,6 +39,9 @@ public class Pirate {
     }
 
     public void setLife(int life) {
+        if (life > 5){
+            life = 5;
+        }
         this.life = life;
     }
 

@@ -8,6 +8,7 @@ import boundary.IBoundary;
 import java.util.function.Function;
 import java.util.stream.Stream;
 import model.De;
+import model.Etat;
 import model.Pirate;
 
 /**
@@ -32,10 +33,14 @@ public class ControlDeplacer implements IDeplacerPirate, ILancerDe, IChangement{
     
 
     public void deplacer(int i) {
-        //On déplace le pirate i (fonction appelée depuis controlJeuPirate)
         this.joueurCourant = i;
-        this.depart = pirates[joueurCourant].getPosition();
-        lancerDes();
+        if (pirates[joueurCourant].getEtat()==Etat.ESTPRISON){
+            controlJeuPirate.finDeplacer();
+        }else{
+            //On déplace le pirate i (fonction appelée depuis controlJeuPirate)
+            this.depart = pirates[joueurCourant].getPosition();
+            lancerDes();
+        }
     }
     
 
