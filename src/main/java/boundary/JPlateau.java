@@ -5,18 +5,16 @@
 package boundary;
 
 import java.awt.Component;
-import java.awt.Dimension;
 import java.awt.Point;
 import java.awt.Rectangle;
 import java.util.List;
 import java.util.ArrayList;
 import java.util.Collections;
-import java.util.Random;
 import java.util.stream.IntStream;
 
 /**
  *
- * @author PJR4505A
+ * @author Robin Pujol
  */
 public class JPlateau extends javax.swing.JPanel {
 
