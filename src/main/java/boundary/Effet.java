@@ -8,6 +8,7 @@ import java.awt.Graphics;
 import java.awt.image.BufferedImage;
 import java.io.IOException;
 import javax.imageio.ImageIO;
+import static model.Etat.ESTPOURSUIVI;
 import static model.Etat.ESTPRISON;
 import static model.Etat.PASSETOUR;
 
@@ -75,6 +76,9 @@ public class Effet extends javax.swing.JPanel {
             case ESTPRISON:
                 image = "ile";
                 break;
+            case ESTPOURSUIVI:
+                image = "monstre";
+                break;
             default:
                 if (changement !=0){
                     image = "des";
@@ -104,6 +108,10 @@ public class Effet extends javax.swing.JPanel {
             case ESTPRISON:
                 nom = "Emprisonné";
                 description = "Jusqu'à faire un 10";
+                break;
+            case ESTPOURSUIVI:
+                nom = "Poursuivi";
+                description = "Doit faire un 8";
                 break;
             default:
                 if (changement > 0){

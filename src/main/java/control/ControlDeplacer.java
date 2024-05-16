@@ -14,13 +14,13 @@ import model.Pirate;
  *
  * @author Ninon
  */
-public class ControlDeplacer implements IDeplacerPirate, ILancerDe{
+public class ControlDeplacer implements IDeplacerPirate, ILancerDe, IChangement{
     private IBoundary boundary;
     private ControlJeuPirate controlJeuPirate;
     private int TAILLE_MAX;
     private De[] de;
     private Pirate[] pirates;
-    private int depart, deplacement, joueurCourant;
+    private int depart, deplacement, joueurCourant, changement;
     
     public ControlDeplacer(ControlJeuPirate controlJeuPirate, IBoundary boundary, int taille, De[] de, Pirate[] pirates){
         this.controlJeuPirate = controlJeuPirate;
@@ -72,7 +72,8 @@ public class ControlDeplacer implements IDeplacerPirate, ILancerDe{
     
     private void effectuerDeplacement(){
         //On modifie les données pour effectuer le déplacement
-        int avancement = deplacement + pirates[joueurCourant].getChangement();
+        int changement = pirates[joueurCourant].getChangement();
+        int avancement = deplacement + changement;
         int newPosition = depart + avancement ;
         if (newPosition > TAILLE_MAX ) {
             //Si la valeur des dés amène sur une case supérieure à la dernière case, on recule du nombre de cases qu'on a dépassé
@@ -108,6 +109,21 @@ public class ControlDeplacer implements IDeplacerPirate, ILancerDe{
     @Override
     public void finDeplacement() {
         //Est appelée quand l'affichage a fini d'afficher le déplacement
+        if (changement==0){
+            controlJeuPirate.finDeplacer();
+        }else{
+            changement = 0;
+            boundary.changementProchainTour(this);
+        }
+    }
+
+    @Override
+    public int getChangement() {
+        return changement;
+    }
+
+    @Override
+    public void finChangement() {
         controlJeuPirate.finDeplacer();
     }
     
