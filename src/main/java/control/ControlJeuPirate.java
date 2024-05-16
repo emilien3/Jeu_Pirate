@@ -78,7 +78,7 @@ public class ControlJeuPirate implements IInfoPartie, IChangerEtat{
         CaseEnum caseCourante = jeuPirate.getPlateau().donnerCase(pirateCourant.getPosition());
         if(pirateCourant.getEtat()==Etat.PASSETOUR) {
             pirateCourant.setEtat(Etat.ESTVIVANT);
-            finActionCase();
+            boundary.changerEtat(this);
         }
         if (pirateCourant.getEtat()==Etat.ESTPRISON) {
             boundary.debutTour(this);
@@ -158,7 +158,7 @@ public class ControlJeuPirate implements IInfoPartie, IChangerEtat{
 
     @Override
     public void finChangerEtat() {
-        
+        finActionCase();
     }
     
     @Override
