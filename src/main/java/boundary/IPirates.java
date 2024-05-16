@@ -4,10 +4,23 @@
  */
 package boundary;
 
+
+import model.Etat;
+
 /**
  *
  * @author Ninon
  */
 public interface IPirates {
-    
+
+    //Fonction qui seront appelées depuis l'adaptateur noyau
+    public void initDialog();
+    public void changerJoueur();
+    public void enableLancerDe();
+    public void enableDeplacement();
+    public void changerPositionPirate(int numCase);
+    public void changerChangement();
+    public void changerEtat();
+    public void changerVie();
+    public void finDePartie();
 }

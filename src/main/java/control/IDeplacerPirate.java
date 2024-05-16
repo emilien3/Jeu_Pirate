@@ -4,10 +4,14 @@
  */
 package control;
 
+
 /**
  *
  * @author Ninon
  */
 public interface IDeplacerPirate {
-    
+    public int getDepart();
+    public int getArrivee();
+    public String getEffetCase(int num);
+    public void finDeplacement();
 }
