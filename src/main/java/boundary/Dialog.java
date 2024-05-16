@@ -44,10 +44,13 @@ public class Dialog implements IPirates {
         adaptateur.getTypeCase(0);
         int taillePlateau = adaptateur.getNombreCases();
         String[] imageCases = new String[taillePlateau];
+        String[] descriptions = new String[taillePlateau];
         for (int i = 0; i < taillePlateau; i++) {
             imageCases[i] = mapPlateau.get(adaptateur.getTypeCase(i));
+            descriptions[i] = adaptateur.getTypeCase(i).toString();
         }
         frame.getjPlateau().setImage(imageCases);
+        frame.getjPlateau().setDescriptions(descriptions);
         
         //On ne peut pas bouger les pions tant que le tour n'a pas commencé
         frame.getjPlateau().getJetonBill().setMovable(false);
@@ -132,6 +135,8 @@ public class Dialog implements IPirates {
     public void changerChangement() {
         int changement = adaptateur.getChangement();
         //TODO : mettre changement de numPirate à changement
+        PanelInfosJoueur joueur =  adaptateur.getPirateCourant() == 0 ? frame.getInfosJoueurBill() : frame.getInfosJoueurJack();
+        joueur.setChangement(changement);
         adaptateur.finChangement();
     }
 

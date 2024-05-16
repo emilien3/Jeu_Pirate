@@ -8,23 +8,19 @@ import java.awt.Graphics;
 import java.awt.image.BufferedImage;
 import java.io.IOException;
 import javax.imageio.ImageIO;
+import static model.Etat.ESTPRISON;
+import static model.Etat.PASSETOUR;
 
 /**
  *
  * @author ogled
  */
 public class Effet extends javax.swing.JPanel {
-
     private BufferedImage effetImage;
     private model.Etat etat = model.Etat.ESTVIVANT;
-    private EtatImage etatImage = EtatImage.none;
-            
-    public enum EtatImage {
-        falaise,
-        monstre,
-        ile,
-        none
-    }
+    private String image = null;
+    private int changement = 0;
+          
     
     /**
      * Creates new form Effet
@@ -57,32 +53,41 @@ public class Effet extends javax.swing.JPanel {
         repaint();
     }
     
-    private String formatName(String str) {
-        return str.substring(0, 1).toUpperCase() + str.substring(1);
+    public void setChangement(int changement) {
+        this.changement  = changement;
+        
+        // Pour l'édition dans le GUI
+        firePropertyChange("changement", 0, changement);
+        
+        // Mise à jour de l'image
+        updateImageFile();
+        updateLabels();
+        
+        // repaint de la frame
+        repaint();
     }
         
     private void updateImageFile() {
-        
-        
-        switch(etat.name()) {
-            case "PASSETOUR":
-                etatImage = EtatImage.falaise;
+        switch(etat) {
+            case PASSETOUR:
+                image = "falaise";
                 break;
-            case "ESTPRISON":
-                etatImage = EtatImage.ile;
-                break;
-            case "ESTPOURSUIVI":
-                etatImage = EtatImage.monstre;
+            case ESTPRISON:
+                image = "ile";
                 break;
             default:
-                etatImage = etatImage.none;
+                if (changement !=0){
+                    image = "des";
+                }else{
+                    image = null;
+                }
         }
-        if(etatImage == EtatImage.none)
+        if(image == null)
             return;
         
         try {
             effetImage = ImageIO.read(
-                    getClass().getResource("/" + formatName(etatImage.name()) + ".png"));
+                    getClass().getResource("/" + image + ".png"));
             
         } catch (IOException e) {
             e.printStackTrace();
@@ -90,13 +95,30 @@ public class Effet extends javax.swing.JPanel {
     }
     
     private void updateLabels() {
-        if(etat == model.Etat.ESTVIVANT) {
-            labelNomEffet.setText("");
-            labelDescriptionEffet.setText("");
-            return;
+        String nom, description;
+        switch(etat) {
+            case PASSETOUR:
+                nom = "Bloqué";
+                description = "Passe un tour";
+                break;
+            case ESTPRISON:
+                nom = "Emprisonné";
+                description = "Jusqu'à faire un 10";
+                break;
+            default:
+                if (changement > 0){
+                    nom = "Boost";
+                    description = "+" + changement + " au prochain lancer";
+                }else if (changement < 0){
+                    nom = "Malus";
+                    description = changement + " au prochain lancer";
+                }else{
+                    nom = "";
+                    description = "";
+                }
         }
-        labelNomEffet.setText(formatName(etat.name()));
-        labelDescriptionEffet.setText(etat.toString());
+        labelNomEffet.setText(nom);
+        labelDescriptionEffet.setText(description);
     }
     
     @Override

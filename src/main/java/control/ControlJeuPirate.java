@@ -119,7 +119,6 @@ public class ControlJeuPirate implements IInfoPartie, IChangerEtat{
         if (!jeuPirate.verifierFin()){
             numeroPirate = (numeroPirate + 1)%2;
             Pirate pirateCourant = jeuPirate.getPirates()[numeroPirate];
-            
             switch (pirateCourant.getEtat()) {
                 case PASSETOUR ->
                     finDeplacer();

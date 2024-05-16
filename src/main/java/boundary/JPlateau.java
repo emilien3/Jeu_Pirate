@@ -59,6 +59,13 @@ public class JPlateau extends javax.swing.JPanel {
         }
     }
     
+    public void setDescriptions(String[] descriptions) {
+        for (int i = 0; i < cases.size(); i++) {
+            PanelCase caseAct = cases.get(i);
+            caseAct.setDescription(descriptions[i]);
+        }
+    }
+    
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always

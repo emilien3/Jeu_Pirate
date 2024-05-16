@@ -49,6 +49,13 @@ public class PanelInfosJoueur extends javax.swing.JPanel {
         // Pour l'édition dans le GUI
         firePropertyChange("etat", null, effet);
     }
+    
+    public void setChangement(int changement) {
+        this.effet.setChangement(changement);
+
+        // Pour l'édition dans le GUI
+        firePropertyChange("changemennt", 0, changement);
+    }
 
     public void setTurn(boolean turn) {
         this.turn = turn;
@@ -90,6 +97,8 @@ public class PanelInfosJoueur extends javax.swing.JPanel {
             pointsVieLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGap(0, 32, Short.MAX_VALUE)
         );
+
+        effet.setChangement(0);
 
         javax.swing.GroupLayout backgroundLayout = new javax.swing.GroupLayout(background);
         background.setLayout(backgroundLayout);
@@ -153,13 +162,11 @@ public class PanelInfosJoueur extends javax.swing.JPanel {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(background, javax.swing.GroupLayout.PREFERRED_SIZE, 275, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(0, 0, Short.MAX_VALUE))
+                    .addComponent(background, javax.swing.GroupLayout.PREFERRED_SIZE, 275, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(layout.createSequentialGroup()
                         .addContainerGap()
                         .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap())
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
