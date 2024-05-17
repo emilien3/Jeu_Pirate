@@ -7,3 +7,8 @@
  - SANCHEZ Émilien - Responsable Spécifications
  - GUILLOT Laura - Responsable Modélisation
  - QUANG Lucas - Responsable IHM
+
+
+ **Comment jouer ?**
+ Il faut lancer le jeu depuis la classe TestLancement
+ 
