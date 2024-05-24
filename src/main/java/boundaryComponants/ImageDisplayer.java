@@ -6,7 +6,7 @@ package boundaryComponants;
 
 /**
  *
- * @author ogled
+ * @author Oscar
  */
 public abstract class ImageDisplayer extends javax.swing.JPanel {
     

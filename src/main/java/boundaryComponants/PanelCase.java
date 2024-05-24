@@ -19,7 +19,7 @@ import javax.swing.Timer;
 
 /**
  *
- * @author Ninon
+ * @author Laura
  */
 public class PanelCase extends javax.swing.JPanel {
 

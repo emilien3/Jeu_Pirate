@@ -12,7 +12,10 @@ import javax.imageio.ImageIO;
 import javax.swing.JButton;
 import javax.swing.JPanel;
 
-
+/**
+ *
+ * @author Emilien
+ */
 public class DiceCoursePanel extends JPanel{
 
     private List <BufferedImage> buffer;
