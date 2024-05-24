@@ -14,7 +14,7 @@ import static model.Etat.PASSETOUR;
 
 /**
  *
- * @author ogled
+ * @author Oscar
  */
 public class JEffet extends javax.swing.JPanel {
     private BufferedImage effetImage;

@@ -7,7 +7,7 @@ import control.ControlJeuPirate;
 
 /**
  *
- * @author Robin
+ * @author Lucas, Robin, Ninon
  */
 public class TestLancement {
     public static void main(String[] args) {

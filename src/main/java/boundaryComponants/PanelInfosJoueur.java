@@ -6,7 +6,7 @@ package boundaryComponants;
 
 /**
  *
- * @author Megaport
+ * @author Oscar
  */
 public class PanelInfosJoueur extends javax.swing.JPanel {
 

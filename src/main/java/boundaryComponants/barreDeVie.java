@@ -11,7 +11,7 @@ import javax.imageio.ImageIO;
 
 /**
  *
- * @author ogled
+ * @author Oscar
  */
 public class barreDeVie extends ImageDisplayer {
     

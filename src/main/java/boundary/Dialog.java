@@ -16,7 +16,7 @@ import model.De;
 import model.Etat;
 /**
  *
- * @author Ninon
+ * @author Lucas, Ninon
  */
 public class Dialog implements IPirates {
     private IAdaptateurFonctionnel adaptateur;

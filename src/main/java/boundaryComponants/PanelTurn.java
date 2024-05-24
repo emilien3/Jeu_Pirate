@@ -13,7 +13,7 @@ import javax.imageio.ImageIO;
 
 /**
  *
- * @author quang
+ * @author Lucas
  */
 public class PanelTurn extends javax.swing.JPanel {
 

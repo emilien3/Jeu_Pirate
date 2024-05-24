@@ -15,7 +15,7 @@ import javax.swing.JLabel;
 
 /**
  *
- * @author emilien
+ * @author Lucas, Emilien
  */
 public class FrameTestToDelete extends javax.swing.JFrame {
 
