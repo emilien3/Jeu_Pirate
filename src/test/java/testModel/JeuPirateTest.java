@@ -15,7 +15,7 @@ class JeuPirateTest {
 	}
 
 	@Test
-	void test() {
+	static void test() {
 		int[] des = {1,2};
 		JeuPirate jeuPirate =  new JeuPirate();
 		Plateau plateau = jeuPirate.getPlateau();

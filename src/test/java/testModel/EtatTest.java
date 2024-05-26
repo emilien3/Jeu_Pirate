@@ -9,7 +9,7 @@ import model.Etat;
 class EtatTest {
 
 	@Test
-	void test() {
+	static void test() {
 		assertEquals(Etat.ESTVIVANT.toString(),"va bien");
 		assertEquals(Etat.PASSETOUR.toString(),"passer son prochain tour");
 		assertEquals(Etat.ESTPRISON.toString(),"est en prison");

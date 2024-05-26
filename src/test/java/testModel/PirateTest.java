@@ -15,7 +15,7 @@ class PirateTest {
 	}
 	
 	@Test
-	void test() {
+	static void test() {
 		Pirate pirate = new Pirate("test");
 		assertEquals(pirate.getNom(),"test");
 		pirate.setChangement(2);

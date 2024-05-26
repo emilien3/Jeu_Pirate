@@ -9,7 +9,7 @@ import model.CaseEnum;
 class CaseEnumTest {
 
 	@Test
-	void test() {
+	static void test() {
 		assertEquals(CaseEnum.NORMALE.toString(),"Case normale - Pas d'effet");
 		assertEquals(CaseEnum.BOUE.toString(),"Case boue - Moins 3 sur le prochain lancer");
 		assertEquals(CaseEnum.FALAISE.toString(),"Case falaise - Moins 2 points de vie et retour sur la case precedente");

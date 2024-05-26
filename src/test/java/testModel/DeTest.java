@@ -14,7 +14,7 @@ class DeTest {
 	}
 
 	@Test
-	void test() {
+	static void test() {
 		De des = new De();
 		des.roll();
 		boolean resInf = des.getValue() < 7;
