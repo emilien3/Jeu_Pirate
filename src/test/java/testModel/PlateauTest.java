@@ -10,12 +10,8 @@ import model.Plateau;
 
 class PlateauTest {
 
-	@BeforeAll
-	static void setUpBeforeClass() throws Exception {
-	}
-
 	@Test
-	static void test() {
+	void test() {
 		Plateau plateau = new Plateau();
 		assertEquals(plateau.getTAILLETABLEAU(),30);
 		assertEquals(plateau.donnerCase(0), CaseEnum.NORMALE);

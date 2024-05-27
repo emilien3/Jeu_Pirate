@@ -10,12 +10,9 @@ import model.Plateau;
 
 class JeuPirateTest {
 
-	@BeforeAll
-	static void setUpBeforeClass() throws Exception {
-	}
 
 	@Test
-	static void test() {
+	void test() {
 		int[] des = {1,2};
 		JeuPirate jeuPirate =  new JeuPirate();
 		Plateau plateau = jeuPirate.getPlateau();

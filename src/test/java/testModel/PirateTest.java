@@ -10,12 +10,9 @@ import model.Pirate;
 
 class PirateTest {
 
-	@BeforeAll
-	static void setUpBeforeClass() throws Exception {
-	}
-	
+
 	@Test
-	static void test() {
+	void test() {
 		Pirate pirate = new Pirate("test");
 		assertEquals(pirate.getNom(),"test");
 		pirate.setChangement(2);

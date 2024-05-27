@@ -9,12 +9,9 @@ import model.De;
 
 class DeTest {
 
-	@BeforeAll
-	static void setUpBeforeClass() throws Exception {
-	}
 
 	@Test
-	static void test() {
+	void test() {
 		De des = new De();
 		des.roll();
 		boolean resInf = des.getValue() < 7;
