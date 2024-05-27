@@ -19,7 +19,7 @@
 **Phase de tests**
 
         Pour lancer les tests Fonctionnel : java -jar testFonctionnel.jar
-        Pour lancer les tests du Model : java -jar testUnitaireModel.jar
+        Pour lancer les tests du Model : dans un IDE
         Pour lancer les tests du Control : dans un IDE
 
 
